@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FuQueue</string>
+    <string name="user_name">Name</string>
+    <string name="user_surname">Surname</string>
+    <string name="user_email">Email</string>
+    <string name="user_password">Password</string>
 </resources>
