@@ -22,6 +22,6 @@ public class MainActivity extends AppCompatActivity {
               }
           }
         };
-        thread.start(); //test2
+        thread.start(); //test1111111111111111111111
     }
 }
