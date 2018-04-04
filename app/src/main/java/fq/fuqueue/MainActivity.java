@@ -22,6 +22,6 @@ public class MainActivity extends AppCompatActivity {
               }
           }
         };
-        thread.start();
+        thread.start(); //sdfasdfasdfasd
     }
 }
