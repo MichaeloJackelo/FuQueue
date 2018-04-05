@@ -23,7 +23,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActiveShoppingList"></activity>
+        <activity android:name=".ActiveShoppingList" />
+        <activity android:name=".BarcodeScanner"></activity>
     </application>
 
 </manifest>
