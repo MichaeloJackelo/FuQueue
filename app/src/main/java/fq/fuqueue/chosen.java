@@ -21,10 +21,24 @@ public class chosen extends AppCompatActivity {
                 next_page(v);
             }
         });
+        Button change_scanner_Button = (Button) findViewById(R.id.button_change_scanner);
+        change_scanner_Button.setOnClickListener( new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                scanner_page(v);
+            }
+        });
     }
     public void next_page(View v)
     {
         Intent intent = new Intent(this, ActiveShoppingList.class);
+        startActivity(intent);
+    }
+    public void scanner_page(View v)
+    {
+        Intent intent = new Intent(this, BarcodeScanner.class);
         startActivity(intent);
     }
 }
