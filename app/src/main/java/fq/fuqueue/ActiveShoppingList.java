@@ -1,5 +1,6 @@
 package fq.fuqueue;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 //import android.support.v7.widget.Toolbar;
@@ -7,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -98,6 +100,11 @@ public class ActiveShoppingList extends AppCompatActivity {
         });
         builder.show();
     }
+    public void scanner_page(View v)
+    {
+        Intent intent = new Intent(this, BarcodeScanner.class);
+        startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,6 +119,15 @@ public class ActiveShoppingList extends AppCompatActivity {
         iv = (ListView) findViewById(R.id.listView);
         iv.setAdapter(adapter);
         this.action_add("pierogi");
+        Button change_scanner_Button = (Button) findViewById(R.id.button_change_scanner);
+        change_scanner_Button.setOnClickListener( new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                scanner_page(v);
+            }
+        });
         iv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View view, final int position, long id) {
                 String selectedItem = ((TextView) view).getText().toString();
