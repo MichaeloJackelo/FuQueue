@@ -125,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
+<<<<<<< HEAD
         thread.start(); //testmichal
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -146,5 +147,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+=======
+        thread.start(); //test43254
+>>>>>>> parent of c5097b6... test3
     }
 }
