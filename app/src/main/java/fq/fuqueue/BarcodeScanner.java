@@ -1,8 +1,11 @@
 package fq.fuqueue;
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.net.Uri;
@@ -14,11 +17,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
 import android.support.v7.app.AlertDialog;
 import com.google.zxing.Result;
+import android.content.Intent;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import static android.Manifest.permission.CAMERA;
@@ -129,6 +137,40 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
                 .show();
     }
 
+    public void action_add(String product_name)
+    {
+        ArrayList<String> shoppingList = null;
+        shoppingList = getArrayVal(getApplicationContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Add Item");
+        shoppingList.add(preferredCase(product_name));
+        //Collections.sort(shoppingList);
+        storeArrayVal(shoppingList, getApplicationContext());
+        //iv.setAdapter(adapter);
+    }
+    public static String preferredCase(String original)
+    {
+        if (original.isEmpty())
+            return original;
+
+        return original.substring(0, 1).toUpperCase() + original.substring(1).toLowerCase();
+    }
+    public static void storeArrayVal(ArrayList<String> inArrayList, Context context)
+    {
+        Set<String> WhatToWrite = new HashSet<String>(inArrayList);
+        SharedPreferences WordSearchPutPrefs = context.getSharedPreferences("dbArrayValues", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor prefEditor = WordSearchPutPrefs.edit();
+        prefEditor.putStringSet("myArray", WhatToWrite);
+        prefEditor.commit();
+    }
+
+    public static ArrayList getArrayVal( Context dan)
+    {
+        SharedPreferences WordSearchGetPrefs = dan.getSharedPreferences("dbArrayValues",Activity.MODE_PRIVATE);
+        Set<String> tempSet = new HashSet<String>();
+        tempSet = WordSearchGetPrefs.getStringSet("myArray", tempSet);
+        return new ArrayList<String>(tempSet);
+    }
     @Override
     public void handleResult(Result result)
     {
@@ -137,20 +179,21 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
         Log.d("QRCodeScanner", result.getBarcodeFormat().toString());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Scan Result");
-        builder.setPositiveButton("OK",new DialogInterface.OnClickListener()
+        builder.setTitle("Add to shopping list?");
+        builder.setPositiveButton("NO",new DialogInterface.OnClickListener()
         {
             @Override
             public void onClick(DialogInterface dialogInterface, int i){
                 scannerView.resumeCameraPreview(BarcodeScanner.this);
             }
         });
-        builder.setNeutralButton("Visit", new DialogInterface.OnClickListener()
+        builder.setNeutralButton("Add!", new DialogInterface.OnClickListener()
         {
             @Override
             public void onClick(DialogInterface dialogInterface, int i)
             {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(scanResult));
+                action_add(scanResult);
+                Intent intent = new Intent(BarcodeScanner.this,ActiveShoppingList.class);
                 startActivity(intent);
             }
         });
