@@ -17,12 +17,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".chosen">
-
             <intent-filter>
-                <action android:name=".chosen"></action>
-                <category android:name="android.intent.category.DEFAULT"></category>
+                <action android:name=".chosen" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".ActiveShoppingList"></activity>
     </application>
 
 </manifest>
