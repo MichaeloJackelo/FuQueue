@@ -5,6 +5,7 @@ import android.app.Instrumentation;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -32,7 +33,7 @@ public class PaypalPayment extends AppCompatActivity {
 
 
     EditText editText_Amount;
-
+    Button button_PayNow;
     String amount="";
 
 
@@ -54,6 +55,15 @@ public class PaypalPayment extends AppCompatActivity {
         startService(intent);
 
         editText_Amount = (EditText)findViewById(R.id.editText_Amount);
+        button_PayNow = (Button)findViewById(R.id.button_PayPaypal);
+
+
+        button_PayNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                processPaypalPayments();
+            }
+        });
 
     }
 

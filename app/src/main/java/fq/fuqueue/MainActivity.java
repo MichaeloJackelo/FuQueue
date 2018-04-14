@@ -17,11 +17,15 @@ public class MainActivity extends AppCompatActivity {
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
                 } finally {
-                    Intent intent = new Intent(".Chosen");
-                    startActivity(intent);
+                    starttt();
                 }
             }
         };
         thread.start(); //testkrystianplatnosci
+    }
+
+    private void starttt() {
+        Intent intent = new Intent(this, Chosen.class);
+        startActivity(intent);
     }
 }

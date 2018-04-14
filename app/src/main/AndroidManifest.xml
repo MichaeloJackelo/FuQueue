@@ -20,7 +20,9 @@
         <activity android:name=".PaymentChosen" />
         <activity android:name=".PaypalPayment" />
         <activity android:name=".PaymentPaypalDetails" />
-        <activity android:name=".Chosen"></activity>
+        <activity android:name=".Chosen">
+
+        </activity>
     </application>
 
 </manifest>
