@@ -16,14 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".chosen">
-            <intent-filter>
-                <action android:name=".chosen" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".ActiveShoppingList"></activity>
+        <activity android:name=".ActiveShoppingList" />
+        <activity android:name=".PaymentChosen" />
+        <activity android:name=".PaypalPayment" />
+        <activity android:name=".PaymentPaypalDetails" />
+        <activity android:name=".Chosen"></activity>
     </application>
 
 </manifest>

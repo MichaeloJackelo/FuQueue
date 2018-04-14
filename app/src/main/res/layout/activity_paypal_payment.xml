@@ -4,25 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fq.fuqueue.Chosen">
-
+    tools:context="fq.fuqueue.PaypalPayment">
     <LinearLayout
         android:gravity="center"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <Button
-            android:id="@+id/button_ActiveShoppingList"
-            android:onClick="ClickActivShoppingList"
+        <EditText
+            android:id="@+id/editText_Amount"
+            android:textAlignment="center"
+            android:hint="Enter Amount"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/button_ActiveShoppingList" />
+            android:layout_height="wrap_content" />
         <Button
-            android:id="@+id/button_StartPayment"
+            android:id="@+id/button_PayPaypal"
+            android:text="PAY NOW"
+            android:textSize="18sp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="ClickStartPayment"
-            android:text="Strat Payment" />
+            android:layout_height="wrap_content" />
+
 
 
     </LinearLayout>

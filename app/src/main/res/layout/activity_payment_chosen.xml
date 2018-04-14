@@ -4,26 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fq.fuqueue.Chosen">
-
+    tools:context="fq.fuqueue.PaymentChosen">
     <LinearLayout
         android:gravity="center"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <Button
-            android:id="@+id/button_ActiveShoppingList"
-            android:onClick="ClickActivShoppingList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/button_ActiveShoppingList" />
-        <Button
-            android:id="@+id/button_StartPayment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="ClickStartPayment"
-            android:text="Strat Payment" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wybierz metode płatności:"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/btnPaypalChosen"
+            android:text="PAYPAL"
+            android:textSize="30sp"
+            android:onClick="ClickPaypalChosen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnCreditCardChosen"
+            android:text="CreditCard"
+            android:textSize="30sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
+
+
+
 </android.support.constraint.ConstraintLayout>

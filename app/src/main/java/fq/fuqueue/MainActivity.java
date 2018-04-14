@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
                 } finally {
-                    Intent intent = new Intent(".chosen");
+                    Intent intent = new Intent(".Chosen");
                     startActivity(intent);
                 }
             }
