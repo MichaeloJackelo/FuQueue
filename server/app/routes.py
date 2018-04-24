@@ -14,9 +14,9 @@ def products():
     return jsonify(dict_products)
 
 
-@app.route('/products/<id>/')
-def product(id):
-    product = models.Product.query.filter_by(id=id).first_or_404()
+@app.route('/products/<barcode>/')
+def product(barcode):
+    product = models.Product.query.filter_by(barcode=barcode).first_or_404()
     return jsonify(product.to_dict())
 
 
