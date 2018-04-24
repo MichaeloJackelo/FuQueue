@@ -118,7 +118,6 @@ public class ActiveShoppingList extends AppCompatActivity {
         adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,shoppingList);
         iv = (ListView) findViewById(R.id.listView);
         iv.setAdapter(adapter);
-        this.action_add("pierogi");
         Button change_scanner_Button = (Button) findViewById(R.id.button_change_scanner);
         change_scanner_Button.setOnClickListener( new View.OnClickListener()
         {
