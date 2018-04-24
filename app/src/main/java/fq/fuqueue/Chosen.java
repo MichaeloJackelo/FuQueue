@@ -12,6 +12,7 @@ public class Chosen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chosen);
     }
+
     public void ClickActivShoppingList(View v)
     {
         Intent intent = new Intent(this, ActiveShoppingList.class);
@@ -21,6 +22,12 @@ public class Chosen extends AppCompatActivity {
     public void ClickStartPayment(View v)
     {
         Intent intent = new Intent(this, PaymentChosen.class);
+        startActivity(intent);
+    }
+
+    public void scanner_page(View v)
+    {
+        Intent intent = new Intent(this, BarcodeScanner.class);
         startActivity(intent);
     }
 }
