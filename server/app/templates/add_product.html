@@ -1,0 +1,42 @@
+{% block content %}
+    <h1>Add Product</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=32) }}
+            {% for error in form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.prize.label }}<br>
+            {{ form.prize(size=32) }}
+              {% for error in form.prize.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.file_name.label }}<br>
+            {{ form.file_name(size=32) }}
+              {% for error in form.file_name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.barcode.label }}<br>
+            {{ form.barcode(size=32) }}
+              {% for error in form.barcode.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.description.label }}<br>
+            {{ form.description(size=32) }}
+              {% for error in form.description.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}
