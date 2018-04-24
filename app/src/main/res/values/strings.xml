@@ -9,4 +9,7 @@
     <string name="action_sort">Sort_List</string>
     <string name="action_add">add_item</string>
     <string name="action_clear">clear shopping list!!!</string>
+    <string name="button_scanner_text">scan goods!!!</string>
+    <string name="scanner_page">scanner_page</string>
+
 </resources>

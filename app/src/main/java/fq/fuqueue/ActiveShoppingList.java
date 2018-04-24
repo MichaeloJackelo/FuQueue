@@ -1,5 +1,6 @@
 package fq.fuqueue;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 //import android.support.v7.widget.Toolbar;
@@ -7,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -38,36 +40,22 @@ public class ActiveShoppingList extends AppCompatActivity {
         return true;
     }
     /*
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        int id = item.getItemId();
-        if(id ==R.id.action_add)
-        {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Add Item");
-            final EditText input = new EditText(this);
-            builder.setView(input);
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    shoppingList.add(preferredCase(input.getText().toString()));
-                    Collections.sort(shoppingList);
-                    storeArrayVal(shoppingList,getApplicationContext());
-                    iv.setAdapter(adapter);
-                }
-            });
-            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
-            builder.show();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+    private static ActiveShoppingList _instance = null;
+    public static ActiveShoppingList getInstance(){
+        if(_instance == null)
+            _instance= new  ActiveShoppingList();
+        return _instance;
     }
     */
+    public void action_add(String product_name)
+    {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Add Item");
+            shoppingList.add(preferredCase(product_name));
+            Collections.sort(shoppingList);
+            storeArrayVal(shoppingList, getApplicationContext());
+            iv.setAdapter(adapter);
+    }
     public static String preferredCase(String original)
     {
         if (original.isEmpty())
@@ -112,6 +100,11 @@ public class ActiveShoppingList extends AppCompatActivity {
         });
         builder.show();
     }
+    public void scanner_page(View v)
+    {
+        Intent intent = new Intent(this, BarcodeScanner.class);
+        startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,7 +118,16 @@ public class ActiveShoppingList extends AppCompatActivity {
         adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,shoppingList);
         iv = (ListView) findViewById(R.id.listView);
         iv.setAdapter(adapter);
-
+        this.action_add("pierogi");
+        Button change_scanner_Button = (Button) findViewById(R.id.button_change_scanner);
+        change_scanner_Button.setOnClickListener( new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                scanner_page(v);
+            }
+        });
         iv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View view, final int position, long id) {
                 String selectedItem = ((TextView) view).getText().toString();
