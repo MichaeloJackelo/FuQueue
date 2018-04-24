@@ -93,7 +93,7 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
                         Gson gson = new Gson();
                         BarcodeScanner.setProduct(gson.fromJson(response.toString(), Product.class));
                         Log.e("Rest Response",response.toString());
-                        Log.e("Product",product.getName());
+                        Log.e("Product name_____ ",product.getName());
                         action_add(product.getName());
                     }
                 },
