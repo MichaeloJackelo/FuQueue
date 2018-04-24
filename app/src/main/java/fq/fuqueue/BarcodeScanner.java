@@ -2,6 +2,7 @@ package fq.fuqueue;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.VoiceInteractor;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,20 +23,37 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
 import android.support.v7.app.AlertDialog;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.zxing.Result;
 import android.content.Intent;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import Models.Product;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import static android.Manifest.permission.CAMERA;
+//import things for REST
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
 
 public class BarcodeScanner extends AppCompatActivity implements ZXingScannerView.ResultHandler{
 
     private static final int REQUEST_CAMERA = 1;
     private ZXingScannerView scannerView;
-
+    private static Product product;
+    private static String scanText="";
     private static int camId = Camera.CameraInfo.CAMERA_FACING_BACK;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,15 +70,53 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
                 requestPermission();
             }
         }
+
+
     }
     private boolean checkPermission()
     {
         return (ContextCompat.checkSelfPermission(BarcodeScanner.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED);
     }
-
+    private void getJson(String scanResult){
+        System.out.println("server");
+        System.out.println(scanResult);
+        String URL = "http://flask-fuque-for-demo.herokuapp.com/products/"+scanResult;
+        System.out.println(URL);
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        JsonObjectRequest objectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                URL,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Gson gson = new Gson();
+                        BarcodeScanner.setProduct(gson.fromJson(response.toString(), Product.class));
+                        Log.e("Rest Response",response.toString());
+                        Log.e("Product",product.getName());
+                        action_add(product.getName());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("Rest Response",error.toString());
+                    }
+                }
+        );
+        requestQueue.add(objectRequest);
+    }
     private void requestPermission()
     {
         ActivityCompat.requestPermissions(this, new String[]{CAMERA},REQUEST_CAMERA);
+    }
+
+    public static Product getProduct() {
+        return product;
+    }
+
+    public static void setProduct(Product product) {
+        BarcodeScanner.product = product;
     }
 
     @Override
@@ -175,6 +231,7 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
     public void handleResult(Result result)
     {
         final String scanResult = result.getText();
+
         Log.d("QRCodeScanner", result.getText());
         Log.d("QRCodeScanner", result.getBarcodeFormat().toString());
 
@@ -192,7 +249,9 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
             @Override
             public void onClick(DialogInterface dialogInterface, int i)
             {
-                action_add(scanResult);
+                System.out.println(scanResult);
+                getJson(scanResult);
+                //action_add(product.getName()); //commented adding id to list
                 Intent intent = new Intent(BarcodeScanner.this,ActiveShoppingList.class);
                 startActivity(intent);
             }
