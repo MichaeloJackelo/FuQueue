@@ -1,5 +1,15 @@
 package fq.fuqueue;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.URL;
+import java.nio.charset.Charset;
+
+
+
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
@@ -24,14 +34,23 @@ import android.widget.Button;
 import android.support.v7.app.AlertDialog;
 import com.google.zxing.Result;
 import android.content.Intent;
+
+import java.io.BufferedReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.*;
+
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import static android.Manifest.permission.CAMERA;
 
-public class BarcodeScanner extends AppCompatActivity implements ZXingScannerView.ResultHandler{
+public class BarcodeScanner extends AppCompatActivity implements ZXingScannerView.ResultHandler {
 
     private static final int REQUEST_CAMERA = 1;
     private ZXingScannerView scannerView;
@@ -177,6 +196,24 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
         final String scanResult = result.getText();
         Log.d("QRCodeScanner", result.getText());
         Log.d("QRCodeScanner", result.getBarcodeFormat().toString());
+        final JSONObject[] json = new JSONObject[1];
+        Thread thread = new Thread() {
+            public void run() {
+                try {
+                    json[0] = readJsonFromUrl("http://flask-fuque-for-demo.herokuapp.com/products/" + scanResult);
+                    System.out.println(json[0].toString());
+                    System.out.println(json[0].get("id"));
+                }catch (IOException | JSONException e2){}
+            }
+        };
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(json[0].toString());
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Add to shopping list?");
@@ -192,7 +229,7 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
             @Override
             public void onClick(DialogInterface dialogInterface, int i)
             {
-                action_add(scanResult);
+                action_add(json[0].toString());
                 Intent intent = new Intent(BarcodeScanner.this,ActiveShoppingList.class);
                 startActivity(intent);
             }
@@ -201,4 +238,39 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
         AlertDialog alert = builder.create();
         alert.show();
     }
+
+
+
+    private static String readAll(Reader rd) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        int cp;
+        while ((cp = rd.read()) != -1) {
+            sb.append((char) cp);
+        }
+        return sb.toString();
+    }
+
+    public static JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
+        InputStream is = new URL(url).openStream();
+        try {
+            BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+            String jsonText = readAll(rd);
+            JSONObject json = new JSONObject(jsonText);
+            return json;
+        } finally {
+            is.close();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }
