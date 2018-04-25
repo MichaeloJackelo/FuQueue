@@ -229,7 +229,13 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
             @Override
             public void onClick(DialogInterface dialogInterface, int i)
             {
-                action_add(json[0].toString());
+                String name = null;
+                try {
+                    name = json[0].getString("name") + "\t\t\t\t\t\t" + json[0].getString("prize");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                action_add(name);
                 Intent intent = new Intent(BarcodeScanner.this,ActiveShoppingList.class);
                 startActivity(intent);
             }
