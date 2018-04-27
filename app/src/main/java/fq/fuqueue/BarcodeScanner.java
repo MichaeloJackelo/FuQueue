@@ -18,25 +18,16 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
-import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Button;
 import android.support.v7.app.AlertDialog;
 import com.google.zxing.Result;
-import android.content.Intent;
 
-import java.io.BufferedReader;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -44,8 +35,6 @@ import java.util.Set;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.*;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import static android.Manifest.permission.CAMERA;
@@ -156,16 +145,14 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
                 .show();
     }
 
-    public void action_add(String product_name)
+    public void addToShoppingList(String product_name)
     {
         ArrayList<String> shoppingList = null;
         shoppingList = getArrayVal(getApplicationContext());
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Add Item");
         shoppingList.add(preferredCase(product_name));
-        //Collections.sort(shoppingList);
         storeArrayVal(shoppingList, getApplicationContext());
-        //iv.setAdapter(adapter);
     }
     public static String preferredCase(String original)
     {
@@ -174,28 +161,25 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
 
         return original.substring(0, 1).toUpperCase() + original.substring(1).toLowerCase();
     }
-    public static void storeArrayVal(ArrayList<String> inArrayList, Context context)
+    public static void storeArrayVal(ArrayList<String> inArrayList, Context context)//function for save data on mobile
     {
         Set<String> WhatToWrite = new HashSet<String>(inArrayList);
         SharedPreferences WordSearchPutPrefs = context.getSharedPreferences("dbArrayValues", Activity.MODE_PRIVATE);
         SharedPreferences.Editor prefEditor = WordSearchPutPrefs.edit();
-        prefEditor.putStringSet("myArray", WhatToWrite);
+        prefEditor.putStringSet("savedShoppingList", WhatToWrite);
         prefEditor.commit();
     }
-
-    public static ArrayList getArrayVal( Context dan)
+    public static ArrayList getArrayVal( Context dan)//function for read data saved on mobile
     {
         SharedPreferences WordSearchGetPrefs = dan.getSharedPreferences("dbArrayValues",Activity.MODE_PRIVATE);
         Set<String> tempSet = new HashSet<String>();
-        tempSet = WordSearchGetPrefs.getStringSet("myArray", tempSet);
+        tempSet = WordSearchGetPrefs.getStringSet("savedShoppingList", tempSet);
         return new ArrayList<String>(tempSet);
     }
     @Override
-    public void handleResult(Result result)
+    public void handleResult(Result result) //function for handling result of scanning barcode
     {
         final String scanResult = result.getText();
-        Log.d("QRCodeScanner", result.getText());
-        Log.d("QRCodeScanner", result.getBarcodeFormat().toString());
         final JSONObject[] json = new JSONObject[1];
         Thread thread = new Thread() {
             public void run() {
@@ -216,28 +200,27 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Add to shopping list?");
-        builder.setPositiveButton("NO",new DialogInterface.OnClickListener()
+        builder.setTitle("Add product to shopping list?");
+        builder.setPositiveButton("No",new DialogInterface.OnClickListener()
         {
             @Override
             public void onClick(DialogInterface dialogInterface, int i){
                 scannerView.resumeCameraPreview(BarcodeScanner.this);
             }
         });
-        builder.setNeutralButton("Add to shopping list!", new DialogInterface.OnClickListener()
+        builder.setNeutralButton("Add!", new DialogInterface.OnClickListener()
         {
             @Override
             public void onClick(DialogInterface dialogInterface, int i)
             {
-                String name = null;
+                String productNameandPrice = null;
                 try {
-                    name = json[0].getString("name") + "\t\t\t\t\t\t" + json[0].getString("prize");
+                    productNameandPrice = json[0].getString("name") + "\t\t\t\t\t\t" + json[0].getString("prize");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                action_add(name);
-                Intent intent = new Intent(BarcodeScanner.this,ActiveShoppingList.class);
-                startActivity(intent);
+                addToShoppingList(productNameandPrice);
+                goToShoppingListActivity();
             }
         });
         builder.setMessage(scanResult);
@@ -266,6 +249,10 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
         } finally {
             is.close();
         }
+    }
+    private void goToShoppingListActivity(){
+        Intent intent = new Intent(BarcodeScanner.this,ActiveShoppingList.class);
+        startActivity(intent);
     }
 
 

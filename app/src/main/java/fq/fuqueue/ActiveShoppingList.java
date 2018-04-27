@@ -69,7 +69,7 @@ public class ActiveShoppingList extends AppCompatActivity {
         Set<String> WhatToWrite = new HashSet<String>(inArrayList);
         SharedPreferences WordSearchPutPrefs = context.getSharedPreferences("dbArrayValues", Activity.MODE_PRIVATE);
         SharedPreferences.Editor prefEditor = WordSearchPutPrefs.edit();
-        prefEditor.putStringSet("myArray", WhatToWrite);
+        prefEditor.putStringSet("savedShoppingList", WhatToWrite);
         prefEditor.commit();
     }
 
@@ -77,7 +77,7 @@ public class ActiveShoppingList extends AppCompatActivity {
     {
         SharedPreferences WordSearchGetPrefs = dan.getSharedPreferences("dbArrayValues",Activity.MODE_PRIVATE);
         Set<String> tempSet = new HashSet<String>();
-        tempSet = WordSearchGetPrefs.getStringSet("myArray", tempSet);
+        tempSet = WordSearchGetPrefs.getStringSet("savedShoppingList", tempSet);
         return new ArrayList<String>(tempSet);
     }
     public void removeElement(String selectedItem, final int position){
