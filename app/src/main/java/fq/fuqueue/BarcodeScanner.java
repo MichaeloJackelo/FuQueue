@@ -23,7 +23,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 import android.support.v7.app.AlertDialog;
 import com.google.zxing.Result;
@@ -150,7 +149,7 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
         ArrayList<String> shoppingList = null;
         shoppingList = getArrayVal(getApplicationContext());
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Add Item");
+        builder.setTitle("Add Product");
         shoppingList.add(preferredCase(product_name));
         storeArrayVal(shoppingList, getApplicationContext());
     }

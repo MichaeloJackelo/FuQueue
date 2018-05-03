@@ -7,9 +7,9 @@
     <string name="button_ActiveShoppingList">ActiveShoppingList</string>
     <string name="action_settings">Settings</string>
     <string name="action_sort">Sort_List</string>
-    <string name="action_add">add_item</string>
-    <string name="action_clear">clear shopping list!!!</string>
-    <string name="button_scanner_text">scan goods!!!</string>
-    <string name="scanner_page">scanner_page</string>
+    <string name="action_add">Add_item</string>
+    <string name="action_clear">Clear shopping list!</string>
+    <string name="button_scanner_text">Scan products!</string>
+    <string name="scanner_page">Scanner page</string>
 
 </resources>
