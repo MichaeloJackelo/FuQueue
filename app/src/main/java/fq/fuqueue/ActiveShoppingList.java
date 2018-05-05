@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 //import android.support.v7.widget.Toolbar;
 
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -33,6 +35,9 @@ public class ActiveShoppingList extends AppCompatActivity {
     ArrayList<String> shoppingList = null;
     ArrayAdapter<String> adapter = null;
     ListView iv = null;
+    RecyclerView recyclerView;
+    //String [] items = {"item1","item2","item3","item4","item5","item6","item7","item8","item9","item10","item11","item12","item13","item14","item15","item16"};
+    //recycleview
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -137,5 +142,9 @@ public class ActiveShoppingList extends AppCompatActivity {
                 }
             }
         });
+        //Recycleview
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
+        recyclerView.setAdapter(new Adapter(shoppingList,this));
     }
 }

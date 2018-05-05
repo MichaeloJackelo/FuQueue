@@ -8,7 +8,7 @@ package me.dm7.barcodescanner.core;
 
 public final class R {
     public static final class attr {
-        public static final int shouldScaleToFill = 0x7f0200e3;
+        public static final int shouldScaleToFill = 0x7f0200ea;
     }
     public static final class color {
         public static final int viewfinder_border = 0x7f040057;
@@ -20,7 +20,7 @@ public final class R {
         public static final int viewfinder_border_width = 0x7f080006;
     }
     public static final class styleable {
-        public static final int[] BarcodeScannerView = { 0x7f0200e3 };
+        public static final int[] BarcodeScannerView = { 0x7f0200ea };
         public static final int BarcodeScannerView_shouldScaleToFill = 0;
     }
 }

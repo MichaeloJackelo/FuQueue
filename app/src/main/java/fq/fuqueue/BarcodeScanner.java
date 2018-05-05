@@ -52,20 +52,20 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
         int currentApiVersion = Build.VERSION.SDK_INT;
         if (currentApiVersion >= Build.VERSION_CODES.M) //jesli wersja apki jest wyższa lub równa wersji M czyli Marshmallow - android 6.0
         {
-            if (checkPermission())
+            if (checkCameraPermission())
             {
                 Toast.makeText(BarcodeScanner.this, "Permission is granted!", Toast.LENGTH_LONG).show();
             } else {
-                requestPermission();
+                requestCameraPermission();
             }
         }
     }
-    private boolean checkPermission()
+    private boolean checkCameraPermission()
     {
         return (ContextCompat.checkSelfPermission(BarcodeScanner.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED);
     }
 
-    private void requestPermission()
+    private void requestCameraPermission()
     {
         ActivityCompat.requestPermissions(this, new String[]{CAMERA},REQUEST_CAMERA);
     }
@@ -76,7 +76,7 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
         super.onResume();
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         {
-            if(checkPermission())
+            if(checkCameraPermission())
             {
                 if(scannerView == null)
                 {
@@ -88,7 +88,7 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
             }
             else
             {
-                requestPermission();
+                requestCameraPermission();
             }
         }
     }
@@ -98,7 +98,7 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
         super.onDestroy();
         scannerView.stopCamera();
     }
-    public void onRequestPermissionResult(int requestCode, String permissionp[], int grantResults[])
+    public void onCameraRequestPermissionResult(int requestCode, String permissionp[], int grantResults[])
     {
         switch(requestCode)
         {
@@ -150,10 +150,10 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
         shoppingList = getArrayVal(getApplicationContext());
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Add Product");
-        shoppingList.add(preferredCase(product_name));
+        shoppingList.add(preferredBeginStringUpperCase(product_name));
         storeArrayVal(shoppingList, getApplicationContext());
     }
-    public static String preferredCase(String original)
+    public static String preferredBeginStringUpperCase(String original)
     {
         if (original.isEmpty())
             return original;

@@ -72,6 +72,10 @@
         "source": "/root/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/d779540dc2753687b0ae5648b8e57675/res/layout/notification_template_big_media_narrow.xml"
     },
     {
+        "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/layout-watch-v20_abc_alert_dialog_title_material.xml.flat",
+        "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/c37acf9f545a5cdccaba84d592472b81/res/layout-watch-v20/abc_alert_dialog_title_material.xml"
+    },
+    {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/layout_support_simple_spinner_dropdown_item.xml.flat",
         "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/layout/support_simple_spinner_dropdown_item.xml"
     },
@@ -208,6 +212,10 @@
         "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/drawable-xhdpi-v4/abc_scrubber_primary_mtrl_alpha.9.png"
     },
     {
+        "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/anim_abc_tooltip_enter.xml.flat",
+        "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/c37acf9f545a5cdccaba84d592472b81/res/anim/abc_tooltip_enter.xml"
+    },
+    {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/layout_abc_list_menu_item_layout.xml.flat",
         "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/layout/abc_list_menu_item_layout.xml"
     },
@@ -340,12 +348,12 @@
         "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/drawable/abc_seekbar_thumb_material.xml"
     },
     {
-        "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable-ldrtl-mdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
-        "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/drawable-ldrtl-mdpi-v17/abc_spinner_mtrl_am_alpha.9.png"
-    },
-    {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable-ldrtl-hdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
         "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/drawable-ldrtl-hdpi-v17/abc_ic_menu_copy_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable-ldrtl-mdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
+        "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/drawable-ldrtl-mdpi-v17/abc_spinner_mtrl_am_alpha.9.png"
     },
     {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_cio_ic_mastercard.png.flat",
@@ -414,6 +422,10 @@
     {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/layout_abc_alert_dialog_title_material.xml.flat",
         "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/layout/abc_alert_dialog_title_material.xml"
+    },
+    {
+        "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/layout_abc_tooltip.xml.flat",
+        "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/c37acf9f545a5cdccaba84d592472b81/res/layout/abc_tooltip.xml"
     },
     {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable-v21_abc_btn_colored_material.xml.flat",
@@ -562,6 +574,10 @@
     {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable_abc_btn_borderless_material.xml.flat",
         "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/drawable/abc_btn_borderless_material.xml"
+    },
+    {
+        "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/anim_abc_tooltip_exit.xml.flat",
+        "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/c37acf9f545a5cdccaba84d592472b81/res/anim/abc_tooltip_exit.xml"
     },
     {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_cio_ic_discover.png.flat",
@@ -1164,6 +1180,10 @@
         "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/drawable-xxxhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png"
     },
     {
+        "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/layout-watch-v20_abc_alert_dialog_button_bar_material.xml.flat",
+        "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/c37acf9f545a5cdccaba84d592472b81/res/layout-watch-v20/abc_alert_dialog_button_bar_material.xml"
+    },
+    {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_cio_card_io_logo.png.flat",
         "source": "/root/.gradle/caches/transforms-1/files-1.1/android-sdk-5.5.0.aar/754e84457e1a294ad44137d9a4477015/res/drawable-xhdpi-v4/cio_card_io_logo.png"
     },
@@ -1224,6 +1244,10 @@
         "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/layout/abc_popup_menu_header_item_layout.xml"
     },
     {
+        "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable_a.jpeg.flat",
+        "source": "/home/mike/FuQueue2/FuQueue/app/src/main/res/drawable/a.jpeg"
+    },
+    {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
         "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/drawable-hdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png"
     },
@@ -1274,6 +1298,10 @@
     {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/color-v23_abc_tint_default.xml.flat",
         "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/color-v23/abc_tint_default.xml"
+    },
+    {
+        "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable-watch-v20_abc_dialog_material_background.xml.flat",
+        "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/c37acf9f545a5cdccaba84d592472b81/res/drawable-watch-v20/abc_dialog_material_background.xml"
     },
     {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
@@ -1408,6 +1436,10 @@
         "source": "/root/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/6d032d94efe1deab9d74ec3d692c381b/res/layout-v21/notification_template_icon_group.xml"
     },
     {
+        "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/layout_custom_row_item.xml.flat",
+        "source": "/home/mike/FuQueue2/FuQueue/app/src/main/res/layout/custom_row_item.xml"
+    },
+    {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_list_longpressed_holo.9.png.flat",
         "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/drawable-mdpi-v4/abc_list_longpressed_holo.9.png"
     },
@@ -1466,6 +1498,10 @@
     {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/color_abc_secondary_text_material_dark.xml.flat",
         "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/color/abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/color_abc_background_cache_hint_selector_material_light.xml.flat",
+        "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/c37acf9f545a5cdccaba84d592472b81/res/color/abc_background_cache_hint_selector_material_light.xml"
     },
     {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/anim_abc_popup_exit.xml.flat",
@@ -1634,6 +1670,10 @@
     {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notify_panel_notification_icon_bg.png.flat",
         "source": "/root/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/6d032d94efe1deab9d74ec3d692c381b/res/drawable-mdpi-v4/notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/color_abc_background_cache_hint_selector_material_dark.xml.flat",
+        "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/c37acf9f545a5cdccaba84d592472b81/res/color/abc_background_cache_hint_selector_material_dark.xml"
     },
     {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/layout_notification_media_action.xml.flat",

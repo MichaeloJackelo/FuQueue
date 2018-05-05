@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="ClickStartPayment"
-            android:text="Strat Payment" />
+            android:text="Start Payment" />
         <Button
             android:id="@+id/button_change_scanner"
             android:layout_width="match_parent"

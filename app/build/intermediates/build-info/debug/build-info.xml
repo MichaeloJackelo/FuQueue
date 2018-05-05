@@ -5,11 +5,10 @@
     build-mode="FULL"
     density="xxhdpi"
     format="10"
-    ir-eligibility="R_CLASS_CHANGE"
     plugin-version="3.0.1"
-    timestamp="1525382954039"
+    timestamp="1525528975163"
     token="661588914018034698"
-    verifier="COLD_SWAP_REQUESTED" >
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
@@ -19,28 +18,28 @@
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="49" />
+        duration="122" />
     <task
         name="verifier"
-        duration="3" />
+        duration="0" />
 
     <artifact
         location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
         type="SPLIT" />
     <artifact
-        location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+        location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
         type="SPLIT" />
     <artifact
-        location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+        location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
         type="SPLIT" />
     <artifact
         location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
         type="SPLIT" />
     <artifact
-        location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+        location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
         type="SPLIT" />
     <artifact
-        location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+        location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
         type="SPLIT" />
     <artifact
         location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
@@ -49,13 +48,13 @@
         location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
         type="SPLIT" />
     <artifact
+        location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
+        type="SPLIT" />
+    <artifact
         location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
         type="SPLIT" />
     <artifact
         location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
         type="SPLIT" />
     <artifact
         location="/home/mike/FuQueue2/FuQueue/app/build/outputs/apk/debug/app-debug.apk"
@@ -63,26 +62,25 @@
 
     <build
         build-mode="FULL"
-        ir-eligibility="R_CLASS_CHANGE"
-        timestamp="1525382954039"
-        verifier="COLD_SWAP_REQUESTED" >
+        timestamp="1525528975163"
+        verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
             type="SPLIT" />
         <artifact
             location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
             type="SPLIT" />
         <artifact
+            location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+            type="SPLIT" />
+        <artifact
             location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
         <artifact
-            location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+            location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
             location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
@@ -91,13 +89,13 @@
             location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
             type="SPLIT" />
         <artifact
+            location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
+            type="SPLIT" />
+        <artifact
             location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
         <artifact
             location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/mike/FuQueue2/FuQueue/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
             type="SPLIT" />
         <artifact
             location="/home/mike/FuQueue2/FuQueue/app/build/outputs/apk/debug/app-debug.apk"
