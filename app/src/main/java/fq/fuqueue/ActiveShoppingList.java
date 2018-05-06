@@ -59,25 +59,7 @@ public class ActiveShoppingList extends AppCompatActivity{
         };
         return product_list;
     }
-    public void removeElement(String selectedItem, final int position){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Remove " + selectedItem + "?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                shoppingList.remove(position);
-                //Collections.sort(shoppingList);
-                //storeArrayVal(shoppingList, getApplicationContext());
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        builder.show();
-    }
+
     public void scanner_page(View v)
     {
         Intent intent = new Intent(this, BarcodeScanner.class);
