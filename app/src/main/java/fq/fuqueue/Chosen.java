@@ -30,4 +30,9 @@ public class Chosen extends AppCompatActivity {
         Intent intent = new Intent(this, BarcodeScanner.class);
         startActivity(intent);
     }
+    public void offline_shopping_list_page(View v)
+    {
+        Intent intent = new Intent(this, offline_shopping_list_page.class);
+        startActivity(intent);
+    }
 }

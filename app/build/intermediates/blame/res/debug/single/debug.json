@@ -88,6 +88,10 @@
         "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/drawable-ldrtl-mdpi-v17/abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
+        "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/layout_offline_shopping_list_page.xml.flat",
+        "source": "/home/mike/FuQueue2/FuQueue/app/src/main/res/layout/offline_shopping_list_page.xml"
+    },
+    {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable_abc_tab_indicator_material.xml.flat",
         "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/drawable/abc_tab_indicator_material.xml"
     },
@@ -340,12 +344,12 @@
         "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/drawable/abc_seekbar_thumb_material.xml"
     },
     {
-        "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable-ldrtl-hdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
-        "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/drawable-ldrtl-hdpi-v17/abc_ic_menu_copy_mtrl_am_alpha.png"
-    },
-    {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable-ldrtl-mdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
         "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/drawable-ldrtl-mdpi-v17/abc_spinner_mtrl_am_alpha.9.png"
+    },
+    {
+        "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable-ldrtl-hdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
+        "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/drawable-ldrtl-hdpi-v17/abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_cio_ic_mastercard.png.flat",
@@ -1434,6 +1438,10 @@
     {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable_tooltip_frame_light.xml.flat",
         "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f4535e4c6fb5ddf5c4e1f36a5e2a00c/res/drawable/tooltip_frame_light.xml"
+    },
+    {
+        "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable_delete_icon.jpg.flat",
+        "source": "/home/mike/FuQueue2/FuQueue/app/src/main/res/drawable/delete_icon.jpg"
     },
     {
         "merged": "/home/mike/FuQueue2/FuQueue/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_star_half_black_16dp.png.flat",

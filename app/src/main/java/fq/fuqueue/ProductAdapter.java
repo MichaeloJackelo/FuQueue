@@ -65,7 +65,15 @@ public class ProductAdapter extends RecyclerView.Adapter{
                 notify_data_changed();
             }
         });
-
+        ((ItemHolder)holder).button_delete.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                android.widget.Toast.makeText(context, "Clicked - at position" + position, android.widget.Toast.LENGTH_SHORT).show();
+                items.remove(position);
+                storeArrayProducts(items);
+                notify_data_changed();
+            }
+        });
         Picasso.with(context).load(R.drawable.a).resize(200,200).into(((ItemHolder) holder).imageViewThumbnail);
     }
     public void removeElement(String selectedItem, final int position,Context context){ //there is some problem with context
@@ -95,7 +103,7 @@ public class ProductAdapter extends RecyclerView.Adapter{
     }
     private class ItemHolder extends RecyclerView.ViewHolder{
         TextView textView, text_view_title, text_view_description,text_quantity;
-        android.widget.Button button_plus, button_minus;
+        android.widget.Button button_plus, button_minus, button_delete;
         ImageView imageViewThumbnail;
         public ItemHolder(View itemView){
             super(itemView);
@@ -106,6 +114,7 @@ public class ProductAdapter extends RecyclerView.Adapter{
             text_quantity = itemView.findViewById(R.id.text_quantity);
             button_plus = itemView.findViewById(R.id.button_plus);
             button_minus = itemView.findViewById(R.id.button_minus);
+            button_delete = itemView.findViewById(R.id.button_delete);
         }
     }
     public void storeArrayProducts( ArrayList<Product> inArrayList)

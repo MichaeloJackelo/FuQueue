@@ -30,5 +30,12 @@
             android:clickable="true"
             android:onClick="scanner_page"
             android:text="@string/button_scanner_text" />
+        <Button
+            android:id="@+id/button_list_offline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="offline_shopping_list_page"
+            android:text="@string/button_list_offline" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
