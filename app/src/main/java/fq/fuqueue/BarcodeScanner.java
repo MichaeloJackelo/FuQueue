@@ -144,13 +144,14 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
                 .show();
     }
 
-    public void addToShoppingList(String product_name)
+    public void addToShoppingList(String product_name, double product_prize, String product_description,int quantity)
     {
         ArrayList<Product> shoppingList = null;
         shoppingList = getArrayProducts();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Add Product");
-        Product new_product = new Product(product_name,"3");
+        Product new_product = new Product(product_name, product_prize, product_description, quantity);
+
         shoppingList.add(new_product);
         storeArrayProducts(shoppingList);
     }
@@ -221,13 +222,17 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
             @Override
             public void onClick(DialogInterface dialogInterface, int i)
             {
-                String productNameandPrice = null;
+                String productName = null;
+                double productPrize = 0;
+                String productDescription = null;
                 try {
-                    productNameandPrice = json[0].getString("name") + "\t\t\t\t\t\t" + json[0].getString("prize");
+                    productName = json[0].getString("name");
+                    productPrize =  json[0].getDouble("prize");
+                    productDescription = json[0].getString("description");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                addToShoppingList(productNameandPrice);
+                addToShoppingList(productName, productPrize,productDescription,1);
                 goToShoppingListActivity();
             }
         });

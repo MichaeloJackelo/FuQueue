@@ -89,10 +89,6 @@ public class ActiveShoppingList extends AppCompatActivity{
         setContentView(R.layout.activity_active_shopping_list);
         shoppingList = getArrayProducts();
 
-        //storeArrayProducts(shoppingList);
-        //shoppingList = getArrayVal(getApplicationContext());
-        //Collections.sort(shoppingList);
-        //adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,shoppingList);
         Button change_scanner_Button = (Button) findViewById(R.id.button_change_scanner);
         change_scanner_Button.setOnClickListener( new View.OnClickListener()
         {
