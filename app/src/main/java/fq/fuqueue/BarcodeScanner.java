@@ -146,12 +146,13 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
 
     public void addToShoppingList(String product_name)
     {
-        ArrayList<String> shoppingList = null;
-        shoppingList = getArrayVal(getApplicationContext());
+        ArrayList<Product> shoppingList = null;
+        shoppingList = getArrayProducts();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Add Product");
-        shoppingList.add(preferredBeginStringUpperCase(product_name));
-        storeArrayVal(shoppingList, getApplicationContext());
+        Product new_product = new Product(product_name,"3");
+        shoppingList.add(new_product);
+        storeArrayProducts(shoppingList);
     }
     public static String preferredBeginStringUpperCase(String original)
     {
@@ -160,20 +161,28 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
 
         return original.substring(0, 1).toUpperCase() + original.substring(1).toLowerCase();
     }
-    public static void storeArrayVal(ArrayList<String> inArrayList, Context context)//function for save data on mobile
+     public void storeArrayProducts( ArrayList<Product> inArrayList)
     {
-        Set<String> WhatToWrite = new HashSet<String>(inArrayList);
-        SharedPreferences WordSearchPutPrefs = context.getSharedPreferences("dbArrayValues", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor prefEditor = WordSearchPutPrefs.edit();
-        prefEditor.putStringSet("savedShoppingList", WhatToWrite);
-        prefEditor.commit();
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        com.google.gson.Gson gson = new com.google.gson.Gson();
+        String json = gson.toJson(inArrayList);
+        editor.putString("task list", json);
+        editor.apply();
     }
-    public static ArrayList getArrayVal( Context dan)//function for read data saved on mobile
+
+    public ArrayList<Product> getArrayProducts()
     {
-        SharedPreferences WordSearchGetPrefs = dan.getSharedPreferences("dbArrayValues",Activity.MODE_PRIVATE);
-        Set<String> tempSet = new HashSet<String>();
-        tempSet = WordSearchGetPrefs.getStringSet("savedShoppingList", tempSet);
-        return new ArrayList<String>(tempSet);
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        com.google.gson.Gson gson = new com.google.gson.Gson();
+        String json = sharedPreferences.getString("task list" , null);
+        java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<ArrayList<Product>>(){}.getType();
+        ArrayList<Product> product_list = gson.fromJson(json,type);
+        if( product_list == null)
+        {
+            product_list = new ArrayList<Product>();
+        };
+        return product_list;
     }
     @Override
     public void handleResult(Result result) //function for handling result of scanning barcode
@@ -253,16 +262,4 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
         Intent intent = new Intent(BarcodeScanner.this,ActiveShoppingList.class);
         startActivity(intent);
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }
