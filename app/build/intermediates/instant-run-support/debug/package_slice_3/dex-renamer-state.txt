@@ -1,4 +1,4 @@
-#Mon May 07 15:53:11 CEST 2018
-base.0=E\:\\ITapp\\FuQueue\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\213
+#Mon May 07 22:21:43 CEST 2018
+base.0=E\:\\ITapp\\FuQueue\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\650
 path.0=classes.dex
 renamed.0=classes.dex

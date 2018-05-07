@@ -32,6 +32,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -190,10 +191,13 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
     {
         final String scanResult = result.getText();
         final JSONObject[] json = new JSONObject[1];
+        final Context context = this;
         Thread thread = new Thread() {
             public void run() {
                 try {
-                    json[0] = readJsonFromUrl("http://flask-fuque-for-demo.herokuapp.com/products/" + scanResult);
+                    String ii = "http://flask-fuque-for-demo.herokuapp.com/products/" + scanResult;
+                    json[0] = readJsonFromUrl(ii);
+                    //android.widget.Toast.makeText(context, ii, android.widget.Toast.LENGTH_SHORT).show();
                     System.out.println(json[0].toString());
                     System.out.println(json[0].get("id"));
                 }catch (IOException | JSONException e2){}

@@ -12,16 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import java.util.ArrayList;
-import java.util.Collections;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.app.Activity;
 
 import android.view.View;
 
@@ -34,9 +24,9 @@ public class ActiveShoppingList extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_active_shopping_list);
-        shoppingList = Productsaver.getArrayProducts(this);
-        shoppingList.add(new Product("płatki czekoladowe", 10, "takie sobiete płatki",1,12000099));
-        Productsaver.storeArrayProducts(shoppingList,this);
+        shoppingList = ProductListManager.getArrayProducts(this);
+        ProductListManager.addProductToList(shoppingList,new Product("płatki czekoladowe", 10, "takie sobiete płatki",1,12000099));
+        ProductListManager.storeArrayProducts(shoppingList,this);
         Button change_scanner_Button = (Button) findViewById(R.id.button_change_scanner);
         change_scanner_Button.setOnClickListener( new View.OnClickListener()
         {

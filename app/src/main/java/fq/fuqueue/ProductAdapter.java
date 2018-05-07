@@ -1,7 +1,6 @@
 package fq.fuqueue;
 
 import android.app.AlertDialog;
-import android.content.ClipData;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
@@ -13,9 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-import android.content.SharedPreferences;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter{
     ArrayList<Product> items;
@@ -47,7 +45,7 @@ public class ProductAdapter extends RecyclerView.Adapter{
             public void onClick(View v){
                 android.widget.Toast.makeText(context, "Clicked + at position" + position, android.widget.Toast.LENGTH_SHORT).show();
                 items.get(position).quantity++;
-                Productsaver.storeArrayProducts(items,context);
+                ProductListManager.storeArrayProducts(items,context);
                 notify_data_changed();
             }
         });
@@ -59,9 +57,9 @@ public class ProductAdapter extends RecyclerView.Adapter{
                 if(items.get(position).quantity<1){
                     //removeElement(items.get(position).name, position,this); // there need to repair problems with context
                     items.remove(position);
-                    Productsaver.storeArrayProducts(items,context);
+                    ProductListManager.storeArrayProducts(items,context);
                 }
-                else Productsaver.storeArrayProducts(items,context);
+                else ProductListManager.storeArrayProducts(items,context);
                 notify_data_changed();
             }
         });
@@ -70,11 +68,11 @@ public class ProductAdapter extends RecyclerView.Adapter{
             public void onClick(View v){
                 android.widget.Toast.makeText(context, "Clicked - at position" + position, android.widget.Toast.LENGTH_SHORT).show();
                 items.remove(position);
-                Productsaver.storeArrayProducts(items,context);
+                ProductListManager.storeArrayProducts(items,context);
                 notify_data_changed();
             }
         });
-        Picasso.with(context).load(R.drawable.a).resize(200,200).into(((ItemHolder) holder).imageViewThumbnail);
+        Picasso.with(context).load(R.drawable.a).resize(150,100).into(((ItemHolder) holder).imageViewThumbnail);
     }
     public void removeElement(String selectedItem, final int position, final Context context){ //there is some problem with context
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -83,7 +81,7 @@ public class ProductAdapter extends RecyclerView.Adapter{
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 items.remove(position);
-                Productsaver.storeArrayProducts(items,context);
+                ProductListManager.storeArrayProducts(items,context);
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
