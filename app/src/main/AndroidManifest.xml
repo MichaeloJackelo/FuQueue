@@ -22,8 +22,8 @@
         <activity android:name=".PaymentChosen" />
         <activity android:name=".PaypalPayment" />
         <activity android:name=".PaymentPaypalDetails" />
-        <activity android:name=".Chosen">
-
+        <activity android:name=".Chosen"/>
+        <activity android:name=".OfflineShoppingList">
         </activity>
         <activity android:name=".ActiveShoppingList" />
         <activity android:name=".BarcodeScanner"></activity>
