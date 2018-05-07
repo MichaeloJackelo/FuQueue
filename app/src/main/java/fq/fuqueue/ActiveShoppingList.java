@@ -31,6 +31,27 @@ public class ActiveShoppingList extends AppCompatActivity{
     ArrayAdapter<String> adapter = null;
     RecyclerView recyclerView;
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_active_shopping_list);
+        shoppingList = getArrayProducts();
+        shoppingList.add(new Product("płatki czekoladowe", 10, "takie sobiete płatki",1,12000099));
+        storeArrayProducts(shoppingList);
+        Button change_scanner_Button = (Button) findViewById(R.id.button_change_scanner);
+        change_scanner_Button.setOnClickListener( new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                scanner_page(v);
+            }
+        });
+        //Recycleview
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+        recyclerView.setAdapter(new ProductAdapter(shoppingList,this));
+    }
+    @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
         getMenuInflater().inflate(R.menu.menu,menu);
@@ -64,37 +85,5 @@ public class ActiveShoppingList extends AppCompatActivity{
     {
         Intent intent = new Intent(this, BarcodeScanner.class);
         startActivity(intent);
-    }
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_active_shopping_list);
-        shoppingList = getArrayProducts();
-
-        Button change_scanner_Button = (Button) findViewById(R.id.button_change_scanner);
-        change_scanner_Button.setOnClickListener( new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                scanner_page(v);
-            }
-        });
-        /*
-        iv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView parent, View view, final int position, long id) {
-                String selectedItem = ((TextView) view).getText().toString();
-                if (selectedItem.trim().equals(shoppingList.get(position).trim())) {
-                    removeElement(selectedItem, position);
-                } else {
-                    Toast.makeText(getApplicationContext(),"Error Removing Element", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-        */
-        //Recycleview
-        recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
-        recyclerView.setAdapter(new ProductAdapter(shoppingList,this));
     }
 }

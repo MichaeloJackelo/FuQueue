@@ -28,7 +28,7 @@ public class ProductAdapter extends RecyclerView.Adapter{
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View row = inflater.inflate(R.layout.custom_row_item, parent, false);
+        View row = inflater.inflate(R.layout.activity_row_product, parent, false);
         return new ItemHolder(row);
     }
 
@@ -38,10 +38,10 @@ public class ProductAdapter extends RecyclerView.Adapter{
         String price = (String) "" + (items.get(position).price);
         String description = items.get(position).description;
         String quantity = (String) "" + (items.get(position).quantity);
-        ((ItemHolder)holder).textView.setText(name);
-        ((ItemHolder)holder).text_view_title.setText(price);
-        ((ItemHolder)holder).text_view_description.setText(description);
-        ((ItemHolder)holder).text_quantity.setText(quantity);
+        ((ItemHolder)holder).product_name.setText(name);
+        ((ItemHolder)holder).product_price.setText(price);
+        ((ItemHolder)holder).product_description.setText(description);
+        ((ItemHolder)holder).product_quantity.setText(quantity);
         ((ItemHolder)holder).button_plus.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -102,16 +102,16 @@ public class ProductAdapter extends RecyclerView.Adapter{
         this.notifyDataSetChanged();
     }
     private class ItemHolder extends RecyclerView.ViewHolder{
-        TextView textView, text_view_title, text_view_description,text_quantity;
+        TextView product_name, product_price, product_description,product_quantity;
         android.widget.Button button_plus, button_minus, button_delete;
         ImageView imageViewThumbnail;
         public ItemHolder(View itemView){
             super(itemView);
-            textView = itemView.findViewById(R.id.text_view);
-            text_view_title = itemView.findViewById(R.id.text_view_title);
-            text_view_description = itemView.findViewById(R.id.text_view_description);
+            product_name = itemView.findViewById(R.id.product_name);
+            product_price = itemView.findViewById(R.id.product_price);
+            product_description = itemView.findViewById(R.id.product_description);
             imageViewThumbnail = itemView.findViewById(R.id.imageViewThumbnail);
-            text_quantity = itemView.findViewById(R.id.text_quantity);
+            product_quantity = itemView.findViewById(R.id.product_quantity);
             button_plus = itemView.findViewById(R.id.button_plus);
             button_minus = itemView.findViewById(R.id.button_minus);
             button_delete = itemView.findViewById(R.id.button_delete);
