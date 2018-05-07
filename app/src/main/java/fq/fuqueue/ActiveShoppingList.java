@@ -34,9 +34,9 @@ public class ActiveShoppingList extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_active_shopping_list);
-        shoppingList = getArrayProducts();
+        shoppingList = Productsaver.getArrayProducts(this);
         shoppingList.add(new Product("płatki czekoladowe", 10, "takie sobiete płatki",1,12000099));
-        storeArrayProducts(shoppingList);
+        Productsaver.storeArrayProducts(shoppingList,this);
         Button change_scanner_Button = (Button) findViewById(R.id.button_change_scanner);
         change_scanner_Button.setOnClickListener( new View.OnClickListener()
         {
@@ -57,30 +57,6 @@ public class ActiveShoppingList extends AppCompatActivity{
         getMenuInflater().inflate(R.menu.menu,menu);
         return true;
     }
-    public void storeArrayProducts( ArrayList<Product> inArrayList)
-    {
-        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        com.google.gson.Gson gson = new com.google.gson.Gson();
-        String json = gson.toJson(inArrayList);
-        editor.putString("task list", json);
-        editor.apply();
-    }
-
-    public ArrayList getArrayProducts()
-    {
-        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-        com.google.gson.Gson gson = new com.google.gson.Gson();
-        String json = sharedPreferences.getString("task list" , null);
-        java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<ArrayList<Product>>(){}.getType();
-        ArrayList<Product> product_list = gson.fromJson(json,type);
-        if( product_list == null)
-        {
-            product_list = new ArrayList<Product>();
-        };
-        return product_list;
-    }
-
     public void scanner_page(View v)
     {
         Intent intent = new Intent(this, BarcodeScanner.class);

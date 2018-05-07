@@ -47,7 +47,7 @@ public class ProductAdapter extends RecyclerView.Adapter{
             public void onClick(View v){
                 android.widget.Toast.makeText(context, "Clicked + at position" + position, android.widget.Toast.LENGTH_SHORT).show();
                 items.get(position).quantity++;
-                storeArrayProducts(items);
+                Productsaver.storeArrayProducts(items,context);
                 notify_data_changed();
             }
         });
@@ -59,9 +59,9 @@ public class ProductAdapter extends RecyclerView.Adapter{
                 if(items.get(position).quantity<1){
                     //removeElement(items.get(position).name, position,this); // there need to repair problems with context
                     items.remove(position);
-                    storeArrayProducts(items);
+                    Productsaver.storeArrayProducts(items,context);
                 }
-                else storeArrayProducts(items);
+                else Productsaver.storeArrayProducts(items,context);
                 notify_data_changed();
             }
         });
@@ -70,20 +70,20 @@ public class ProductAdapter extends RecyclerView.Adapter{
             public void onClick(View v){
                 android.widget.Toast.makeText(context, "Clicked - at position" + position, android.widget.Toast.LENGTH_SHORT).show();
                 items.remove(position);
-                storeArrayProducts(items);
+                Productsaver.storeArrayProducts(items,context);
                 notify_data_changed();
             }
         });
         Picasso.with(context).load(R.drawable.a).resize(200,200).into(((ItemHolder) holder).imageViewThumbnail);
     }
-    public void removeElement(String selectedItem, final int position,Context context){ //there is some problem with context
+    public void removeElement(String selectedItem, final int position, final Context context){ //there is some problem with context
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Remove " + selectedItem + "?");
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 items.remove(position);
-                storeArrayProducts(items);
+                Productsaver.storeArrayProducts(items,context);
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -116,14 +116,5 @@ public class ProductAdapter extends RecyclerView.Adapter{
             button_minus = itemView.findViewById(R.id.button_minus);
             button_delete = itemView.findViewById(R.id.button_delete);
         }
-    }
-    public void storeArrayProducts( ArrayList<Product> inArrayList)
-    {
-        android.content.SharedPreferences sharedPreferences =  this.context.getSharedPreferences("shared preferences", context.MODE_PRIVATE);
-        android.content.SharedPreferences.Editor editor = sharedPreferences.edit();
-        com.google.gson.Gson gson = new com.google.gson.Gson();
-        String json = gson.toJson(inArrayList);
-        editor.putString("task list", json);
-        editor.apply();
     }
 }
