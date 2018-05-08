@@ -25,7 +25,6 @@
         <activity android:name=".Chosen"/>
         <activity android:name=".OfflineShoppingList">
         </activity>
-        <activity android:name=".ActiveShoppingList" />
         <activity android:name=".BarcodeScanner"></activity>
     </application>
 

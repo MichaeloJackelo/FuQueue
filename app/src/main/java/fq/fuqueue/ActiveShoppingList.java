@@ -18,7 +18,6 @@ import android.view.View;
 
 public class ActiveShoppingList extends AppCompatActivity{
     ArrayList<Product> shoppingList = new ArrayList<Product>();
-    ArrayAdapter<String> adapter = null;
     RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

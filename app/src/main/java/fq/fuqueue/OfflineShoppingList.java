@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.google.zxing.Result;
@@ -26,26 +28,43 @@ import java.util.ArrayList;
 import static fq.fuqueue.BarcodeScanner.readJsonFromUrl;
 
 public class OfflineShoppingList extends AppCompatActivity {
+    ArrayList<Product> offlineProductList = new ArrayList<Product>();
+    RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offline_shopping_list);
-        handleResult("");
+        downloadProductList();
+        recyclerView = findViewById(R.id.offlinerecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+        recyclerView.setAdapter(new OfflineProductAdapter(offlineProductList,this));
     }
 
-    public void handleResult(String result) //function for handling result of scanning barcode
+    public void downloadProductList() //function for handling result of scanning barcode
     {
-        final String scanResult = result;
         final JSONArray[] json = new JSONArray[1];
         final Context context = this;
         Thread thread = new Thread() {
             public void run() {
                 try {
-                    String ii = "http://flask-fuque-for-demo.herokuapp.com/products/" + scanResult;
+                    String ii = "http://flask-fuque-for-demo.herokuapp.com/products/";
                     json[0] = readJsonFromUrl(ii);
-                    //android.widget.Toast.makeText(context, ii, android.widget.Toast.LENGTH_SHORT).show();
-                    //System.out.println(json[0].toString());
-                    //System.out.println(json[0].get("id"));
+                    for(int i=0;i<json[0].length();i++)
+                    {
+                        String productName = null;
+                        double productPrize = 0;
+                        String productDescription = null;
+                        int productbarcode = 0;
+                        try {
+                            productName = json[0].getJSONObject(i).getString("name");
+                            productPrize = json[0].getJSONObject(i).getDouble("prize");
+                            productDescription = json[0].getJSONObject(i).getString("description");
+                            productbarcode = json[0].getJSONObject(i).getInt("barcode");
+                            offlineProductList.add(new Product(productName, productPrize, productDescription, 1, productbarcode));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }catch (IOException | JSONException e2){}
             }
         };
@@ -55,54 +74,7 @@ public class OfflineShoppingList extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //System.out.println(json[0].toString());
-
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Add product to shopping list?");
-        builder.setPositiveButton("No",new DialogInterface.OnClickListener()
-        {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i){
-                //scannerView.resumeCameraPreview(BarcodeScanner.this);
-            }
-        });
-        builder.setNeutralButton("Add!", new DialogInterface.OnClickListener()
-        {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i)
-            {
-                String productName = null;
-                double productPrize = 0;
-                String productDescription = null;
-                int productbarcode = 0;
-                try {
-
-                    productName = json[0].getJSONObject(1).getString("name");
-                    productPrize =  json[0].getJSONObject(0).getDouble("prize");
-                    /*
-                    productDescription = json[0].getString("description");
-                    productbarcode = json[0].getInt("barcode");
-                    */
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                //goToShoppingListActivity();
-            }
-        });
-        ArrayList<Product> product;
-        product = ProductListManager.getArrayProducts(this);
-        ProductListManager.addProductToList(product, new Product("kupa",4,"xdd",4,126969));
-        ProductListManager.storeArrayProducts(product,this);
-        builder.setMessage(scanResult);
-        AlertDialog alert = builder.create();
-        alert.show();
     }
-
-
-
     private static String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
         int cp;

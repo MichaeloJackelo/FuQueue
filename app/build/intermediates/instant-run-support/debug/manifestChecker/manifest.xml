@@ -40,7 +40,6 @@
         <activity android:name="fq.fuqueue.Chosen" />
         <activity android:name="fq.fuqueue.OfflineShoppingList" >
         </activity>
-        <activity android:name="fq.fuqueue.ActiveShoppingList" />
         <activity android:name="fq.fuqueue.BarcodeScanner" />
         <activity android:name="com.paypal.android.sdk.payments.PaymentActivity" />
         <activity android:name="com.paypal.android.sdk.payments.PaymentMethodActivity" />

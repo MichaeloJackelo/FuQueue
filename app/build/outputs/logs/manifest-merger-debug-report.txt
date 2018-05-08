@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:2:1-32:12
-INJECTED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:2:1-32:12
-INJECTED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:2:1-32:12
-INJECTED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:2:1-32:12
+ADDED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:2:1-31:12
+INJECTED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:2:1-31:12
+INJECTED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:2:1-31:12
+INJECTED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:2:1-31:12
 MERGED from [me.dm7.barcodescanner:zxing:1.9] C:\Users\micha\.gradle\caches\transforms-1\files-1.1\zxing-1.9.aar\edf2505a0b85c025cbe8695ef813f840\AndroidManifest.xml:2:1-13:12
 MERGED from [com.paypal.sdk:paypal-android-sdk:2.15.3] C:\Users\micha\.gradle\caches\transforms-1\files-1.1\paypal-android-sdk-2.15.3.aar\e4ad0f11f761b27bcc7c0e2fdf54ba15\AndroidManifest.xml:2:1-28:12
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\micha\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\7c586747d2ffa3a9878b27ba98c9be84\AndroidManifest.xml:2:1-11:12
@@ -20,20 +20,20 @@ MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\micha\.gr
 MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\micha\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\bf333636567a0ff78a92e7b93ea4f269\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:support-compat:26.1.0] C:\Users\micha\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\d9b40b949498a76b726558a3a85adeff\AndroidManifest.xml:17:1-31:12
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\micha\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\fe9c0de8b3cf48bacd5462d60aa0c301\AndroidManifest.xml:17:1-30:12
-INJECTED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:2:1-32:12
-INJECTED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:2:1-32:12
-INJECTED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:2:1-32:12
+INJECTED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:2:1-31:12
+INJECTED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:2:1-31:12
+INJECTED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:2:1-31:12
 	package
 		ADDED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:3:5-25
 		INJECTED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml
 		INJECTED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml
-		ADDED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:2:1-32:12
+		ADDED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:2:1-31:12
 		INJECTED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml
-		ADDED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:2:1-32:12
+		ADDED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:2:1-31:12
 		INJECTED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:2:11-69
@@ -56,7 +56,7 @@ MERGED from [io.card:android-sdk:5.5.0] C:\Users\micha\.gradle\caches\transforms
 	android:name
 		ADDED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:6:19-67
 application
-ADDED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:7:5-30:19
+ADDED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:7:5-29:19
 MERGED from [me.dm7.barcodescanner:zxing:1.9] C:\Users\micha\.gradle\caches\transforms-1\files-1.1\zxing-1.9.aar\edf2505a0b85c025cbe8695ef813f840\AndroidManifest.xml:11:5-20
 MERGED from [me.dm7.barcodescanner:zxing:1.9] C:\Users\micha\.gradle\caches\transforms-1\files-1.1\zxing-1.9.aar\edf2505a0b85c025cbe8695ef813f840\AndroidManifest.xml:11:5-20
 MERGED from [com.paypal.sdk:paypal-android-sdk:2.15.3] C:\Users\micha\.gradle\caches\transforms-1\files-1.1\paypal-android-sdk-2.15.3.aar\e4ad0f11f761b27bcc7c0e2fdf54ba15\AndroidManifest.xml:12:5-26:19
@@ -140,9 +140,9 @@ ADDED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:26:9-27:20
 	android:name
 		ADDED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:26:19-54
 activity#fq.fuqueue.BarcodeScanner
-ADDED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:29:9-61
+ADDED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:28:9-61
 	android:name
-		ADDED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:29:19-49
+		ADDED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml:28:19-49
 uses-sdk
 INJECTED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\ITapp\FuQueue\app\src\main\AndroidManifest.xml
