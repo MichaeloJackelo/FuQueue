@@ -45,7 +45,6 @@ public class AllProductListAdapter extends RecyclerView.Adapter{
         ((ItemHolder)holder).button_add.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                android.widget.Toast.makeText(context, "Clicked + at position" + position, android.widget.Toast.LENGTH_SHORT).show();
                 Product new_product = new Product(items.get(position));
                 ArrayList<Product> productList = ProductListManager.getOfflineListProducts(context);
                 ProductListManager.addProductToList(productList,new_product);
@@ -54,7 +53,7 @@ public class AllProductListAdapter extends RecyclerView.Adapter{
                 offlinelistadapter.notify_data_changed();
             }
         });
-        Picasso.with(context).load(R.drawable.a).resize(150,100).into(((ItemHolder) holder).imageViewThumbnail);
+        Picasso.with(context).load(R.drawable.a).resize(88,88).into(((ItemHolder) holder).imageViewThumbnail);
     }
     @Override
     public int getItemCount() {

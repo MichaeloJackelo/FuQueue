@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import org.json.JSONException;
 import org.json.JSONArray;
@@ -26,7 +30,7 @@ public class AllShoppingList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_offline_shopping_list);
+        setContentView(R.layout.activity_all_shopping_list);
 
         addedProductsList = ProductListManager.getOfflineListProducts(this);
         addedProducts_recyclerView = findViewById(R.id.offline_list_recyclerView);
@@ -38,6 +42,22 @@ public class AllShoppingList extends AppCompatActivity {
         allProducts_recyclerView = findViewById(R.id.all_products_recyclerView);
         allProducts_recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
         allProducts_recyclerView.setAdapter(new AllProductListAdapter(offlineProductList,offlineadapter,this));
+        Spinner spinner_category = (Spinner) findViewById(R.id.spinner_category);
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.search_categories));
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_category.setAdapter(spinnerAdapter);
+        final Context context = this;
+        spinner_category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String sSelected = parent.getItemAtPosition(position).toString();
+                android.widget.Toast.makeText(context, "Clicked at " + position + " element " + sSelected, android.widget.Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     public void downloadProductList() //function for handling result of scanning barcode

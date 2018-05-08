@@ -8,13 +8,13 @@ package io.card.payment;
 
 public final class R {
     public static final class drawable {
-        public static final int cio_card_io_logo = 0x7f060055;
-        public static final int cio_ic_amex = 0x7f060056;
-        public static final int cio_ic_discover = 0x7f060057;
-        public static final int cio_ic_jcb = 0x7f060058;
-        public static final int cio_ic_mastercard = 0x7f060059;
-        public static final int cio_ic_paypal_monogram = 0x7f06005a;
-        public static final int cio_ic_visa = 0x7f06005b;
-        public static final int cio_paypal_logo = 0x7f06005c;
+        public static final int cio_card_io_logo = 0x7f070055;
+        public static final int cio_ic_amex = 0x7f070056;
+        public static final int cio_ic_discover = 0x7f070057;
+        public static final int cio_ic_jcb = 0x7f070058;
+        public static final int cio_ic_mastercard = 0x7f070059;
+        public static final int cio_ic_paypal_monogram = 0x7f07005a;
+        public static final int cio_ic_visa = 0x7f07005b;
+        public static final int cio_paypal_logo = 0x7f07005c;
     }
 }

@@ -12,4 +12,10 @@
     <string name="button_scanner_text">Scan products!</string>
     <string name="scanner_page">Scanner page</string>
     <string name="button_list_offline">Make Shopping List offline</string>
+    <string-array name="search_categories">
+        <item>all</item>
+        <item>vegetables</item>
+        <item>fruits</item>
+        <item>baking</item>
+    </string-array>
 </resources>

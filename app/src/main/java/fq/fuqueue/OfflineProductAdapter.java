@@ -43,7 +43,6 @@ public class OfflineProductAdapter extends RecyclerView.Adapter{
         ((ItemHolder)holder).button_plus.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                android.widget.Toast.makeText(context, "Clicked + at position" + position, android.widget.Toast.LENGTH_SHORT).show();
                 items.get(position).quantity++;
                 ProductListManager.storeOfflineListProducts(items,context);
                 notify_data_changed();
@@ -52,7 +51,6 @@ public class OfflineProductAdapter extends RecyclerView.Adapter{
         ((ItemHolder)holder).button_minus.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                android.widget.Toast.makeText(context, "Clicked - at position" + position, android.widget.Toast.LENGTH_SHORT).show();
                 items.get(position).quantity--;
                 if(items.get(position).quantity<1){
                     //removeElement(items.get(position).name, position,this); // there need to repair problems with context
@@ -66,13 +64,12 @@ public class OfflineProductAdapter extends RecyclerView.Adapter{
         ((ItemHolder)holder).button_delete.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                android.widget.Toast.makeText(context, "Clicked - at position" + position, android.widget.Toast.LENGTH_SHORT).show();
                 items.remove(position);
                 ProductListManager.storeOfflineListProducts(items,context);
                 notify_data_changed();
             }
         });
-        Picasso.with(context).load(R.drawable.a).resize(150,100).into(((ItemHolder) holder).imageViewThumbnail);
+        Picasso.with(context).load(R.drawable.a).resize(88,88).into(((ItemHolder) holder).imageViewThumbnail);
     }
     @Override
     public int getItemCount() {
