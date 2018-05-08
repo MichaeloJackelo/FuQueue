@@ -32,7 +32,7 @@ public class Chosen extends AppCompatActivity {
     }
     public void offline_shopping_list_page(View v)
     {
-        Intent intent = new Intent(this, OfflineShoppingList.class);
+        Intent intent = new Intent(this, AllShoppingList.class);
         startActivity(intent);
     }
 }

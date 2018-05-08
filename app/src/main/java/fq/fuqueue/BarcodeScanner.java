@@ -11,11 +11,9 @@ import java.nio.charset.Charset;
 
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.os.Build;
@@ -28,11 +26,8 @@ import android.support.v7.app.AlertDialog;
 import com.google.zxing.Result;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -144,48 +139,6 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
                 .create()
                 .show();
     }
-
-    public void addToShoppingList(String product_name, double product_prize, String product_description,int quantity,int product_barcode)
-    {
-        ArrayList<Product> shoppingList = null;
-        shoppingList = getArrayProducts();
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Add Product");
-        Product new_product = new Product(product_name, product_prize, product_description, quantity, product_barcode);
-
-        shoppingList.add(new_product);
-        storeArrayProducts(shoppingList);
-    }
-    public static String preferredBeginStringUpperCase(String original)
-    {
-        if (original.isEmpty())
-            return original;
-
-        return original.substring(0, 1).toUpperCase() + original.substring(1).toLowerCase();
-    }
-     public void storeArrayProducts( ArrayList<Product> inArrayList)
-    {
-        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        com.google.gson.Gson gson = new com.google.gson.Gson();
-        String json = gson.toJson(inArrayList);
-        editor.putString("task list", json);
-        editor.apply();
-    }
-
-    public ArrayList<Product> getArrayProducts()
-    {
-        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-        com.google.gson.Gson gson = new com.google.gson.Gson();
-        String json = sharedPreferences.getString("task list" , null);
-        java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<ArrayList<Product>>(){}.getType();
-        ArrayList<Product> product_list = gson.fromJson(json,type);
-        if( product_list == null)
-        {
-            product_list = new ArrayList<Product>();
-        };
-        return product_list;
-    }
     @Override
     public void handleResult(Result result) //function for handling result of scanning barcode
     {
@@ -238,7 +191,9 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                addToShoppingList(productName, productPrize,productDescription,1, productbarcode);
+                ArrayList<Product> productList= ProductListManager.getActiveListProducts(context);
+                ProductListManager.addProductToList(productList,new Product(productName, productPrize,productDescription,1, productbarcode));
+                ProductListManager.storeActiveListProducts(productList,context);
                 goToShoppingListActivity();
             }
         });

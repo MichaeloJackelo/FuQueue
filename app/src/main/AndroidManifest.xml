@@ -23,7 +23,7 @@
         <activity android:name=".PaypalPayment" />
         <activity android:name=".PaymentPaypalDetails" />
         <activity android:name=".Chosen"/>
-        <activity android:name=".OfflineShoppingList">
+        <activity android:name=".AllShoppingList">
         </activity>
         <activity android:name=".BarcodeScanner"></activity>
     </application>

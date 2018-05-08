@@ -38,7 +38,7 @@
         <activity android:name="fq.fuqueue.PaypalPayment" />
         <activity android:name="fq.fuqueue.PaymentPaypalDetails" />
         <activity android:name="fq.fuqueue.Chosen" />
-        <activity android:name="fq.fuqueue.OfflineShoppingList" >
+        <activity android:name="fq.fuqueue.AllShoppingList" >
         </activity>
         <activity android:name="fq.fuqueue.BarcodeScanner" />
         <activity android:name="com.paypal.android.sdk.payments.PaymentActivity" />

@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import java.util.ArrayList;
@@ -23,9 +22,7 @@ public class ActiveShoppingList extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_active_shopping_list);
-        shoppingList = ProductListManager.getArrayProducts(this);
-        ProductListManager.addProductToList(shoppingList,new Product("płatki czekoladowe", 10, "takie sobiete płatki",1,12000099));
-        ProductListManager.storeArrayProducts(shoppingList,this);
+        shoppingList = ProductListManager.getActiveListProducts(this);
         Button change_scanner_Button = (Button) findViewById(R.id.button_change_scanner);
         change_scanner_Button.setOnClickListener( new View.OnClickListener()
         {
@@ -38,7 +35,7 @@ public class ActiveShoppingList extends AppCompatActivity{
         //Recycleview
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
-        recyclerView.setAdapter(new ProductAdapter(shoppingList,this));
+        recyclerView.setAdapter(new ActiveProductAdapter(shoppingList,this));
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu)

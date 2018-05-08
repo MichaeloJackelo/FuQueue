@@ -26,7 +26,7 @@ public class OfflineProductAdapter extends RecyclerView.Adapter{
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View row = inflater.inflate(R.layout.activity_offline_row_product, parent, false);
+        View row = inflater.inflate(R.layout.activity_row_product, parent, false);
         return new ItemHolder(row);
     }
 
@@ -40,25 +40,39 @@ public class OfflineProductAdapter extends RecyclerView.Adapter{
         ((ItemHolder)holder).product_price.setText(price);
         ((ItemHolder)holder).product_description.setText(description);
         ((ItemHolder)holder).product_quantity.setText(quantity);
-        Picasso.with(context).load(R.drawable.a).resize(150,100).into(((ItemHolder) holder).imageViewThumbnail);
-    }
-    public void removeElement(String selectedItem, final int position, final Context context){ //there is some problem with context
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Remove " + selectedItem + "?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        ((ItemHolder)holder).button_plus.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(DialogInterface dialog, int which) {
+            public void onClick(View v){
+                android.widget.Toast.makeText(context, "Clicked + at position" + position, android.widget.Toast.LENGTH_SHORT).show();
+                items.get(position).quantity++;
+                ProductListManager.storeOfflineListProducts(items,context);
+                notify_data_changed();
+            }
+        });
+        ((ItemHolder)holder).button_minus.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                android.widget.Toast.makeText(context, "Clicked - at position" + position, android.widget.Toast.LENGTH_SHORT).show();
+                items.get(position).quantity--;
+                if(items.get(position).quantity<1){
+                    //removeElement(items.get(position).name, position,this); // there need to repair problems with context
+                    items.remove(position);
+                    ProductListManager.storeOfflineListProducts(items,context);
+                }
+                else ProductListManager.storeOfflineListProducts(items,context);
+                notify_data_changed();
+            }
+        });
+        ((ItemHolder)holder).button_delete.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                android.widget.Toast.makeText(context, "Clicked - at position" + position, android.widget.Toast.LENGTH_SHORT).show();
                 items.remove(position);
-                ProductListManager.storeArrayProducts(items,context);
+                ProductListManager.storeOfflineListProducts(items,context);
+                notify_data_changed();
             }
         });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        builder.show();
+        Picasso.with(context).load(R.drawable.a).resize(150,100).into(((ItemHolder) holder).imageViewThumbnail);
     }
     @Override
     public int getItemCount() {
@@ -69,7 +83,7 @@ public class OfflineProductAdapter extends RecyclerView.Adapter{
     }
     private class ItemHolder extends RecyclerView.ViewHolder{
         TextView product_name, product_price, product_description,product_quantity;
-        android.widget.Button button_add;
+        android.widget.Button button_plus, button_minus, button_delete;
         ImageView imageViewThumbnail;
         public ItemHolder(View itemView){
             super(itemView);
@@ -78,7 +92,13 @@ public class OfflineProductAdapter extends RecyclerView.Adapter{
             product_description = itemView.findViewById(R.id.product_description);
             imageViewThumbnail = itemView.findViewById(R.id.imageViewThumbnail);
             product_quantity = itemView.findViewById(R.id.product_quantity);
-            button_add = itemView.findViewById(R.id.button_add);
+            button_plus = itemView.findViewById(R.id.button_plus);
+            button_minus = itemView.findViewById(R.id.button_minus);
+            button_delete = itemView.findViewById(R.id.button_delete);
         }
+    }
+    public void load_saved_values(Context context)
+    {
+        this.items = ProductListManager.getOfflineListProducts(context);
     }
 }
