@@ -34,7 +34,8 @@ public class PaymentPaypalDetails extends AppCompatActivity {
 
     private void showDetails(JSONObject response, String paymentPaypalAmount) {
         try{
-            textView_IdPaypalDetails.setText(response.getString("id"));
+            String sid="Payment id: "+response.getString("id");
+            textView_IdPaypalDetails.setText(sid);
             textView_StatusPaypalDetails.setText(response.getString("status"));
             textView_AmountPaypalDetails.setText(response.getString(String.format("$%s",paymentPaypalAmount)));
         } catch (JSONException e) {
