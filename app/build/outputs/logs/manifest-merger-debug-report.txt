@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:2:1-31:12
-INJECTED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:2:1-31:12
-INJECTED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:2:1-31:12
-INJECTED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:2:1-31:12
+ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:2:1-33:12
+INJECTED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:2:1-33:12
+INJECTED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:2:1-33:12
+INJECTED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:2:1-33:12
 MERGED from [me.dm7.barcodescanner:zxing:1.9] C:\Users\Krystian\.gradle\caches\transforms-1\files-1.1\zxing-1.9.aar\bbc44215c18ac0f5eeb0ceef28746c27\AndroidManifest.xml:2:1-13:12
 MERGED from [com.paypal.sdk:paypal-android-sdk:2.15.3] C:\Users\Krystian\.gradle\caches\transforms-1\files-1.1\paypal-android-sdk-2.15.3.aar\d2f01ed713b690a587328be0c5908661\AndroidManifest.xml:2:1-28:12
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Krystian\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\eda4ee390b5d5283f81aaddf05b201c4\AndroidManifest.xml:2:1-11:12
@@ -20,43 +20,43 @@ MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Krystian\
 MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Krystian\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\094aaa4bde402cf068b7389f20b3f440\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Krystian\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\8ea62413566ae6e847773e814fed1c46\AndroidManifest.xml:17:1-31:12
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Krystian\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\9ef80fd9e9068f2565a414ff9ab2c044\AndroidManifest.xml:17:1-30:12
-INJECTED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:2:1-31:12
-INJECTED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:2:1-31:12
-INJECTED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:2:1-31:12
+INJECTED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:2:1-33:12
+INJECTED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:2:1-33:12
+INJECTED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:2:1-33:12
 	package
 		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:3:5-25
 		INJECTED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml
 		INJECTED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml
-		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:2:1-31:12
+		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:2:1-33:12
 		INJECTED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml
-		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:2:1-31:12
+		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:2:1-33:12
 		INJECTED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.CAMERA
-ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:4:5-64
+ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:5:5-65
 MERGED from [io.card:android-sdk:5.5.0] C:\Users\Krystian\.gradle\caches\transforms-1\files-1.1\android-sdk-5.5.0.aar\abd01de5b313f225cb4a918cb35e0ad5\AndroidManifest.xml:9:5-65
 MERGED from [io.card:android-sdk:5.5.0] C:\Users\Krystian\.gradle\caches\transforms-1\files-1.1\android-sdk-5.5.0.aar\abd01de5b313f225cb4a918cb35e0ad5\AndroidManifest.xml:9:5-65
 	android:name
-		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:4:22-62
+		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:5:22-62
 uses-feature#android.hardware.camera
-ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:5:5-59
+ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:7:5-60
 MERGED from [io.card:android-sdk:5.5.0] C:\Users\Krystian\.gradle\caches\transforms-1\files-1.1\android-sdk-5.5.0.aar\abd01de5b313f225cb4a918cb35e0ad5\AndroidManifest.xml:12:5-14:36
 MERGED from [io.card:android-sdk:5.5.0] C:\Users\Krystian\.gradle\caches\transforms-1\files-1.1\android-sdk-5.5.0.aar\abd01de5b313f225cb4a918cb35e0ad5\AndroidManifest.xml:12:5-14:36
 	android:name
-		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:5:19-57
+		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:7:19-57
 uses-feature#android.hardware.camera.autofocus
-ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:6:5-69
+ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:8:5-70
 MERGED from [io.card:android-sdk:5.5.0] C:\Users\Krystian\.gradle\caches\transforms-1\files-1.1\android-sdk-5.5.0.aar\abd01de5b313f225cb4a918cb35e0ad5\AndroidManifest.xml:15:5-17:36
 MERGED from [io.card:android-sdk:5.5.0] C:\Users\Krystian\.gradle\caches\transforms-1\files-1.1\android-sdk-5.5.0.aar\abd01de5b313f225cb4a918cb35e0ad5\AndroidManifest.xml:15:5-17:36
 	android:name
-		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:6:19-67
+		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:8:19-67
 application
-ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:7:5-29:19
+ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:10:5-31:19
 MERGED from [me.dm7.barcodescanner:zxing:1.9] C:\Users\Krystian\.gradle\caches\transforms-1\files-1.1\zxing-1.9.aar\bbc44215c18ac0f5eeb0ceef28746c27\AndroidManifest.xml:11:5-20
 MERGED from [me.dm7.barcodescanner:zxing:1.9] C:\Users\Krystian\.gradle\caches\transforms-1\files-1.1\zxing-1.9.aar\bbc44215c18ac0f5eeb0ceef28746c27\AndroidManifest.xml:11:5-20
 MERGED from [com.paypal.sdk:paypal-android-sdk:2.15.3] C:\Users\Krystian\.gradle\caches\transforms-1\files-1.1\paypal-android-sdk-2.15.3.aar\d2f01ed713b690a587328be0c5908661\AndroidManifest.xml:12:5-26:19
@@ -90,59 +90,59 @@ MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Krystian\.gradl
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Krystian\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\9ef80fd9e9068f2565a414ff9ab2c044\AndroidManifest.xml:24:5-28:19
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Krystian\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\9ef80fd9e9068f2565a414ff9ab2c044\AndroidManifest.xml:24:5-28:19
 	android:supportsRtl
-		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:12:9-35
+		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:15:9-35
 	android:label
-		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:10:9-41
+		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:13:9-41
 	android:roundIcon
-		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:11:9-54
+		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:14:9-54
 	android:icon
-		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:9:9-43
+		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:12:9-43
 	android:allowBackup
-		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:8:9-35
+		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:11:9-35
 	android:theme
-		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:13:9-40
+		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:16:9-40
 activity#fq.fuqueue.MainActivity
-ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:14:9-20:20
+ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:17:9-23:20
 	android:name
-		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:14:19-47
+		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:17:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:15:13-19:29
+ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:18:13-22:29
 action#android.intent.action.MAIN
-ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:16:17-69
+ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:19:17-69
 	android:name
-		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:16:25-66
+		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:19:25-66
 category#android.intent.category.LAUNCHER
-ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:18:17-77
+ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:21:17-77
 	android:name
-		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:18:27-74
+		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:21:27-74
 activity#fq.fuqueue.ActiveShoppingList
-ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:21:9-56
+ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:24:9-56
 	android:name
-		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:21:19-53
-activity#fq.fuqueue.PaymentChosen
-ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:22:9-51
-	android:name
-		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:22:19-48
+		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:24:19-53
 activity#fq.fuqueue.PaypalPayment
-ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:23:9-51
+ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:25:9-51
 	android:name
-		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:23:19-48
+		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:25:19-48
 activity#fq.fuqueue.PaymentPaypalDetails
-ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:24:9-58
+ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:26:9-58
 	android:name
-		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:24:19-55
+		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:26:19-55
 activity#fq.fuqueue.Chosen
-ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:25:9-43
+ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:27:9-44
 	android:name
-		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:25:19-41
+		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:27:19-41
 activity#fq.fuqueue.AllShoppingList
-ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:26:9-27:20
+ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:28:9-62
 	android:name
-		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:26:19-50
+		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:28:19-50
 activity#fq.fuqueue.BarcodeScanner
-ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:28:9-61
+ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:29:9-52
 	android:name
-		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:28:19-49
+		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:29:19-49
+activity#fq.fuqueue.StoreMap
+ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:30:9-55
+	android:name
+		ADDED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml:30:19-43
 uses-sdk
 INJECTED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\Studia\Magister\app\app\src\main\AndroidManifest.xml

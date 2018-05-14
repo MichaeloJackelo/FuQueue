@@ -21,7 +21,7 @@
             android:id="@+id/button_StartPayment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="ClickStartPayment"
+            android:onClick="ClickPaypalChosen"
             android:text="Start Payment" />
         <Button
             android:id="@+id/button_change_scanner"
@@ -37,5 +37,11 @@
             android:clickable="true"
             android:onClick="offline_shopping_list_page"
             android:text="@string/button_list_offline" />
+        <Button
+            android:id="@+id/button_store_map"
+            android:onClick="ClickStoreMap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Store Map" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

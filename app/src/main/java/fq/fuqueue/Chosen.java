@@ -19,12 +19,6 @@ public class Chosen extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void ClickStartPayment(View v)
-    {
-        Intent intent = new Intent(this, PaymentChosen.class);
-        startActivity(intent);
-    }
-
     public void scanner_page(View v)
     {
         Intent intent = new Intent(this, BarcodeScanner.class);
@@ -33,6 +27,18 @@ public class Chosen extends AppCompatActivity {
     public void offline_shopping_list_page(View v)
     {
         Intent intent = new Intent(this, AllShoppingList.class);
+        startActivity(intent);
+    }
+
+    public void ClickPaypalChosen(View v)
+    {
+        Intent intent = new Intent(this, PaypalPayment.class);
+        startActivity(intent);
+    }
+
+    public void ClickStoreMap(View v)
+    {
+        Intent intent = new Intent(this, StoreMap.class);
         startActivity(intent);
     }
 }
