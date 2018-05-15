@@ -13,20 +13,38 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class ActiveProductAdapter extends RecyclerView.Adapter{
     ArrayList<Product> items;
     Context context;
-    public ActiveProductAdapter(ArrayList<Product> items, Context context){
+    TextView text_view_summary_price;
+    public ActiveProductAdapter(ArrayList<Product> items,TextView text_view_summary_price, Context context){
         this.items = items;
         this.context = context;
+        this.text_view_summary_price = text_view_summary_price;
+    }
+    public double summaryPrice(){
+        double summary = 0;
+        for (Product p : this.items)
+        {
+            summary=summary+(p.price*p.quantity);
+        }
+
+        return summary;
+    }
+    public void refresh_text_view_summary_price()
+    {
+        text_view_summary_price.setText("Summary price: " + new Double(summaryPrice()).toString()+" zł");
     }
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View row = inflater.inflate(R.layout.activity_row_product, parent, false);
+        refresh_text_view_summary_price();
         return new ItemHolder(row);
     }
 
@@ -67,9 +85,11 @@ public class ActiveProductAdapter extends RecyclerView.Adapter{
                 items.remove(position);
                 ProductListManager.storeActiveListProducts(items,context);
                 notify_data_changed();
+
             }
         });
         Picasso.with(context).load(R.drawable.a).resize(88,88).into(((ItemHolder) holder).imageViewThumbnail);
+
     }
     public void removeElement(String selectedItem, final int position, final Context context){ //there is some problem with context
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -88,6 +108,7 @@ public class ActiveProductAdapter extends RecyclerView.Adapter{
             }
         });
         builder.show();
+        refresh_text_view_summary_price();
     }
     @Override
     public int getItemCount() {
@@ -95,6 +116,7 @@ public class ActiveProductAdapter extends RecyclerView.Adapter{
     }
     public void notify_data_changed(){
         this.notifyDataSetChanged();
+        refresh_text_view_summary_price();
     }
     private class ItemHolder extends RecyclerView.ViewHolder{
         TextView product_name, product_price, product_description,product_quantity;

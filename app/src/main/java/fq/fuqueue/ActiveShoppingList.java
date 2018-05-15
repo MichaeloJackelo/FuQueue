@@ -13,11 +13,13 @@ import android.widget.Button;
 import java.util.ArrayList;
 
 import android.view.View;
+import android.widget.TextView;
 
 
 public class ActiveShoppingList extends AppCompatActivity{
     ArrayList<Product> shoppingList = new ArrayList<Product>();
     RecyclerView recyclerView;
+    TextView summary_price;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,10 +34,13 @@ public class ActiveShoppingList extends AppCompatActivity{
                 scanner_page(v);
             }
         });
+        //textview summary price
+        summary_price = (TextView) findViewById(R.id.result_price);
         //Recycleview
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
-        recyclerView.setAdapter(new ActiveProductAdapter(shoppingList,this));
+        recyclerView.setAdapter(new ActiveProductAdapter(shoppingList,summary_price,this));
+        //summary_price.setText(new Double(new ActiveProductAdapter(shoppingList, this).summaryPrice()).toString());
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
