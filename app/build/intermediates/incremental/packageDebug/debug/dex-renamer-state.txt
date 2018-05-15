@@ -1,4 +1,4 @@
-#Tue May 15 14:20:07 CEST 2018
+#Tue May 15 14:37:55 CEST 2018
 path.1=classes.dex
 path.0=classes.dex
 renamed.5=classes6.dex
@@ -7,12 +7,12 @@ renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
-base.5=E\:\\ITapp\\FuQueue\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1153
-base.4=E\:\\ITapp\\FuQueue\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1156
-base.3=E\:\\ITapp\\FuQueue\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1157
-base.2=E\:\\ITapp\\FuQueue\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1154
-base.1=E\:\\ITapp\\FuQueue\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1155
-base.0=E\:\\ITapp\\FuQueue\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1152
+base.5=E\:\\ITapp\\FuQueue\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1214
+base.4=E\:\\ITapp\\FuQueue\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1211
+base.3=E\:\\ITapp\\FuQueue\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1213
+base.2=E\:\\ITapp\\FuQueue\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1210
+base.1=E\:\\ITapp\\FuQueue\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1212
+base.0=E\:\\ITapp\\FuQueue\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1209
 path.5=classes.dex
 path.4=classes.dex
 path.3=classes.dex

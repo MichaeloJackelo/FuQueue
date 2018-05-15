@@ -1736,7 +1736,7 @@
         <item>vegetables</item>
         <item>fruits</item>
         <item>baking</item>
-    </string-array></file><file path="E:\ITapp\FuQueue\app\src\main\res\values\styles.xml" qualifiers=""><style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    </string-array><string name="button_go_payment">Go to payment</string></file><file path="E:\ITapp\FuQueue\app\src\main\res\values\styles.xml" qualifiers=""><style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

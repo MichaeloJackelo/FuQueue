@@ -20,6 +20,7 @@ public class ActiveShoppingList extends AppCompatActivity{
     ArrayList<Product> shoppingList = new ArrayList<Product>();
     RecyclerView recyclerView;
     TextView summary_price;
+    ActiveProductAdapter activeProductAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +40,14 @@ public class ActiveShoppingList extends AppCompatActivity{
         //Recycleview
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
-        recyclerView.setAdapter(new ActiveProductAdapter(shoppingList,summary_price,this));
+        activeProductAdapter = new ActiveProductAdapter(shoppingList,summary_price,this);
+        recyclerView.setAdapter(activeProductAdapter);
         //summary_price.setText(new Double(new ActiveProductAdapter(shoppingList, this).summaryPrice()).toString());
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+        activeProductAdapter.refresh_text_view_summary_price();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
