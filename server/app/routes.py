@@ -11,26 +11,30 @@ def error_response(status_code, message=None):
     response.status_code = status_code
     return response
 
+
 def wants_json_response():
     return request.accept_mimetypes['application/json'] >= \
         request.accept_mimetypes['text/html']
 
+
 def bad_request(message):
     return error_response(400, message)
+
 
 @app.route('/')
 @app.route('/index')
 def index():
     return redirect(url_for('products'))
 
-@app.route('/products/')
+
+@app.route('/products/', methods=['GET'])
 def products():
     products = models.Product.query.all()
     dict_products = [p.to_dict() for p in products]
     return jsonify(dict_products)
 
 
-@app.route('/products/<barcode>/')
+@app.route('/products/<barcode>/', methods=['GET'])
 def product(barcode):
     product = models.Product.query.filter_by(barcode=barcode).first_or_404()
     return jsonify(product.to_dict())
@@ -71,3 +75,47 @@ def render_add_product():
         form = forms.ProductForm()
         return render_template('add_product.html', title='Sign In', form=form)
     return bad_request("bad request")
+
+
+@app.route('/products/<barcode>/add/category/<id>', methods=['POST'])
+def add_product_category(barcode, id):
+    p = models.Product.query.filter_by(barcode=barcode).first_or_404()
+    c = models.Category.query.get_or_404(id)
+    p.add_category(c)
+    db.session.commit()
+    return jsonify(p.to_dict())
+
+
+@app.route('/categories/', methods=['GET'])
+def get_categories():
+    categories = models.Category.query.all()
+    list = [c.to_dict() for c in categories]
+    return jsonify(list)
+
+
+@app.route('/categories/<id>', methods=['GET'])
+def get_category(id):
+    category = models.Category.query.filter_by(id=id).first_or_404()
+    return jsonify(category.to_dict())
+
+
+@app.route('/categories/<id>/products/', methods=['GET'])
+def get_category_products(id):
+    category = models.Category.query.get_or_404(id)
+    list = [p.to_dict() for p in category.products]
+    return jsonify(list)
+
+
+@app.route('/categories/add/', methods=['POST'])
+def add_category():
+    data = request.get_json() or {}
+    if "name" not in data or "description" not in data:
+        return bad_request("missing field")
+    c = models.Category()
+    c.from_dict(data)
+    db.session.add(c)
+    db.session.commit()
+    response = jsonify(c.to_dict())
+    response.status_code = 201
+    response.headers['Location'] = url_for('get_categories', id=c.id)
+    return response
