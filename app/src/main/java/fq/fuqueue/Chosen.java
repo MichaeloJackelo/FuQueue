@@ -21,7 +21,7 @@ public class Chosen extends AppCompatActivity {
 
     public void ClickStartPayment(View v)
     {
-        Intent intent = new Intent(this, PaymentChosen.class);
+        Intent intent = new Intent(this, PaypalPayment.class);
         startActivity(intent);
     }
 

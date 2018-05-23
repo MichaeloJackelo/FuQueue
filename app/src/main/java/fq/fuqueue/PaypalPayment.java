@@ -24,7 +24,6 @@ import java.math.BigDecimal;
 import fq.fuqueue.Config.Config;
 
 public class PaypalPayment extends AppCompatActivity {
-    String summary_price;
     private static final int PAYPAL_REQUEST_CODE = 7171;
 
     private static PayPalConfiguration config = new PayPalConfiguration()
@@ -64,7 +63,7 @@ public class PaypalPayment extends AppCompatActivity {
                 processPaypalPayments();
             }
         });
-        summary_price = (String) getIntent().getStringExtra("SUMMARY_PRICE");
+        String summary_price = (String) getIntent().getStringExtra("SUM_PRICE");
         editText_Amount.setText(summary_price);
     }
 

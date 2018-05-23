@@ -5,24 +5,23 @@
     build-mode="FULL"
     density="mdpi"
     format="10"
-    ir-eligibility="COMPATIBLE"
     plugin-version="3.0.1"
-    timestamp="1527095293968"
+    timestamp="1527097362667"
     token="-5056811159560743077"
-    verifier="COLD_SWAP_REQUESTED" >
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="3507" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="21" />
+        duration="3557" />
     <task
         name="verifier"
-        duration="2" />
+        duration="1723" />
 
     <artifact
         location="E:\ITapp\FuQueue\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
@@ -40,15 +39,6 @@
         location="E:\ITapp\FuQueue\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
         type="SPLIT" />
     <artifact
-        location="E:\ITapp\FuQueue\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
-        type="SPLIT" />
-    <artifact
-        location="E:\ITapp\FuQueue\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
-        type="SPLIT" />
-    <artifact
-        location="E:\ITapp\FuQueue\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
-        type="SPLIT" />
-    <artifact
         location="E:\ITapp\FuQueue\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
         type="SPLIT" />
     <artifact
@@ -60,12 +50,20 @@
     <artifact
         location="E:\ITapp\FuQueue\app\build\outputs\apk\debug\app-debug.apk"
         type="SPLIT_MAIN" />
+    <artifact
+        location="E:\ITapp\FuQueue\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+        type="SPLIT" />
+    <artifact
+        location="E:\ITapp\FuQueue\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+        type="SPLIT" />
+    <artifact
+        location="E:\ITapp\FuQueue\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+        type="SPLIT" />
 
     <build
         build-mode="FULL"
-        ir-eligibility="COMPATIBLE"
-        timestamp="1527095293968"
-        verifier="COLD_SWAP_REQUESTED" >
+        timestamp="1527097362667"
+        verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="E:\ITapp\FuQueue\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
             type="SPLIT" />
@@ -82,15 +80,6 @@
             location="E:\ITapp\FuQueue\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
             type="SPLIT" />
         <artifact
-            location="E:\ITapp\FuQueue\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
-            type="SPLIT" />
-        <artifact
-            location="E:\ITapp\FuQueue\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
-            type="SPLIT" />
-        <artifact
-            location="E:\ITapp\FuQueue\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
-            type="SPLIT" />
-        <artifact
             location="E:\ITapp\FuQueue\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
             type="SPLIT" />
         <artifact
@@ -102,6 +91,15 @@
         <artifact
             location="E:\ITapp\FuQueue\app\build\outputs\apk\debug\app-debug.apk"
             type="SPLIT_MAIN" />
+        <artifact
+            location="E:\ITapp\FuQueue\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\ITapp\FuQueue\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="E:\ITapp\FuQueue\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            type="SPLIT" />
     </build>
 
 </instant-run>

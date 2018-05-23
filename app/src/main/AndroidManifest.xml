@@ -19,7 +19,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActiveShoppingList" />
-        <activity android:name=".PaymentChosen" />
         <activity android:name=".PaypalPayment" />
         <activity android:name=".PaymentPaypalDetails" />
         <activity android:name=".Chosen"/>
