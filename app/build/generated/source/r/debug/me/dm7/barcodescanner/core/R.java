@@ -8,19 +8,19 @@ package me.dm7.barcodescanner.core;
 
 public final class R {
     public static final class attr {
-        public static final int shouldScaleToFill = 0x7f0300ea;
+        public static final int shouldScaleToFill = 0x7f0300d6;
     }
     public static final class color {
-        public static final int viewfinder_border = 0x7f050057;
-        public static final int viewfinder_laser = 0x7f050058;
-        public static final int viewfinder_mask = 0x7f050059;
+        public static final int viewfinder_border = 0x7f050055;
+        public static final int viewfinder_laser = 0x7f050056;
+        public static final int viewfinder_mask = 0x7f050057;
     }
     public static final class integer {
-        public static final int viewfinder_border_length = 0x7f090005;
-        public static final int viewfinder_border_width = 0x7f090006;
+        public static final int viewfinder_border_length = 0x7f090004;
+        public static final int viewfinder_border_width = 0x7f090005;
     }
     public static final class styleable {
-        public static final int[] BarcodeScannerView = { 0x7f0300ea };
+        public static final int[] BarcodeScannerView = { 0x7f0300d6 };
         public static final int BarcodeScannerView_shouldScaleToFill = 0;
     }
 }

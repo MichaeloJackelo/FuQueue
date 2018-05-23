@@ -38,7 +38,7 @@ public class ActiveShoppingList extends AppCompatActivity{
         //textview summary price
         summary_price = (TextView) findViewById(R.id.result_price);
         //Recycleview
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
         activeProductAdapter = new ActiveProductAdapter(shoppingList,summary_price,this);
         recyclerView.setAdapter(activeProductAdapter);
@@ -58,6 +58,13 @@ public class ActiveShoppingList extends AppCompatActivity{
     public void scanner_page(View v)
     {
         Intent intent = new Intent(this, BarcodeScanner.class);
+        startActivity(intent);
+    }
+    public void go_payments_page(View v)
+    {
+        Intent intent = new Intent(this, PaymentChosen.class);
+        String[] summary_label = ((String) summary_price.getText()).split(" ");
+        intent.putExtra("SUM_PRICE",summary_label[2]);
         startActivity(intent);
     }
 }

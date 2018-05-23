@@ -4,7 +4,7 @@
             "outputFile": "E:\\ITapp\\FuQueue\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\micha\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\a2d5eeb9969fdf695a175c0b1eef905d\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\micha\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0-alpha1.aar\\d334a89955db97aa3eab0d42bf1738d4\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

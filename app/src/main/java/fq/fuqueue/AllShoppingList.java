@@ -33,13 +33,13 @@ public class AllShoppingList extends AppCompatActivity {
         setContentView(R.layout.activity_all_shopping_list);
 
         addedProductsList = ProductListManager.getOfflineListProducts(this);
-        addedProducts_recyclerView = findViewById(R.id.offline_list_recyclerView);
+        addedProducts_recyclerView = (RecyclerView) findViewById(R.id.offline_list_recyclerView);
         addedProducts_recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
         OfflineProductAdapter offlineadapter = new OfflineProductAdapter(addedProductsList,this);
         addedProducts_recyclerView.setAdapter(offlineadapter);
 
         downloadProductList();
-        allProducts_recyclerView = findViewById(R.id.all_products_recyclerView);
+        allProducts_recyclerView = (RecyclerView) findViewById(R.id.all_products_recyclerView);
         allProducts_recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
         allProducts_recyclerView.setAdapter(new AllProductListAdapter(offlineProductList,offlineadapter,this));
         Spinner spinner_category = (Spinner) findViewById(R.id.spinner_category);
