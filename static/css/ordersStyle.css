@@ -1,0 +1,19 @@
+/* RESULTS */
+
+.result-container img{
+  width:30px;
+}
+.result-container img:hover{
+  transform: scale(1.2);
+  cursor: pointer;
+}
+#content {
+	display: none;
+}
+.products-table{
+  display: none;
+}
+.mainColumn:hover{
+  cursor: pointer;
+}
+/* RESULTS pd*/

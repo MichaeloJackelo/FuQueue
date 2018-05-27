@@ -1,0 +1,262 @@
+<!Doctype html>
+<html lang="en" id="home" ng-app="orderApp" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+    <link rel="stylesheet"  th:href="@{/css/menuStyle.css}"/>
+    <link rel="stylesheet"  th:href="@{/css/ordersStyle.css}"/>
+    <title>Store Orders</title>
+</head>
+<body class="w3-light-grey" onload="getAllOrders()">
+
+<!-- Left sidebar-->
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-card" style="z-index:3;width:200px;" id="mySidebar"><br/>
+    <button class="w3-bar-item w3-button w3-padding w3-hide-large" id="closeButton" onclick="w3_close()">Close</button>
+    <div class="w3-container w3-row">
+        <div class="w3-col s8 w3-bar">
+            <div class="w3-col s8 w3-bar">
+                <span>Welcome, <strong><span th:text="${session.username}" th:unless="${session == null}">[...]</span></strong></span>
+                <a href="../logout"><button type="button" class="btn btn-dark">Logout</button></a>
+            </div>
+        </div>
+        <div class="w3-container">
+            <h5>Dashboard</h5>
+        </div>
+        <div class="w3-bar-block">
+            <a href="www.wp.pl" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>&nbsp; Overview</a>
+            <a href="products" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>&nbsp; Products</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>&nbsp; Clients</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>&nbsp; Companies</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding  w3-grey"><i class="fa fa-diamond fa-fw"></i>&nbsp; Orders</a>
+            <hr/>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>&nbsp; Employees</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>&nbsp; Statistics</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Left sidebar pd -->
+
+
+
+<div class="w3-main" style="margin-left:205px">
+    <!-- Header -->
+
+    <nav class="navbar navbar-light bg-light" id="headerController">
+        <button class="w3-button w3-teal w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
+        <div class="row form-inline col-lg-12 text-center ">
+            <div style=" width:5%; visibility:hidden;">
+            </div>
+            <input class="form-control mr-sm-2" type="search" id="searchInput" placeholder="Search for order" aria-label="Search"/>
+            <button class="btn my-2 my-sm-0" type="submit" onclick="getOrderByName()">Search</button>
+            <div class="dropdown smallgap">
+                <select class="custom-select" id="ordersFilter" onchange="javascript:getOrderByStatus(this)">
+                    <option value="1">Orders to confirm</option>
+                    <option value="2">Orders during</option>
+                    <option value="4">Orders not received</option>
+                    <option value="3">Orders received</option>
+                </select>
+            </div>
+            <div class="dropdown">
+                <button class="btn my-2 my-sm-0" data-toggle="modal" data-target="#createOrderModel">Add new order</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header pd -->
+
+    <!-- Results -->
+
+    <div class="result-container" id="resultController" data-ng-controller="resultController">
+        <table class="table table-hover table-dark">
+            <thead>
+            <tr>
+                <th scope="col">RollNo</th>
+                <th scope="col">Name</th>
+                <th scope="col">Created by</th>
+                <th scope="col">Created date</th>
+                <th scope="col">Predicted date</th>
+                <th scope="col">Received date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Confirm</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="orderToConfirm"  ng-repeat="order in orders"  data-href="content" ng-click="setCurrentOrder(order.rollNo)">
+                <td class="mainColumn">{{order.rollNo}}</td>
+                <td class="mainColumn">{{order.name}}</td>
+                <td class="mainColumn">{{order.author}}</td>
+                <td class="mainColumn">{{order.sendDate}}</td>
+                <td class="mainColumn">{{order.predictedDate}}</td>
+                <td class="mainColumn">{{order.receiveDate}}</td>
+                <td class="mainColumn">{{order.status}}</td>
+                <td>
+                    <img class="" th:src="@{/img/card/add.png}"
+                         data-toggle="modal" data-target="#confirmOrder"/>
+                    <img class="removeImg" th:src="@{/img/card/remove.png}"
+                         data-toggle="modal" data-target="#removeOrder" />
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div id="content" class="importantContent">
+            <table class="col-lg-12 products-table">
+                <thead>
+                <tr>
+                    <th scope="col">RollNo</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Provider</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Price per 1</th>
+                    <th scope="col">Summary</th>
+                    <th scope="col">Remove</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class=""  ng-repeat="product in orders[currentOrder].products">
+                    <td>{{product.rollNo }}</td>
+                    <td>{{product.name }}</td>
+                    <td>{{product.provider}}</td>
+                    <td>{{product.orderAmount}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.orderAmount*product.price | number : 2}}</td>
+                    <td >
+                        <img data-productRollNo="{{product.rollNo}}" class="removeImg" th:src="@{/img/card/remove.png}"
+                             onclick="setCurrentProduct(this)" data-toggle="modal" data-target="#removeProduct"/>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Summary: </td>
+                <td>{{orderSummary | number : 2}}</td>
+                </tfoot>
+            </table>
+        </div>
+
+
+        <!-- Modals-->
+
+        <div class="modal fade" id="confirmOrder" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Change order status</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                  <span>Are you sure you want to confirm order:  {{orders[currentOrder].name}}
+                        ({{orders[currentOrder].id}})?</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" ng-click="changeStatusAjax()">Yes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="modal fade" id="removeOrder" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Remove order</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                  <span>Are you sure you want to remove: {{orders[currentOrder].name}}
+                        ({{orders[currentOrder].id}}) from database?</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" ng-click="removeOrder()">Yes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="removeProduct" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Remove product</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                  <span>Are you sure you want to remove:  {{orders[currentOrder].products[currentProduct].name}}
+                        ({{orders[currentOrder].products[currentProduct].id}}) from database?</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" ng-click="removeProduct()">Yes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Create new order -->
+        <div class="modal fade" id="createOrderModel" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" >Create an order</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="name" placeholder="Order name"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="date" class="form-control" id="predictedDate" placeholder="Predicted date"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" onclick="createOrderAjax()" class="btn btn-primary">Create</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Create new order pd-->
+        <!-- Modals pd-->
+        <!-- Results pd-->
+
+    </div>
+
+</div>
+
+
+
+
+    <script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/menuScript.js}"></script>
+    <script type="text/javascript" th:src="@{/js/ordersScript.js}"></script>
+    <script type="text/javascript" th:src="@{/js/jquery.easing.1.3.js}"></script>
+</body>
+</html>

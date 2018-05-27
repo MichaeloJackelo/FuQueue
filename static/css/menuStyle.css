@@ -1,0 +1,84 @@
+html{
+
+}
+/*Left sidebar, responsive buttons*/
+.w3-button.w3-teal{
+  background-color: #343a40!important;
+  color: blue;
+}
+.form-inline button{
+  background-color: white;
+  color:#343a40;
+}
+.form-inline{
+  margin-top:5px;
+}
+.form-inline input, .form-inline button{
+  border-color: #343a40;
+}
+.form-inline button:hover{
+  color:white;
+  background-color:#343a40;
+  border-color: #343a40;
+}
+#closeButton:hover{
+  text-decoration: underline;
+}
+/*Left sidebar, responsive buttons pd*/
+/*Header*/
+
+.dropdown{
+  float: left;
+  padding-left: 20px;
+}
+.dropdown-item:hover{
+  background-color: #343a40;
+  color:white;
+}
+/*Header pd*/
+.smallgap{
+  padding-left: 5px;
+}
+.smallgap select{
+  border-width: 1px;
+  border-color: black;
+}
+#sortArray:hover{
+  cursor:pointer;
+  /*-webkit-transform: rotate(180deg);*/
+}
+
+/*Header pd*/
+
+/*Result container*/
+.result-container{
+  margin-top: 15px;
+}
+/*Cards*/
+
+.card:hover{
+  cursor:pointer;
+  transform: scale(1.02);
+}
+.card img{
+  width:50%;
+  margin-left: 25%;
+  margin-top: 5px;
+}
+.card{
+  min-width: 250px;
+  max-width: 250px;
+  margin-top: 20px;
+}
+.card-footer img{
+  margin-left: 10%;
+  width:32px;
+  height: 32px;
+}
+.card-footer img:hover{
+  transform: scale(1.2);
+}
+/*Cards pd*/
+
+
+/*Result container pd*/
