@@ -35,9 +35,21 @@ def products():
 
 
 @app.route('/products/<barcode>/', methods=['GET'])
-def product(barcode):
+def get_product(barcode):
     product = models.Product.query.filter_by(barcode=barcode).first_or_404()
     return jsonify(product.to_dict())
+
+
+@app.route('/products/delete/<barcode>/', methods=['DELETE'])
+def delete_product(barcode):
+    product = models.Product.query.filter_by(barcode=barcode).first_or_404()
+    db.session.delete(product)
+    db.session.commit()
+
+    response = jsonify()
+    response.status_code = 200
+    response.headers['Location'] = url_for('products')
+    return response
 
 
 @app.route('/products/add/', methods=['POST'])
@@ -78,7 +90,7 @@ def render_add_product():
     return bad_request("bad request")
 
 
-@app.route('/products/<barcode>/add/category/<id>', methods=['POST'])
+@app.route('/products/<barcode>/add/category/<id>', methods=['PUT'])
 def add_product_category(barcode, id):
     p = models.Product.query.filter_by(barcode=barcode).first_or_404()
     c = models.Category.query.get_or_404(id)
@@ -87,7 +99,7 @@ def add_product_category(barcode, id):
     return jsonify(p.to_dict())
 
 
-@app.route('/products/<barcode>/add/country/<id>', methods=['POST'])
+@app.route('/products/<barcode>/add/country/<id>', methods=['PUT'])
 def add_product_country(barcode, id):
     p = models.Product.query.filter_by(barcode=barcode).first_or_404()
     c = models.Country_Of_Origin.query.get_or_404(id)
@@ -131,6 +143,18 @@ def add_category():
     return response
 
 
+@app.route('/categories/delete/<id>/', methods=['DELETE'])
+def delete_category(id):
+    c = models.Category.query.filter_by(id=id).first_or_404()
+    db.session.delete(c)
+    db.session.commit()
+
+    response = jsonify()
+    response.status_code = 200
+    response.headers['Location'] = url_for('get_categories')
+    return response
+
+
 @app.route('/countries_of_origin/', methods=['GET'])
 def get_countries_of_origin():
     country_of_origin = models.Country_Of_Origin.query.all()
@@ -162,5 +186,17 @@ def add_country_of_origin():
     db.session.commit()
     response = jsonify(c.to_dict())
     response.status_code = 201
-    response.headers['Location'] = url_for('get_countries_of_origin', id=c.id)
+    response.headers['Location'] = url_for('get_country_of_origin', id=c.id)
+    return response
+
+
+@app.route('/countries_of_origin/delete/<id>/', methods=['DELETE'])
+def delete_country(id):
+    c = models.Country_Of_Origin.query.filter_by(id=id).first_or_404()
+    db.session.delete(c)
+    db.session.commit()
+
+    response = jsonify()
+    response.status_code = 200
+    response.headers['Location'] = url_for('get_countries_of_origin')
     return response
