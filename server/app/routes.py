@@ -24,7 +24,7 @@ def bad_request(message):
 @app.route('/')
 @app.route('/index')
 def index():
-    return redirect(url_for('products'))
+    return {}
 
 
 @app.route('/products/', methods=['GET'])
@@ -61,6 +61,7 @@ def add_product():
         return bad_request("missing field")
     p = models.Product()
     p.from_dict(data)
+    p.country_id = 0
     db.session.add(p)
     db.session.commit()
     response = jsonify(p.to_dict())
@@ -82,6 +83,15 @@ def add_product_category(barcode, id):
     p = models.Product.query.filter_by(barcode=barcode).first_or_404()
     c = models.Category.query.get_or_404(id)
     p.add_category(c)
+    db.session.commit()
+    return jsonify(p.to_dict())
+
+
+@app.route('/products/<barcode>/add/country/<id>', methods=['POST'])
+def add_product_country(barcode, id):
+    p = models.Product.query.filter_by(barcode=barcode).first_or_404()
+    c = models.Country_Of_Origin.query.get_or_404(id)
+    c.products.append(p)
     db.session.commit()
     return jsonify(p.to_dict())
 
@@ -118,4 +128,39 @@ def add_category():
     response = jsonify(c.to_dict())
     response.status_code = 201
     response.headers['Location'] = url_for('get_categories', id=c.id)
+    return response
+
+
+@app.route('/countries_of_origin/', methods=['GET'])
+def get_countries_of_origin():
+    country_of_origin = models.Country_Of_Origin.query.all()
+    list = [coo.to_dict() for coo in country_of_origin]
+    return jsonify(list)
+
+
+@app.route('/countries_of_origin/<id>', methods=['GET'])
+def get_country_of_origin(id):
+    country_of_origin = models.Country_Of_Origin.query.filter_by(id=id).first_or_404()
+    return jsonify(country_of_origin.to_dict())
+
+
+@app.route('/countries_of_origin/<id>/products/', methods=['GET'])
+def get_country_of_origin_products(id):
+    country_of_origin = models.Country_Of_Origin.query.get_or_404(id)
+    list = [p.to_dict() for p in country_of_origin.products]
+    return jsonify(list)
+
+
+@app.route('/countries_of_origin/add/', methods=['POST'])
+def add_country_of_origin():
+    data = request.get_json() or {}
+    if "country_name" not in data:
+        return bad_request("missing field")
+    c = models.Country_Of_Origin()
+    c.from_dict(data)
+    db.session.add(c)
+    db.session.commit()
+    response = jsonify(c.to_dict())
+    response.status_code = 201
+    response.headers['Location'] = url_for('get_countries_of_origin', id=c.id)
     return response
