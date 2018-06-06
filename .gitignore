@@ -8,3 +8,7 @@
 /captures
 .externalNativeBuild
 app/build
+
+build
+api/build/
+build/
