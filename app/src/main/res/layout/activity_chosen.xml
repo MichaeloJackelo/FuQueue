@@ -4,14 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fq.fuqueue.chosen">
+    tools:context="fq.fuqueue.Chosen">
 
-    <Button
-        android:id="@+id/button_change"
-        android:layout_width="126dp"
-        android:layout_height="92dp"
-        android:clickable="true"
-        android:text="@string/button_ActiveShoppingList"
-        tools:layout_editor_absoluteX="66dp"
-        tools:layout_editor_absoluteY="107dp" />
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/button_ActiveShoppingList"
+            android:onClick="ClickActivShoppingList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_ActiveShoppingList" />
+        <Button
+            android:id="@+id/button_StartPayment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="ClickPaypalChosen"
+            android:text="Start Payment" />
+        <Button
+            android:id="@+id/button_change_scanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="scanner_page"
+            android:text="@string/button_scanner_text" />
+        <Button
+            android:id="@+id/button_list_offline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="offline_shopping_list_page"
+            android:text="@string/button_list_offline" />
+        <Button
+            android:id="@+id/button_store_map"
+            android:onClick="ClickStoreMap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Store Map" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

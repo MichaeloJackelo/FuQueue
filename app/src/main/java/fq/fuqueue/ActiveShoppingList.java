@@ -1,140 +1,70 @@
 package fq.fuqueue;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 //import android.support.v7.widget.Toolbar;
 
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.Button;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
-import java.util.HashSet;
-import java.util.Set;
-import android.app.AlertDialog;
-import android.widget.EditText;
-import android.content.DialogInterface;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.app.Activity;
-
-import android.widget.Toast;
-import android.widget.AdapterView;
-import android.widget.TextView;
 import android.view.View;
+import android.widget.TextView;
 
 
-public class ActiveShoppingList extends AppCompatActivity {
-    ArrayList<String> shoppingList = null;
-    ArrayAdapter<String> adapter = null;
-    ListView iv = null;
+public class ActiveShoppingList extends AppCompatActivity{
+    ArrayList<Product> shoppingList = new ArrayList<Product>();
+    RecyclerView recyclerView;
+    TextView summary_price;
+    ActiveProductAdapter activeProductAdapter;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_active_shopping_list);
+        shoppingList = ProductListManager.getActiveListProducts(this);
+        Button change_scanner_Button = (Button) findViewById(R.id.button_change_scanner);
+        change_scanner_Button.setOnClickListener( new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                scanner_page(v);
+            }
+        });
+        //textview summary price
+        summary_price = (TextView) findViewById(R.id.result_price);
+        //Recycleview
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+        activeProductAdapter = new ActiveProductAdapter(shoppingList,summary_price,this);
+        recyclerView.setAdapter(activeProductAdapter);
+        //summary_price.setText(new Double(new ActiveProductAdapter(shoppingList, this).summaryPrice()).toString());
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+        activeProductAdapter.refresh_text_view_summary_price();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
         getMenuInflater().inflate(R.menu.menu,menu);
         return true;
     }
-    /*
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        int id = item.getItemId();
-        if(id ==R.id.action_add)
-        {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Add Item");
-            final EditText input = new EditText(this);
-            builder.setView(input);
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    shoppingList.add(preferredCase(input.getText().toString()));
-                    Collections.sort(shoppingList);
-                    storeArrayVal(shoppingList,getApplicationContext());
-                    iv.setAdapter(adapter);
-                }
-            });
-            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
-            builder.show();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    */
-    public static String preferredCase(String original)
+    public void scanner_page(View v)
     {
-        if (original.isEmpty())
-            return original;
-
-        return original.substring(0, 1).toUpperCase() + original.substring(1).toLowerCase();
+        Intent intent = new Intent(this, BarcodeScanner.class);
+        startActivity(intent);
     }
-
-    public static void storeArrayVal( ArrayList<String> inArrayList, Context context)
+    public void go_payments_page(View v)
     {
-        Set<String> WhatToWrite = new HashSet<String>(inArrayList);
-        SharedPreferences WordSearchPutPrefs = context.getSharedPreferences("dbArrayValues", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor prefEditor = WordSearchPutPrefs.edit();
-        prefEditor.putStringSet("myArray", WhatToWrite);
-        prefEditor.commit();
-    }
-
-    public static ArrayList getArrayVal( Context dan)
-    {
-        SharedPreferences WordSearchGetPrefs = dan.getSharedPreferences("dbArrayValues",Activity.MODE_PRIVATE);
-        Set<String> tempSet = new HashSet<String>();
-        tempSet = WordSearchGetPrefs.getStringSet("myArray", tempSet);
-        return new ArrayList<String>(tempSet);
-    }
-    public void removeElement(String selectedItem, final int position){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Remove " + selectedItem + "?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                shoppingList.remove(position);
-                Collections.sort(shoppingList);
-                storeArrayVal(shoppingList, getApplicationContext());
-                iv.setAdapter(adapter);
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        builder.show();
-    }
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_active_shopping_list);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-
-
-        shoppingList = getArrayVal(getApplicationContext());
-        Collections.sort(shoppingList);
-        adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,shoppingList);
-        iv = (ListView) findViewById(R.id.listView);
-        iv.setAdapter(adapter);
-
-        iv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView parent, View view, final int position, long id) {
-                String selectedItem = ((TextView) view).getText().toString();
-                if (selectedItem.trim().equals(shoppingList.get(position).trim())) {
-                    removeElement(selectedItem, position);
-                } else {
-                    Toast.makeText(getApplicationContext(),"Error Removing Element", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+        Intent intent = new Intent(this, PaypalPayment.class);
+        String[] summary_label = ((String) summary_price.getText()).split(" "); //descriptive string (Summary price xx zł)- we must extract price - xx!
+        intent.putExtra("SUM_PRICE",summary_label[2]);
+        startActivity(intent);
     }
 }

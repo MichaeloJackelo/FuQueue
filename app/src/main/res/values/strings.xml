@@ -4,9 +4,19 @@
     <string name="user_surname">Surname</string>
     <string name="user_email">Email</string>
     <string name="user_password">Password</string>
-    <string name="button_ActiveShoppingList">ActiveShoppingList</string>
+    <string name="button_ActiveShoppingList">Active Shopping List</string>
     <string name="action_settings">Settings</string>
     <string name="action_sort">Sort_List</string>
-    <string name="action_add">add_item</string>
-    <string name="action_clear">clear shopping list!!!</string>
+    <string name="action_add">Add_item</string>
+    <string name="action_clear">Clear shopping list!</string>
+    <string name="button_scanner_text">Scan products!</string>
+    <string name="scanner_page">Scanner page</string>
+    <string name="button_list_offline">Make Shopping List offline</string>
+    <string name="button_go_payment">Go to payment</string>
+    <string-array name="search_categories">
+        <item>all</item>
+        <item>vegetables</item>
+        <item>fruits</item>
+        <item>baking</item>
+    </string-array>
 </resources>
