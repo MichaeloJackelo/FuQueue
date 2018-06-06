@@ -7,3 +7,7 @@
 /build
 /captures
 .externalNativeBuild
+/build
+api/build
+api/build/
+build/
