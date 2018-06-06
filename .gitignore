@@ -7,7 +7,10 @@
 /build
 /captures
 .externalNativeBuild
-/build
-api/build
+app/build
+
+build
 api/build/
 build/
+FuQueue.iml
+app/app.iml

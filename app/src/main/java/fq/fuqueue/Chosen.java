@@ -18,7 +18,6 @@ public class Chosen extends AppCompatActivity {
         Intent intent = new Intent(this, ActiveShoppingList.class);
         startActivity(intent);
     }
-
     public void ClickStartPayment(View v)
     {
         Intent intent = new Intent(this, PaypalPayment.class);
@@ -35,5 +34,9 @@ public class Chosen extends AppCompatActivity {
         Intent intent = new Intent(this, AllShoppingList.class);
         startActivity(intent);
     }
+    public void ClickStoreMap(View v)
+    {
+        Intent intent = new Intent(this, StoreMap.class);
+        startActivity(intent);
+    }
 }
-

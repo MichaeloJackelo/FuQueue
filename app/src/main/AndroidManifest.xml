@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fq.fuqueue">
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-feature android:name="android.hardware.camera"/>
-    <uses-feature android:name="android.hardware.camera.autofocus"/>
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,10 +24,10 @@
         <activity android:name=".ActiveShoppingList" />
         <activity android:name=".PaypalPayment" />
         <activity android:name=".PaymentPaypalDetails" />
-        <activity android:name=".Chosen"/>
-        <activity android:name=".AllShoppingList">
-        </activity>
-        <activity android:name=".BarcodeScanner"></activity>
+        <activity android:name=".Chosen" />
+        <activity android:name=".AllShoppingList"></activity>
+        <activity android:name=".BarcodeScanner" />
+        <activity android:name=".StoreMap"></activity>
     </application>
 
 </manifest>
