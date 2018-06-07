@@ -40,6 +40,7 @@ def get_product(barcode):
     product = models.Product.query.filter_by(barcode=barcode).first_or_404()
     return jsonify(product.to_dict())
 
+
 @app.route('/categories/', methods=['GET'])
 def get_categories():
     categories = models.Category.query.all()
@@ -309,7 +310,15 @@ def index():
 @app.route('/explore')
 @login_required
 def explore():
-    return render_template('index.html', title='Explore')
+    links = []
+    links.append(url_for('products'))
+    links.append(url_for('get_product', barcode=1))
+    links.append(url_for('get_categories'))
+    links.append(url_for('get_category', id=1))
+    links.append(url_for('get_category_products', id=1))
+    links.append(url_for('get_countries_of_origin'))
+    links.append(url_for('get_country_of_origin_products', id=1))
+    return jsonify(links)
 
 
 @app.route('/login', methods=['GET', 'POST'])
