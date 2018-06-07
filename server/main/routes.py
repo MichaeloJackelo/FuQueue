@@ -351,6 +351,11 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
+@app.route('/admin', methods=['GET'])
+def show_admin_endpoints():
+    return render_template('admin_urls.html')
+
+
 @app.route('/admin/register', methods=['GET', 'POST'])
 def register_admin():
     if current_user.is_authenticated:

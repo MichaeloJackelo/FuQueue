@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <h1>Not sure why you are here </h1>
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+    </div>
+    <br>
+    <p> New User? <a href="{{ url_for('register_admin') }}">Click to Register!</a></p>
+    <p> Add product <a href="{{ url_for('add_product') }}">Click add it</a></p>
+    <p> Add category <a href="{{ url_for('add_category') }}">Click add it</a></p>
+    <p> Add country <a href="{{ url_for('add_country_of_origin') }}">Click add it</a></p>
+    <p> Map product with country of origin <a href="{{ url_for('map_product_country') }}">Click to map It</a></p>
+    <p> Map product with category <a href="{{ url_for('map_product_category') }}">Click to map It</a></p>
+    <p> Delete product <a href="{{ url_for('delete_product_form') }}">Click to delete It</a></p>
+    <p> Delete country <a href="{{ url_for('delete_countries_of_origin_form') }}">Click to delete It</a></p>
+    <p> Delete category <a href="{{ url_for('delete_category_form') }}">Click to delete It</a></p>
+    <p>Forgot Your Password? <a href="{{ url_for('reset_password_request') }}">Click to Reset It</a></p>
+
+
+
+{% endblock %}
