@@ -17,6 +17,8 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+//this class make view
+
 public class ActiveProductAdapter extends RecyclerView.Adapter{
     ArrayList<Product> items;
     Context context;
@@ -30,7 +32,7 @@ public class ActiveProductAdapter extends RecyclerView.Adapter{
         double summary = 0;
         for (Product p : this.items)
         {
-            summary=summary+(p.price*p.quantity);
+            summary+=(p.price*p.quantity);
         }
 
         return summary;
@@ -91,25 +93,7 @@ public class ActiveProductAdapter extends RecyclerView.Adapter{
         Picasso.with(context).load(R.drawable.a).resize(88,88).into(((ItemHolder) holder).imageViewThumbnail);
 
     }
-    public void removeElement(String selectedItem, final int position, final Context context){ //there is some problem with context
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Remove " + selectedItem + "?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                items.remove(position);
-                ProductListManager.storeActiveListProducts(items,context);
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        builder.show();
-        refresh_text_view_summary_price();
-    }
+
     @Override
     public int getItemCount() {
         return items.size();
@@ -118,6 +102,9 @@ public class ActiveProductAdapter extends RecyclerView.Adapter{
         this.notifyDataSetChanged();
         refresh_text_view_summary_price();
     }
+
+
+
     private class ItemHolder extends RecyclerView.ViewHolder{
         TextView product_name, product_price, product_description,product_quantity;
         android.widget.Button button_plus, button_minus, button_delete;

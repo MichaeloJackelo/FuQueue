@@ -67,8 +67,8 @@ public class AllShoppingList extends AppCompatActivity {
         Thread thread = new Thread() {
             public void run() {
                 try {
-                    String ii = "http://flask-fuque-for-demo.herokuapp.com/products/";
-                    json[0] = readJsonFromUrl(ii);
+                    String url = "http://flask-fuque-for-demo.herokuapp.com/products/";
+                    json[0] = readJsonFromUrl(url);
                     for(int i=0;i<json[0].length();i++)
                     {
                         String productName = null;
