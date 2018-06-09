@@ -22,15 +22,16 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
-public class AllShoppingList extends AppCompatActivity {
+public class ExploreShoppingList extends AppCompatActivity {
     ArrayList<Product> offlineProductList = new ArrayList<Product>();
     ArrayList<Product> addedProductsList = new ArrayList<Product>();
+    ArrayList<String> categories_array = new ArrayList<String>();
     RecyclerView allProducts_recyclerView;
     RecyclerView addedProducts_recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_shopping_list);
+        setContentView(R.layout.activity_explore_shopping_list);
 
         addedProductsList = ProductListManager.getOfflineListProducts(this);
         addedProducts_recyclerView = (RecyclerView) findViewById(R.id.offline_list_recyclerView);
@@ -43,7 +44,8 @@ public class AllShoppingList extends AppCompatActivity {
         allProducts_recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
         allProducts_recyclerView.setAdapter(new AllProductListAdapter(offlineProductList,offlineadapter,this));
         Spinner spinner_category = (Spinner) findViewById(R.id.spinner_category);
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.search_categories));
+        categories_array = downloadCategoriesArrayList();
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, categories_array);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_category.setAdapter(spinnerAdapter);
         final Context context = this;
@@ -94,6 +96,35 @@ public class AllShoppingList extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+    public ArrayList<String> downloadCategoriesArrayList() //function for handling result of scanning barcode
+    {
+        final JSONArray[] json = new JSONArray[1];
+        final Context context = this;
+        final ArrayList<String> categories = new ArrayList<String>();
+        Thread thread = new Thread() {
+            public void run() {
+                try {
+                    String url = "http://flask-fuque-for-demo.herokuapp.com/categories/";
+                    json[0] = readJsonFromUrl(url);
+                    for(int i=0;i<json[0].length();i++)
+                    {
+                        try {
+                            categories.add(json[0].getJSONObject(i).getString("name") );
+                            } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }catch (IOException | JSONException e2){}
+            }
+        };
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return categories;
     }
     private static String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();

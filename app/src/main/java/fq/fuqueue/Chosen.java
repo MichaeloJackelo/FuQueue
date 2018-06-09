@@ -31,7 +31,7 @@ public class Chosen extends AppCompatActivity {
     }
     public void offline_shopping_list_page(View v)
     {
-        Intent intent = new Intent(this, AllShoppingList.class);
+        Intent intent = new Intent(this, ExploreShoppingList.class);
         startActivity(intent);
     }
     public void ClickStoreMap(View v)
