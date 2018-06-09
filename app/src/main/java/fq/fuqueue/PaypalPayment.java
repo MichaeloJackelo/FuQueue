@@ -65,6 +65,7 @@ public class PaypalPayment extends AppCompatActivity {
         });
         String summary_price = (String) getIntent().getStringExtra("SUM_PRICE");
         editText_Amount.setText(summary_price);
+        processPaypalPayments();
     }
 
     public void processPaypalPayments(){

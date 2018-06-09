@@ -3,6 +3,8 @@ package fq.fuqueue;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import com.beardedhen.androidbootstrap.font.MaterialIcons;
+import static com.beardedhen.androidbootstrap.font.Typicon.TY_CODE;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +27,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void starttt() {
-        Intent intent = new Intent(this, Chosen.class);
+        Intent intent = new Intent(this, LoginUser.class);
         startActivity(intent);
     }
+
+
 }

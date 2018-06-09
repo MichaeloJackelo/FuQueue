@@ -5,24 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="fq.fuqueue.ActiveShoppingList">
-    <LinearLayout
-        android:layout_width="match_parent"
+
+    <!--<RelativeLayout
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_width="match_parent" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:src="@drawable/sonyaw_11" />
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:text="@string/app_name"
-            android:textSize="50dp" />
-    </LinearLayout>
+        android:id="@+id/bcircle_image_change_example"
+        android:layout_width="367dp"
+        android:layout_height="@dimen/default_circle_size"
+        android:src="@drawable/nosacz"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="55dp"
+        tools:ignore="MissingConstraints" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textSize="50dp"
+        tools:layout_editor_absoluteX="92dp"
+        tools:layout_editor_absoluteY="349dp"
+
+        />
+
+
+    </RelativeLayout>-->
 
 </android.support.constraint.ConstraintLayout>

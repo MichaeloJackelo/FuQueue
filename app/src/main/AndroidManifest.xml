@@ -25,9 +25,10 @@
         <activity android:name=".PaypalPayment" />
         <activity android:name=".PaymentPaypalDetails" />
         <activity android:name=".Chosen" />
-        <activity android:name=".AllShoppingList"></activity>
+        <activity android:name=".AllShoppingList" />
         <activity android:name=".BarcodeScanner" />
-        <activity android:name=".StoreMap"></activity>
+        <activity android:name=".StoreMap" />
+        <activity android:name=".LoginUser"></activity>
     </application>
 
 </manifest>

@@ -10,6 +10,12 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -28,6 +34,13 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile 'me.dm7.barcodescanner:zxing:1.9'
+    compile 'com.github.Bearded-Hen:Android-Bootstrap:2.3.1'
+
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:support-annotations:25.3.1'
     implementation 'com.android.support:recyclerview-v7:26.+'
     implementation 'com.android.support:appcompat-v7:26.+'
     implementation 'com.squareup.picasso:picasso:2.5.2'
