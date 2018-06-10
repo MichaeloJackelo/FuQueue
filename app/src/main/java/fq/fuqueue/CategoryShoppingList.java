@@ -35,6 +35,7 @@ public class CategoryShoppingList extends AppCompatActivity {
     RecyclerView filtered_products_recyclerView;
     RecyclerView basket_Products_recyclerView;
     Spinner spinner_category;
+    Spinner spinner_country;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,13 +47,15 @@ public class CategoryShoppingList extends AppCompatActivity {
         final OfflineBasketAdapter offline_basket_adapter = new OfflineBasketAdapter(basketProductsList,this);
         basket_Products_recyclerView.setAdapter(offline_basket_adapter);
 
-        downloadProductList("all");
+        downloadProductList("category","all");
         filtered_products_recyclerView = (RecyclerView) findViewById(R.id.all_products_recyclerView);
         filtered_products_recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
         final CategoryShoppingListAdapter filtered_product_adapter = new CategoryShoppingListAdapter(filteredProductList,offline_basket_adapter,this);
         filtered_products_recyclerView.setAdapter(filtered_product_adapter);
         spinner_category = (Spinner) findViewById(R.id.spinner_category);
-        getCategoriesfromurl();
+        spinner_country = (Spinner) findViewById(R.id.spinner_country);
+        get_spinner_elementrs_from_url("category");
+        get_spinner_elementrs_from_url("country");
         final Context context = this;
         spinner_category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -60,16 +63,33 @@ public class CategoryShoppingList extends AppCompatActivity {
                 String sSelected = parent.getItemAtPosition(position).toString();
                 if (sSelected == "all")
                 {
-                    downloadProductList( "all");
+                    downloadProductList( "category","all");
                 }
                 else
                 {
-                    downloadProductList(position + "");
+                    downloadProductList("category",position + "");
                 }
-
-                // filtered_product_adapter.items = filteredProductList;
                 filtered_product_adapter.notify_data_changed();
-                //filtered_product_adapter.offlinelistadapter = offline_basket_adapter;
+                android.widget.Toast.makeText(context, "Click at " + position +  sSelected, android.widget.Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinner_country.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String sSelected = parent.getItemAtPosition(position).toString();
+                if (sSelected == "all")
+                {
+                    downloadProductList( "country","all");
+                }
+                else
+                {
+                    downloadProductList("country",position + "");
+                }
+                filtered_product_adapter.notify_data_changed();
                 android.widget.Toast.makeText(context, "Click at " + position +  sSelected, android.widget.Toast.LENGTH_SHORT).show();
             }
             @Override
@@ -79,7 +99,7 @@ public class CategoryShoppingList extends AppCompatActivity {
         });
     }
 
-    public void downloadProductList(final String category_number)
+    public void downloadProductList(final String download_type, final String category_number)
     {
         final JSONArray[] json = new JSONArray[1];
         final Context context = this;
@@ -94,7 +114,10 @@ public class CategoryShoppingList extends AppCompatActivity {
                     }
                     else
                     {
-                        url = "http://flask-fuque-for-demo.herokuapp.com/categories/" + category_number + "/products/";
+                        if(download_type == "category")
+                            url = "http://flask-fuque-for-demo.herokuapp.com/categories/" + category_number + "/products/";
+                        else
+                            url = "http://flask-fuque-for-demo.herokuapp.com/countries_of_origin/" + category_number + "/products/";
                     }
                     filteredProductList.clear();
                     json[0] = readJsonFromUrl(url);
@@ -124,12 +147,16 @@ public class CategoryShoppingList extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-    private ArrayList<String> getCategoriesfromurl(){
+    private ArrayList<String> get_spinner_elementrs_from_url(final String spinner_name){
         //Creating a string request
         final ArrayList<String>[] categories;
         categories = new ArrayList[2];
         categories[0] = new ArrayList<String>();
-        String url = "http://flask-fuque-for-demo.herokuapp.com/categories/";
+        String url = null;
+        if(spinner_name == "category")
+            url = "http://flask-fuque-for-demo.herokuapp.com/categories/";
+        else
+            url = "http://flask-fuque-for-demo.herokuapp.com/countries_of_origin/";
         StringRequest stringRequest = new StringRequest(url,
                 new Response.Listener<String>() {
                     @Override
@@ -139,7 +166,10 @@ public class CategoryShoppingList extends AppCompatActivity {
                             //Parsing the fetched Json String to JSON Array
                             j = new JSONArray(response);
                            //Calling method getCategories to get the categories from the JSON Array
-                            categories[0] = getCategories(j);
+                            if(spinner_name == "category")
+                                categories[0] = getCategories(j);
+                            else
+                                categories[0] = getCountries(j);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -178,7 +208,26 @@ public class CategoryShoppingList extends AppCompatActivity {
         spinner_category.setAdapter(spinnerAdapter);
         return categories_array;
     }
+    private ArrayList<String> getCountries(JSONArray j){
+        ArrayList<String> countries_array = new ArrayList<String>();
+        //Traversing through all the items in the json array
+        countries_array.add("all"); //first on list - very useful for showing all products
+        for(int i=0;i<j.length();i++){
+            try {
+                //Getting json object
+                JSONObject json = j.getJSONObject(i);
 
+                //Adding the name of the student to array list
+                countries_array.add(json.getString("country_name"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, countries_array);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_country.setAdapter(spinnerAdapter);
+        return countries_array;
+    }
     private static String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
         int cp;
