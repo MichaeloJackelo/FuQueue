@@ -1,6 +1,8 @@
 package fq.fuqueue;
 
+import android.app.Application;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,11 +10,31 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class LoginUser extends AppCompatActivity {
+import com.beardedhen.androidbootstrap.AwesomeTextView;
+import com.beardedhen.androidbootstrap.BootstrapText;
+import com.beardedhen.androidbootstrap.TypefaceProvider;
+import com.beardedhen.androidbootstrap.font.MaterialIcons;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+
+import static com.beardedhen.androidbootstrap.font.FontAwesome.FA_ANCHOR;
+
+import static com.beardedhen.androidbootstrap.font.FontAwesome.FA_HEART;
+import static com.beardedhen.androidbootstrap.font.FontAwesome.FA_TWITTER;
+import static com.beardedhen.androidbootstrap.font.Typicon.TY_CODE;
+
+public class LoginUser extends BaseActivity {
     boolean isLogin;
     EditText nameLogin ;
     EditText passwordLogin ;
+    private int contentView;
 
+
+    @Override
+    protected int getContentLayoutId() {
+        return R.layout.activity_login_user;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +43,7 @@ public class LoginUser extends AppCompatActivity {
         isLogin = false;
         nameLogin = findViewById(R.id.nameToLogin);
         passwordLogin = findViewById(R.id.passwordToLogin);
+        TypefaceProvider.registerDefaultIconSets();
 
     }
 
@@ -38,6 +61,5 @@ public class LoginUser extends AppCompatActivity {
         }
 
     }
-
 
 }

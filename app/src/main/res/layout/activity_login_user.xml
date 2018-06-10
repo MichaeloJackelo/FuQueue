@@ -59,6 +59,36 @@
         app:layout_constraintTop_toBottomOf="@+id/passwordToLogin"
         app:layout_constraintVertical_bias="0.188" />
 
+    <fq.fuqueue.IconTextView
+        android:id="@+id/icon_show_password"
+        android:layout_width="164dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/icon_eye"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/nameToLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/micro_padding"
+        android:layout_weight="1"
+        android:gravity="center"
+        app:bootstrapBrand="danger"
+        app:bootstrapText="Weight 1 {fa_gift}"
+        />
+
+
+
+
+
+
+
 
 
 
