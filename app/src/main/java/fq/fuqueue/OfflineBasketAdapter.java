@@ -1,8 +1,6 @@
 package fq.fuqueue;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,10 +13,10 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class OfflineProductAdapter extends RecyclerView.Adapter{
+public class OfflineBasketAdapter extends RecyclerView.Adapter{
     ArrayList<Product> items;
     Context context;
-    public OfflineProductAdapter(ArrayList<Product> items, Context context){
+    public OfflineBasketAdapter(ArrayList<Product> items, Context context){
         this.items = items;
         this.context = context;
     }
@@ -44,7 +42,7 @@ public class OfflineProductAdapter extends RecyclerView.Adapter{
             @Override
             public void onClick(View v){
                 items.get(position).quantity++;
-                ProductListManager.storeOfflineListProducts(items,context);
+                ProductListManager.storeOfflineBasketProducts(items,context);
                 notify_data_changed();
             }
         });
@@ -55,9 +53,9 @@ public class OfflineProductAdapter extends RecyclerView.Adapter{
                 if(items.get(position).quantity<1){
                     //removeElement(items.get(position).name, position,this); // there need to repair problems with context
                     items.remove(position);
-                    ProductListManager.storeOfflineListProducts(items,context);
+                    ProductListManager.storeOfflineBasketProducts(items,context);
                 }
-                else ProductListManager.storeOfflineListProducts(items,context);
+                else ProductListManager.storeOfflineBasketProducts(items,context);
                 notify_data_changed();
             }
         });
@@ -65,7 +63,7 @@ public class OfflineProductAdapter extends RecyclerView.Adapter{
             @Override
             public void onClick(View v){
                 items.remove(position);
-                ProductListManager.storeOfflineListProducts(items,context);
+                ProductListManager.storeOfflineBasketProducts(items,context);
                 notify_data_changed();
             }
         });
@@ -96,6 +94,6 @@ public class OfflineProductAdapter extends RecyclerView.Adapter{
     }
     public void load_saved_values(Context context)
     {
-        this.items = ProductListManager.getOfflineListProducts(context);
+        this.items = ProductListManager.getOfflineBasketProducts(context);
     }
 }

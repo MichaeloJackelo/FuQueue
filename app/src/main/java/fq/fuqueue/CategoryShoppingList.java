@@ -29,30 +29,28 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
-import fq.fuqueue.Config.Config;
-
-public class ExploreShoppingList extends AppCompatActivity {
-    ArrayList<Product> offlineProductList = new ArrayList<Product>();
-    ArrayList<Product> addedProductsList = new ArrayList<Product>();
-    ArrayList<String> categories_array = new ArrayList<String>();
-    RecyclerView allProducts_recyclerView;
-    RecyclerView addedProducts_recyclerView;
+public class CategoryShoppingList extends AppCompatActivity {
+    ArrayList<Product> filteredProductList = new ArrayList<Product>();
+    ArrayList<Product> basketProductsList = new ArrayList<Product>();
+    RecyclerView filtered_products_recyclerView;
+    RecyclerView basket_Products_recyclerView;
     Spinner spinner_category;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_explore_shopping_list);
 
-        addedProductsList = ProductListManager.getOfflineListProducts(this);
-        addedProducts_recyclerView = (RecyclerView) findViewById(R.id.offline_list_recyclerView);
-        addedProducts_recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
-        final OfflineProductAdapter offlineadapter = new OfflineProductAdapter(addedProductsList,this);
-        addedProducts_recyclerView.setAdapter(offlineadapter);
+        basketProductsList = ProductListManager.getOfflineBasketProducts(this);
+        basket_Products_recyclerView = (RecyclerView) findViewById(R.id.offline_list_recyclerView);
+        basket_Products_recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
+        final OfflineBasketAdapter offline_basket_adapter = new OfflineBasketAdapter(basketProductsList,this);
+        basket_Products_recyclerView.setAdapter(offline_basket_adapter);
 
         downloadProductList("all");
-        allProducts_recyclerView = (RecyclerView) findViewById(R.id.all_products_recyclerView);
-        allProducts_recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
-        allProducts_recyclerView.setAdapter(new AllProductListAdapter(offlineProductList,offlineadapter,this));
+        filtered_products_recyclerView = (RecyclerView) findViewById(R.id.all_products_recyclerView);
+        filtered_products_recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+        final CategoryShoppingListAdapter filtered_product_adapter = new CategoryShoppingListAdapter(filteredProductList,offline_basket_adapter,this);
+        filtered_products_recyclerView.setAdapter(filtered_product_adapter);
         spinner_category = (Spinner) findViewById(R.id.spinner_category);
         getCategoriesfromurl();
         final Context context = this;
@@ -68,7 +66,10 @@ public class ExploreShoppingList extends AppCompatActivity {
                 {
                     downloadProductList(position + "");
                 }
-                offlineadapter.notify_data_changed();
+
+                // filtered_product_adapter.items = filteredProductList;
+                filtered_product_adapter.notify_data_changed();
+                //filtered_product_adapter.offlinelistadapter = offline_basket_adapter;
                 android.widget.Toast.makeText(context, "Click at " + position +  sSelected, android.widget.Toast.LENGTH_SHORT).show();
             }
             @Override
@@ -95,7 +96,7 @@ public class ExploreShoppingList extends AppCompatActivity {
                     {
                         url = "http://flask-fuque-for-demo.herokuapp.com/categories/" + category_number + "/products/";
                     }
-                    offlineProductList.clear();
+                    filteredProductList.clear();
                     json[0] = readJsonFromUrl(url);
                     for(int i=0;i<json[0].length();i++)
                     {
@@ -108,7 +109,7 @@ public class ExploreShoppingList extends AppCompatActivity {
                             productPrize = json[0].getJSONObject(i).getDouble("prize");
                             productDescription = json[0].getJSONObject(i).getString("description");
                             productbarcode = json[0].getJSONObject(i).getInt("barcode");
-                            offlineProductList.add(new Product(productName, productPrize, productDescription, 1234, productbarcode));
+                            filteredProductList.add(new Product(productName, productPrize, productDescription, 1234, productbarcode));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

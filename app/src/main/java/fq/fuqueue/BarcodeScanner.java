@@ -192,7 +192,7 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
                     e.printStackTrace();
                 }
                 ArrayList<Product> productList= ProductListManager.getActiveListProducts(context);
-                ProductListManager.addProductToList(productList,new Product(productName, productPrize,productDescription,1, productbarcode));
+                ProductListManager.addProductToBasket(productList,new Product(productName, productPrize,productDescription,1, productbarcode));
                 ProductListManager.storeActiveListProducts(productList,context);
                 goToShoppingListActivity();
             }

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class ProductListManager {
 
-    static void addProductToList(ArrayList<Product> inArrayList,Product newProduct){
+    static void addProductToBasket(ArrayList<Product> inArrayList, Product newProduct){
         int ProductFound=0;
         for(int i=0; i<inArrayList.size();i++){
             if(inArrayList.get(i).barcode == newProduct.barcode)
@@ -47,7 +47,7 @@ public class ProductListManager {
         }
         return product_list;
     }
-    static void storeOfflineListProducts(ArrayList<Product> inArrayList, Context app_context)
+    static void storeOfflineBasketProducts(ArrayList<Product> inArrayList, Context app_context)
     {
         android.content.SharedPreferences sharedPreferences = app_context.getSharedPreferences("shared preferences", app_context.MODE_PRIVATE);
         android.content.SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -56,7 +56,7 @@ public class ProductListManager {
         editor.putString("offline list", json);
         editor.apply();
     }
-    static ArrayList<Product> getOfflineListProducts(Context app_context)
+    static ArrayList<Product> getOfflineBasketProducts(Context app_context)
     {
         SharedPreferences sharedPreferences = app_context.getSharedPreferences("shared preferences", app_context.MODE_PRIVATE);
         com.google.gson.Gson gson = new com.google.gson.Gson();

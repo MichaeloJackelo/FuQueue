@@ -1,8 +1,6 @@
 package fq.fuqueue;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,14 +13,14 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class AllProductListAdapter extends RecyclerView.Adapter{
+public class CategoryShoppingListAdapter extends RecyclerView.Adapter{
     ArrayList<Product> items;
     Context context;
-    OfflineProductAdapter offlinelistadapter;
-    public AllProductListAdapter(ArrayList<Product> items,OfflineProductAdapter offlineadapter, Context context){
+    OfflineBasketAdapter adapter;
+    public CategoryShoppingListAdapter(ArrayList<Product> items, OfflineBasketAdapter adapter, Context context){
         this.items = items;
         this.context = context;
-        this.offlinelistadapter = offlineadapter;
+        this.adapter = adapter;
     }
     @NonNull
     @Override
@@ -46,11 +44,11 @@ public class AllProductListAdapter extends RecyclerView.Adapter{
             @Override
             public void onClick(View v){
                 Product new_product = new Product(items.get(position));
-                ArrayList<Product> productList = ProductListManager.getOfflineListProducts(context);
-                ProductListManager.addProductToList(productList,new_product);
-                ProductListManager.storeOfflineListProducts(productList,context);
-                offlinelistadapter.load_saved_values(context);
-                offlinelistadapter.notify_data_changed();
+                ArrayList<Product> productList = ProductListManager.getOfflineBasketProducts(context);
+                ProductListManager.addProductToBasket(productList,new_product);
+                ProductListManager.storeOfflineBasketProducts(productList,context);
+                adapter.load_saved_values(context);
+                adapter.notify_data_changed();
             }
         });
         Picasso.with(context).load(R.drawable.a).resize(88,88).into(((ItemHolder) holder).imageViewThumbnail);
