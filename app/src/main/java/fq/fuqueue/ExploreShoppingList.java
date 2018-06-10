@@ -10,8 +10,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import org.json.JSONException;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,12 +29,15 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
+import fq.fuqueue.Config.Config;
+
 public class ExploreShoppingList extends AppCompatActivity {
     ArrayList<Product> offlineProductList = new ArrayList<Product>();
     ArrayList<Product> addedProductsList = new ArrayList<Product>();
     ArrayList<String> categories_array = new ArrayList<String>();
     RecyclerView allProducts_recyclerView;
     RecyclerView addedProducts_recyclerView;
+    Spinner spinner_category;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,11 +53,8 @@ public class ExploreShoppingList extends AppCompatActivity {
         allProducts_recyclerView = (RecyclerView) findViewById(R.id.all_products_recyclerView);
         allProducts_recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
         allProducts_recyclerView.setAdapter(new AllProductListAdapter(offlineProductList,offlineadapter,this));
-        Spinner spinner_category = (Spinner) findViewById(R.id.spinner_category);
-        categories_array = downloadCategoriesArrayList();
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, categories_array);
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_category.setAdapter(spinnerAdapter);
+        spinner_category = (Spinner) findViewById(R.id.spinner_category);
+        getCategoriesfromurl();
         final Context context = this;
         spinner_category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -97,35 +104,64 @@ public class ExploreShoppingList extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-    public ArrayList<String> downloadCategoriesArrayList() //function for handling result of scanning barcode
-    {
-        final JSONArray[] json = new JSONArray[1];
-        final Context context = this;
-        final ArrayList<String> categories = new ArrayList<String>();
-        Thread thread = new Thread() {
-            public void run() {
-                try {
-                    String url = "http://flask-fuque-for-demo.herokuapp.com/categories/";
-                    json[0] = readJsonFromUrl(url);
-                    for(int i=0;i<json[0].length();i++)
-                    {
+    private ArrayList<String> getCategoriesfromurl(){
+        //Creating a string request
+        final ArrayList<String>[] categories;
+        categories = new ArrayList[2];
+        categories[0] = new ArrayList<String>();
+        String url = "http://flask-fuque-for-demo.herokuapp.com/categories/";
+        StringRequest stringRequest = new StringRequest(url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        JSONArray j = null;
                         try {
-                            categories.add(json[0].getJSONObject(i).getString("name") );
-                            } catch (JSONException e) {
+                            //Parsing the fetched Json String to JSON Object
+                            j = new JSONArray(response);
+
+                            //Storing the Array of JSON String to our JSON Array
+                           //Calling method getStudents to get the students from the JSON Array
+                            categories[0] = getCategories(j);
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
-                }catch (IOException | JSONException e2){}
-            }
-        };
-        thread.start();
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return categories;
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+        //Creating a request queue
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        //Adding request to the queue
+        requestQueue.add(stringRequest);
+
+        return categories[0];
     }
+    private ArrayList<String> getCategories(JSONArray j){
+        ArrayList<String> categories_array = new ArrayList<String>();
+        //Traversing through all the items in the json array
+        for(int i=0;i<j.length();i++){
+            try {
+                //Getting json object
+                JSONObject json = j.getJSONObject(i);
+
+                //Adding the name of the student to array list
+                categories_array.add(json.getString("name"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, categories_array);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_category.setAdapter(spinnerAdapter);
+        return categories_array;
+    }
+
     private static String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
         int cp;

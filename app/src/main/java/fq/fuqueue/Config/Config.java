@@ -7,4 +7,5 @@ package fq.fuqueue.Config;
 public class Config {
     public static final String PAYPAL_CLIENT_ID="ASV7x5wyP9_cBlt0324VwWBzZd1g2a5NEmcLuvQc65RIxKgE3Dy1ayW9lrrK7asSkc8Z9U0Fvv2FkumR";
 
+    public static final String JSON_ARRAY = " ";
 }
