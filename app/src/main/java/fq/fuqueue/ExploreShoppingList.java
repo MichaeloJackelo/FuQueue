@@ -46,10 +46,10 @@ public class ExploreShoppingList extends AppCompatActivity {
         addedProductsList = ProductListManager.getOfflineListProducts(this);
         addedProducts_recyclerView = (RecyclerView) findViewById(R.id.offline_list_recyclerView);
         addedProducts_recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
-        OfflineProductAdapter offlineadapter = new OfflineProductAdapter(addedProductsList,this);
+        final OfflineProductAdapter offlineadapter = new OfflineProductAdapter(addedProductsList,this);
         addedProducts_recyclerView.setAdapter(offlineadapter);
 
-        downloadProductList();
+        downloadProductList("all");
         allProducts_recyclerView = (RecyclerView) findViewById(R.id.all_products_recyclerView);
         allProducts_recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
         allProducts_recyclerView.setAdapter(new AllProductListAdapter(offlineProductList,offlineadapter,this));
@@ -60,7 +60,16 @@ public class ExploreShoppingList extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String sSelected = parent.getItemAtPosition(position).toString();
-                android.widget.Toast.makeText(context, "Clicked at " + position + " element " + sSelected, android.widget.Toast.LENGTH_SHORT).show();
+                if (sSelected == "all")
+                {
+                    downloadProductList( "all");
+                }
+                else
+                {
+                    downloadProductList(position + "");
+                }
+                offlineadapter.notify_data_changed();
+                android.widget.Toast.makeText(context, "Click at " + position +  sSelected, android.widget.Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -69,14 +78,24 @@ public class ExploreShoppingList extends AppCompatActivity {
         });
     }
 
-    public void downloadProductList() //function for handling result of scanning barcode
+    public void downloadProductList(final String category_number)
     {
         final JSONArray[] json = new JSONArray[1];
         final Context context = this;
         Thread thread = new Thread() {
             public void run() {
                 try {
-                    String url = "http://flask-fuque-for-demo.herokuapp.com/products/";
+
+                    String url = null;
+                    if(category_number == "all")
+                    {
+                        url = "http://flask-fuque-for-demo.herokuapp.com/products/";
+                    }
+                    else
+                    {
+                        url = "http://flask-fuque-for-demo.herokuapp.com/categories/" + category_number + "/products/";
+                    }
+                    offlineProductList.clear();
                     json[0] = readJsonFromUrl(url);
                     for(int i=0;i<json[0].length();i++)
                     {
@@ -89,7 +108,7 @@ public class ExploreShoppingList extends AppCompatActivity {
                             productPrize = json[0].getJSONObject(i).getDouble("prize");
                             productDescription = json[0].getJSONObject(i).getString("description");
                             productbarcode = json[0].getJSONObject(i).getInt("barcode");
-                            offlineProductList.add(new Product(productName, productPrize, productDescription, 1000, productbarcode));
+                            offlineProductList.add(new Product(productName, productPrize, productDescription, 1234, productbarcode));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -116,11 +135,9 @@ public class ExploreShoppingList extends AppCompatActivity {
                     public void onResponse(String response) {
                         JSONArray j = null;
                         try {
-                            //Parsing the fetched Json String to JSON Object
+                            //Parsing the fetched Json String to JSON Array
                             j = new JSONArray(response);
-
-                            //Storing the Array of JSON String to our JSON Array
-                           //Calling method getStudents to get the students from the JSON Array
+                           //Calling method getCategories to get the categories from the JSON Array
                             categories[0] = getCategories(j);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -136,15 +153,14 @@ public class ExploreShoppingList extends AppCompatActivity {
 
         //Creating a request queue
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-
         //Adding request to the queue
         requestQueue.add(stringRequest);
-
         return categories[0];
     }
     private ArrayList<String> getCategories(JSONArray j){
         ArrayList<String> categories_array = new ArrayList<String>();
         //Traversing through all the items in the json array
+        categories_array.add("all"); //first on list - very useful for showing all products
         for(int i=0;i<j.length();i++){
             try {
                 //Getting json object
