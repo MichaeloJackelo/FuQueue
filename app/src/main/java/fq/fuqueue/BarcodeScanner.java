@@ -1,31 +1,33 @@
 package fq.fuqueue;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.URL;
-import java.nio.charset.Charset;
+
 
 
 
 import android.Manifest;
-import android.content.Context;
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.hardware.Camera;
+
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
 import android.widget.Toast;
-import android.support.v7.app.AlertDialog;
+
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.zxing.Result;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
 
 
 import org.json.JSONException;
@@ -39,7 +41,7 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
     private static final int REQUEST_CAMERA = 1;
     private ZXingScannerView scannerView;
 
-    private static int camId = Camera.CameraInfo.CAMERA_FACING_BACK;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,136 +96,69 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
         super.onDestroy();
         scannerView.stopCamera();
     }
-    public void onCameraRequestPermissionResult(int requestCode, String permissionp[], int grantResults[])
-    {
-        switch(requestCode)
-        {
-            case REQUEST_CAMERA:
-                if(grantResults.length > 0)
-                {
-                    boolean cameraAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-                    if(cameraAccepted)
-                    {
-                        Toast.makeText(BarcodeScanner.this, "Permission Granted", Toast.LENGTH_LONG).show();
-                    }
-                    else
-                    {
-                        Toast.makeText(BarcodeScanner.this, "Permission Denied", Toast.LENGTH_LONG).show();
-                        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                        {
-                            if (shouldShowRequestPermissionRationale(CAMERA)) {
-                                showMessageOKCancel("You need to allow access to both the permissions",
-                                        new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                                    requestPermissions(new String[]{CAMERA},
-                                                            REQUEST_CAMERA);
-                                                }
-                                            }
-                                        });
-                                return;
-                            }
-                        }
-                    }
-                }
-                break;
-        }
-    }
 
-    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
-        new android.support.v7.app.AlertDialog.Builder(BarcodeScanner.this)
-                .setMessage(message)
-                .setPositiveButton("OK", okListener)
-                .setNegativeButton("Cancel", null)
-                .create()
-                .show();
-    }
     @Override
-    public void handleResult(Result result) //function for handling result of scanning barcode
-    {
+    public void handleResult(Result result){
         final String scanResult = result.getText();
         final JSONObject[] json = new JSONObject[1];
-        final Context context = this;
-        Thread thread = new Thread() {
-            public void run() {
-                try {
-                    String ii = "http://flask-fuque-for-demo.herokuapp.com/products/" + scanResult;
-                    json[0] = readJsonFromUrl(ii);
-                    //android.widget.Toast.makeText(context, ii, android.widget.Toast.LENGTH_SHORT).show();
-                    System.out.println(json[0].toString());
-                    System.out.println(json[0].get("id"));
-                }catch (IOException | JSONException e2){}
-            }
-        };
-        thread.start();
+        String url = "http://flask-fuque-for-demo.herokuapp.com/products/" + scanResult;
+        StringRequest stringRequest = new StringRequest(url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        JSONObject j = null;
+                        try {
+                            //Parsing the fetched Json String to JSON Array
+                            j = new JSONObject(response);
+                            //Calling method getCategories to get the categories from the JSON Array
+                            getProduct(j);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+        //Creating a request queue
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        //Adding request to the queue
+        requestQueue.add(stringRequest);
         try {
-            thread.join();
+            TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(json[0].toString());
-
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Add product to shopping list?");
-        builder.setPositiveButton("No",new DialogInterface.OnClickListener()
-        {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i){
-                scannerView.resumeCameraPreview(BarcodeScanner.this);
-            }
-        });
-        builder.setNeutralButton("Add!", new DialogInterface.OnClickListener()
-        {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i)
-            {
-                String productName = null;
-                double productPrize = 0;
-                String productDescription = null;
-                int productbarcode = 0;
-                try {
-                    productName = json[0].getString("name");
-                    productPrize =  json[0].getDouble("prize");
-                    productDescription = json[0].getString("description");
-                    productbarcode = json[0].getInt("barcode");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                ArrayList<Product> productList= ProductListManager.getActiveListProducts(context);
-                ProductListManager.addProductToBasket(productList,new Product(productName, productPrize,productDescription,1, productbarcode));
-                ProductListManager.storeActiveListProducts(productList,context);
-                goToShoppingListActivity();
-            }
-        });
-        builder.setMessage(scanResult);
-        AlertDialog alert = builder.create();
-        alert.show();
+        goToShoppingListActivity();
     }
 
 
-
-    private static String readAll(Reader rd) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        int cp;
-        while ((cp = rd.read()) != -1) {
-            sb.append((char) cp);
-        }
-        return sb.toString();
-    }
-
-    public static JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
-        InputStream is = new URL(url).openStream();
+    private void getProduct(JSONObject json){
+        String productName = null;
+        double productPrize = 0;
+        String productDescription = null;
+        int productbarcode = 0;
         try {
-            BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-            String jsonText = readAll(rd);
-            JSONObject json = new JSONObject(jsonText);
-            return json;
-        } finally {
-            is.close();
+            //Getting json object
+            //JSONObject json = j.getJSONObject(0);
+            productName = json.getString("name");
+            productPrize =  json.getDouble("prize");
+            productDescription = json.getString("description");
+            productbarcode = json.getInt("barcode");
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+        ArrayList<Product> productList= ProductListManager.getActiveListProducts(this);
+        ProductListManager.addProductToBasket(productList,new Product(productName, productPrize,productDescription,1, productbarcode));
+        ProductListManager.storeActiveListProducts(productList,this);
+        //goToShoppingListActivity();
+
     }
+
+
     private void goToShoppingListActivity(){
         Intent intent = new Intent(BarcodeScanner.this,ActiveShoppingList.class);
         startActivity(intent);
