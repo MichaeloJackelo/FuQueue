@@ -11,9 +11,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.beardedhen.androidbootstrap.TypefaceProvider;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import butterknife.ButterKnife;
 
 public class AllProductListAdapter extends RecyclerView.Adapter{
     ArrayList<Product> items;
@@ -30,6 +33,7 @@ public class AllProductListAdapter extends RecyclerView.Adapter{
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View row = inflater.inflate(R.layout.activity_offline_row_product, parent, false);
         return new ItemHolder(row);
+
     }
 
     @Override

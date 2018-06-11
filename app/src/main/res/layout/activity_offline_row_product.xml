@@ -1,81 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="10dp">
+
+    android:background="@drawable/background"
+    >
+
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        tools:layout_editor_absoluteX="156dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints">
+
         <ImageView
             android:id="@+id/imageViewThumbnail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY" />
+<!--
+        <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+            android:id="@+id/imageViewThumbnail"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            />
+-->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-                <TextView
-                    android:id="@+id/product_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Product name"
-                    android:maxLines="1"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+
+            <TextView
+                android:id="@+id/product_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="Product name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Price: "
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:text="Price: " />
+
                 <TextView
                     android:id="@+id/product_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    android:maxLines="1"/>
+                    android:maxLines="1"
+                    android:text="" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" zł"
-                    android:maxLines="1"/>
+                    android:maxLines="1"
+                    android:text=" zł" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Description: "
-                    android:maxLines="1"/>
+                    android:maxLines="1"
+                    android:text="Description: " />
+
                 <TextView
                     android:id="@+id/product_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:text="" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:layout_width="wrap_content"
-                    android:text="Qty in warehouse: "
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="Qty in warehouse: " />
+
                 <TextView
                     android:id="@+id/product_quantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
+
                 <Button
                     android:id="@+id/button_add"
-                    android:text="Add to list"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="Add to list" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

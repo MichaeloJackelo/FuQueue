@@ -11,6 +11,10 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.beardedhen.androidbootstrap.TypefaceProvider;
+
+import butterknife.ButterKnife;
+
 public class StoreMap extends AppCompatActivity {
     String[] elementy = {"Opcja 1", "Opcja 2", "Opcja 3", "Opcja 4", "Opcja 5"}; // Tu trzeba wszstkie dostępne kategorie w sklepie
 
@@ -63,6 +67,8 @@ public class StoreMap extends AppCompatActivity {
 
             }
         } );
+        TypefaceProvider.registerDefaultIconSets();
+        ButterKnife.bind(this);
 
 
     }

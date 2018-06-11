@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginUser">
+    tools:context=".LoginUser"
+    android:background="@drawable/background">
 
     <EditText
         android:id="@+id/passwordToLogin"
@@ -17,10 +18,16 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:textColor="@color/bootstrap_gray_light"
+        android:shadowColor="@color/bootstrap_gray_light"
+        android:textColorHint="@color/bootstrap_gray_light"
+        android:textColorLink="@color/bootstrap_gray_light"
+        android:textColorHighlight="@color/bootstrap_gray_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="25dp"/>
 
     <EditText
         android:id="@+id/nameToLogin"
@@ -33,6 +40,12 @@
         android:ems="10"
         android:hint="Name"
         android:inputType="text"
+        android:textSize="25dp"
+        android:textColor="@color/bootstrap_gray_light"
+        android:shadowColor="@color/bootstrap_gray_light"
+        android:textColorHint="@color/bootstrap_gray_light"
+        android:textColorLink="@color/bootstrap_gray_light"
+        android:textColorHighlight="@color/bootstrap_gray_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
@@ -40,7 +53,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.358" />
 
-    <Button
+    <com.beardedhen.androidbootstrap.BootstrapButton
         android:clickable="true"
         android:id="@+id/buttonLogin"
         android:layout_width="wrap_content"
@@ -52,7 +65,9 @@
         android:background="@android:color/holo_orange_light"
         android:elevation="15dp"
         android:onClick="ClickLogin"
-        android:text="Button"
+        app:bootstrapText="{fa_unlock} Sign in {fa_unlock}"
+        app:bootstrapSize="xl"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,20 +83,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/icon_eye"
-        android:textSize="50dp"
+        android:textSize="100dp"
         app:layout_constraintBottom_toTopOf="@+id/nameToLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <com.beardedhen.androidbootstrap.BootstrapButton
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/micro_padding"
-        android:layout_weight="1"
-        android:gravity="center"
-        app:bootstrapBrand="danger"
-        app:bootstrapText="Weight 1 {fa_gift}"
-        />
+
 
 
 

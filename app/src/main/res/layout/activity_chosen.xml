@@ -10,7 +10,8 @@
         android:gravity="center"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/background">
         <Button
             android:id="@+id/button_ActiveShoppingList"
             android:onClick="ClickActivShoppingList"

@@ -10,6 +10,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.beardedhen.androidbootstrap.TypefaceProvider;
+
 import org.json.JSONException;
 import org.json.JSONArray;
 
@@ -21,6 +23,8 @@ import java.io.Reader;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+
+import butterknife.ButterKnife;
 
 public class AllShoppingList extends AppCompatActivity {
     ArrayList<Product> offlineProductList = new ArrayList<Product>();
@@ -58,6 +62,8 @@ public class AllShoppingList extends AppCompatActivity {
 
             }
         });
+        TypefaceProvider.registerDefaultIconSets();
+        ButterKnife.bind(this);
     }
 
     public void downloadProductList() //function for handling result of scanning barcode

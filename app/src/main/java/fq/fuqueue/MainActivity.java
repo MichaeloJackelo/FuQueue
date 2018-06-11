@@ -3,7 +3,12 @@ package fq.fuqueue;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.beardedhen.androidbootstrap.TypefaceProvider;
 import com.beardedhen.androidbootstrap.font.MaterialIcons;
+
+import butterknife.ButterKnife;
+
 import static com.beardedhen.androidbootstrap.font.Typicon.TY_CODE;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         thread.start(); //testkrystianplatnosci
+        TypefaceProvider.registerDefaultIconSets();
+        ButterKnife.bind(this);
     }
 
     private void starttt() {

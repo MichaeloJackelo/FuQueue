@@ -18,13 +18,13 @@ abstract public class BaseActivity extends AppCompatActivity {
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
-        TypefaceProvider.registerDefaultIconSets();
+
         ScrollView scrollView = (ScrollView) findViewById(R.id.scrollView);
 
         if (scrollView != null) {
             scrollView.addView(LayoutInflater.from(this).inflate(getContentLayoutId(), scrollView, false));
         }
-
+        TypefaceProvider.registerDefaultIconSets();
         ButterKnife.bind(this);
     }
 

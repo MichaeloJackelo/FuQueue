@@ -11,11 +11,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.beardedhen.androidbootstrap.TypefaceProvider;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+
+import butterknife.ButterKnife;
 
 //this class make view
 
@@ -39,7 +42,7 @@ public class ActiveProductAdapter extends RecyclerView.Adapter{
     }
     public void refresh_text_view_summary_price()
     {
-        text_view_summary_price.setText("Summary price: " + new Double(summaryPrice()).toString()+" zł");
+        text_view_summary_price.setText("Summary price: " + new Double(summaryPrice()).toString()+" USD");
     }
     @NonNull
     @Override
@@ -47,6 +50,8 @@ public class ActiveProductAdapter extends RecyclerView.Adapter{
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View row = inflater.inflate(R.layout.activity_row_product, parent, false);
         refresh_text_view_summary_price();
+        TypefaceProvider.registerDefaultIconSets();
+
         return new ItemHolder(row);
     }
 

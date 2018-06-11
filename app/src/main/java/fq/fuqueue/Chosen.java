@@ -5,12 +5,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.beardedhen.androidbootstrap.TypefaceProvider;
+
+import butterknife.ButterKnife;
+
 public class Chosen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chosen);
+        TypefaceProvider.registerDefaultIconSets();
+        ButterKnife.bind(this);
     }
 
     public void ClickActivShoppingList(View v)
