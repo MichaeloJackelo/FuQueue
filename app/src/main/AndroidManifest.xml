@@ -25,7 +25,8 @@
         <activity android:name=".PaypalPayment" />
         <activity android:name=".PaymentPaypalDetails" />
         <activity android:name=".Chosen" />
-        <activity android:name=".AllShoppingList" />
+        <activity android:name=".DiscountMagazine" />
+        <activity android:name=".CategoryShoppingList"></activity>
         <activity android:name=".BarcodeScanner" />
         <activity android:name=".StoreMap" />
         <activity android:name=".LoginUser" />

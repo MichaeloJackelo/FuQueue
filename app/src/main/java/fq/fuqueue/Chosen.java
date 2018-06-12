@@ -37,7 +37,7 @@ public class Chosen extends AppCompatActivity {
     }
     public void offline_shopping_list_page(View v)
     {
-        Intent intent = new Intent(this, AllShoppingList.class);
+        Intent intent = new Intent(this, CategoryShoppingList.class);
         startActivity(intent);
     }
     public void ClickStoreMap(View v)
@@ -45,4 +45,10 @@ public class Chosen extends AppCompatActivity {
         Intent intent = new Intent(this, StoreMap.class);
         startActivity(intent);
     }
+    public void ClickDiscountMagazine(View v)
+    {
+        Intent intent = new Intent(this, DiscountMagazine.class);
+        startActivity(intent);
+    }
+
 }

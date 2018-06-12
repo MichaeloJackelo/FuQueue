@@ -10,10 +10,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.beardedhen.androidbootstrap.TypefaceProvider;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
-import org.json.JSONException;
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,49 +29,21 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
-import butterknife.ButterKnife;
-
-public class AllShoppingList extends AppCompatActivity {
-    ArrayList<Product> offlineProductList = new ArrayList<Product>();
-    ArrayList<Product> addedProductsList = new ArrayList<Product>();
-    RecyclerView allProducts_recyclerView;
-    RecyclerView addedProducts_recyclerView;
+public class DiscountMagazine extends AppCompatActivity {
+    ArrayList<Product> filteredProductList = new ArrayList<Product>();
+    RecyclerView filtered_products_recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_shopping_list);
-
-        addedProductsList = ProductListManager.getOfflineListProducts(this);
-        addedProducts_recyclerView = (RecyclerView) findViewById(R.id.offline_list_recyclerView);
-        addedProducts_recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
-        OfflineProductAdapter offlineadapter = new OfflineProductAdapter(addedProductsList,this);
-        addedProducts_recyclerView.setAdapter(offlineadapter);
-
-        downloadProductList();
-        allProducts_recyclerView = (RecyclerView) findViewById(R.id.all_products_recyclerView);
-        allProducts_recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
-        allProducts_recyclerView.setAdapter(new AllProductListAdapter(offlineProductList,offlineadapter,this));
-        Spinner spinner_category = (Spinner) findViewById(R.id.spinner_category);
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.search_categories));
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_category.setAdapter(spinnerAdapter);
-        final Context context = this;
-        spinner_category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String sSelected = parent.getItemAtPosition(position).toString();
-                android.widget.Toast.makeText(context, "Clicked at " + position + " element " + sSelected, android.widget.Toast.LENGTH_SHORT).show();
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        TypefaceProvider.registerDefaultIconSets();
-        ButterKnife.bind(this);
+        setContentView(R.layout.activity_discount_magazine);
+        downloadProductList("category","all");
+        filtered_products_recyclerView = (RecyclerView) findViewById(R.id.discount_magazine_recyclerView);
+        filtered_products_recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+        final DiscountMagazineAdapter filtered_product_adapter = new DiscountMagazineAdapter(filteredProductList, this);
+        filtered_products_recyclerView.setAdapter(filtered_product_adapter);
     }
 
-    public void downloadProductList() //function for handling result of scanning barcode
+    public void downloadProductList(final String download_type, final String category_number)
     {
         final JSONArray[] json = new JSONArray[1];
         final Context context = this;
@@ -74,6 +51,7 @@ public class AllShoppingList extends AppCompatActivity {
             public void run() {
                 try {
                     String url = "http://flask-fuque-for-demo.herokuapp.com/products/";
+                    filteredProductList.clear();
                     json[0] = readJsonFromUrl(url);
                     for(int i=0;i<json[0].length();i++)
                     {
@@ -86,7 +64,7 @@ public class AllShoppingList extends AppCompatActivity {
                             productPrize = json[0].getJSONObject(i).getDouble("prize");
                             productDescription = json[0].getJSONObject(i).getString("description");
                             productbarcode = json[0].getJSONObject(i).getInt("barcode");
-                            offlineProductList.add(new Product(productName, productPrize, productDescription, 1000, productbarcode));
+                            filteredProductList.add(new Product(productName, productPrize, productDescription, 1234, productbarcode));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -122,4 +100,3 @@ public class AllShoppingList extends AppCompatActivity {
         }
     }
 }
-

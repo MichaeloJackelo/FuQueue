@@ -86,7 +86,7 @@ public class ActiveShoppingList extends AppCompatActivity{
         Intent intent = new Intent(this, BarcodeScanner.class);
         startActivity(intent);
     }
-    public void go_payments_page(View v)
+    public void OnClickGoToPayment(View v)
     {
         sendListToServer();
         Intent intent = new Intent(this, PaypalPayment.class);

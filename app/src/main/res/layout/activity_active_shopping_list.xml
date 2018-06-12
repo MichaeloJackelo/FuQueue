@@ -61,7 +61,7 @@
 
             <Button
                 android:id="@+id/button_go_payment"
-                android:onClick="go_payments_page"
+                android:onClick="OnClickGoToPayment"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:clickable="true"
