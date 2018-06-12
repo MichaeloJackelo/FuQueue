@@ -50,19 +50,7 @@ public class DiscountMagazine extends AppCompatActivity {
         Thread thread = new Thread() {
             public void run() {
                 try {
-
-                    String url = null;
-                    if(category_number == "all")
-                    {
-                        url = "http://flask-fuque-for-demo.herokuapp.com/products/";
-                    }
-                    else
-                    {
-                        if(download_type == "category")
-                            url = "http://flask-fuque-for-demo.herokuapp.com/categories/" + category_number + "/products/";
-                        else
-                            url = "http://flask-fuque-for-demo.herokuapp.com/countries_of_origin/" + category_number + "/products/";
-                    }
+                    String url = "http://flask-fuque-for-demo.herokuapp.com/products/";
                     filteredProductList.clear();
                     json[0] = readJsonFromUrl(url);
                     for(int i=0;i<json[0].length();i++)

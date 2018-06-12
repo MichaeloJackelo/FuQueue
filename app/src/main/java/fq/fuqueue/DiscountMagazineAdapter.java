@@ -32,12 +32,8 @@ public class DiscountMagazineAdapter extends RecyclerView.Adapter{
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         String name = (String) items.get(position).name;
         String price = (String) "" + (items.get(position).price);
-        String description = items.get(position).description;
-        String quantity = (String) "" + (items.get(position).quantity);
         ((ItemHolder)holder).product_name.setText(name);
         ((ItemHolder)holder).product_price.setText(price);
-        ((ItemHolder)holder).product_description.setText(description);
-        ((ItemHolder)holder).product_quantity.setText(quantity);
         Picasso.with(context).load(R.drawable.a).resize(88,88).into(((ItemHolder) holder).imageViewThumbnail);
     }
     @Override
@@ -48,16 +44,13 @@ public class DiscountMagazineAdapter extends RecyclerView.Adapter{
         this.notifyDataSetChanged();
     }
     private class ItemHolder extends RecyclerView.ViewHolder{
-        TextView product_name, product_price, product_description,product_quantity;
-        android.widget.Button button_add;
+        TextView product_name, product_price;
         ImageView imageViewThumbnail;
         public ItemHolder(View itemView){
             super(itemView);
             product_name = itemView.findViewById(R.id.product_name);
             product_price = itemView.findViewById(R.id.product_price);
-            product_description = itemView.findViewById(R.id.product_description);
             imageViewThumbnail = itemView.findViewById(R.id.imageViewThumbnail);
-            product_quantity = itemView.findViewById(R.id.product_quantity);
         }
     }
 }
