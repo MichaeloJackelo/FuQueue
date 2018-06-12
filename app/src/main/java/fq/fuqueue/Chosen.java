@@ -39,4 +39,10 @@ public class Chosen extends AppCompatActivity {
         Intent intent = new Intent(this, StoreMap.class);
         startActivity(intent);
     }
+    public void ClickDiscountMagazine(View v)
+    {
+        Intent intent = new Intent(this, DiscountMagazine.class);
+        startActivity(intent);
+    }
+
 }

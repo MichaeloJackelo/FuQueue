@@ -15,6 +15,10 @@ import java.util.ArrayList;
 import android.view.View;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+
 
 public class ActiveShoppingList extends AppCompatActivity{
     ArrayList<Product> shoppingList = new ArrayList<Product>();
@@ -60,11 +64,14 @@ public class ActiveShoppingList extends AppCompatActivity{
         Intent intent = new Intent(this, BarcodeScanner.class);
         startActivity(intent);
     }
-    public void go_payments_page(View v)
+    public void OnClickGoToPayment(View v)
     {
+
         Intent intent = new Intent(this, PaypalPayment.class);
         String[] summary_label = ((String) summary_price.getText()).split(" "); //descriptive string (Summary price xx zł)- we must extract price - xx!
         intent.putExtra("SUM_PRICE",summary_label[2]);
         startActivity(intent);
     }
+
+
 }

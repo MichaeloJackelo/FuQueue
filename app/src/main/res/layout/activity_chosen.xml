@@ -43,5 +43,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Store Map" />
+        <Button
+            android:id="@+id/button_discount_magazine"
+            android:onClick="ClickDiscountMagazine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Discount Magazine" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
