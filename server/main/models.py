@@ -5,6 +5,8 @@ from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 from main import app, db, login
+from flask import url_for
+
 
 
 product_category_association_table = db.Table('product_category',
@@ -27,13 +29,14 @@ class Product(db.Model):
                                                     lazy='dynamic'),
                                  lazy='dynamic')
 
-
     def add_category(self, category):
         self.categories.append(category)
 
     def to_dict(self):
         return {"id": self.id, "barcode": self.barcode, "name": self.name,
-                "prize": self.prize, "file_name": self.file_name, "description": self.description}
+                "prize": self.prize,
+                "picture_url": url_for('static' , filename='products/' + self.file_name),
+                "description": self.description}
 
     def from_dict(self, data):
         for field in ['id', 'barcode', 'name', 'prize' , 'file_name', 'description']:
