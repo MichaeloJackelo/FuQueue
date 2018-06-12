@@ -10,17 +10,16 @@ from flask import url_for
 
 
 product_category_association_table = db.Table('product_category',
-                                              db.Column("product_id", db.Integer, db.ForeignKey('Product.id')),
+                                              db.Column("product_id", db.Integer, db.ForeignKey('Product.barcode')),
                                               db.Column("category_id", db.Integer, db.ForeignKey('Category.id')))
 
 
 class Product(db.Model):
     __tablename__ = 'Product'
-    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128))
     prize = db.Column(db.Float)
     file_name = db.Column(db.String(128))
-    barcode = db.Column(db.Integer, unique=True)
+    barcode = db.Column(db.Integer, unique=True, primary_key=True)
     description = db.Column(db.String(256))
     country_id = db.Column(db.Integer, db.ForeignKey('Country_Of_Origin.id'))
     categories = db.relationship("Category",
@@ -33,13 +32,13 @@ class Product(db.Model):
         self.categories.append(category)
 
     def to_dict(self):
-        return {"id": self.id, "barcode": self.barcode, "name": self.name,
+        return {"barcode": self.barcode, "name": self.name,
                 "prize": self.prize,
                 "picture_url": url_for('static' , filename='products/' + self.file_name),
                 "description": self.description}
 
     def from_dict(self, data):
-        for field in ['id', 'barcode', 'name', 'prize' , 'file_name', 'description']:
+        for field in ['barcode', 'name', 'prize' , 'file_name', 'description']:
             if field in data:
                 setattr(self, field, data[field])
 
