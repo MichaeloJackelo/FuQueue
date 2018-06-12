@@ -7,6 +7,49 @@ from main import app, db, models, forms
 from main.forms import DeleteForm, LoginForm, UserRegistrationForm, AdminRegistrationForm, EditProfileForm, ResetPasswordRequestForm, ResetPasswordForm
 from main.models import User
 from main.email import send_password_reset_email
+import json
+import os
+
+
+@app.before_first_request
+def loadInitData():
+    site_root = os.path.realpath(os.path.dirname(__file__))
+    path = os.path.join(site_root, 'static', 'init.json')
+    with open(path) as json_file:
+        data = json.load(json_file)
+        # for tag in ['products', 'categories', 'countries']:
+        tag = 'products'
+        if tag in data:
+            for e in data[tag]:
+                p = models.Product()
+                p.from_dict(e)
+                p.country_id = 0
+                db.session.add(p)
+        tag = 'categories'
+        if tag in data:
+            for e in data[tag]:
+                c = models.Category()
+                c.from_dict(e)
+
+        tag = 'categories'
+        if tag in data:
+            for e in data[tag]:
+                c = models.Category()
+                c.from_dict(e)
+                for p_id in e['productsList']:
+                    p = models.Product.query.filter_by(barcode=p_id).first()
+                    p.add_category(c)
+
+        tag = 'countries'
+        if tag in data:
+            for e in data[tag]:
+                c = models.Country_Of_Origin()
+                c.from_dict(e)
+                db.session.add(c)
+                for p_id in e['productsList']:
+                    p = models.Product.query.filter_by(barcode=p_id).first()
+                    c.products.append(p)
+            db.session.commit()
 
 
 def error_response(status_code, message=None):
@@ -304,6 +347,7 @@ def before_request():
 @app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
+    loadInitData()
     return render_template('index.html', title='Home')
 
 

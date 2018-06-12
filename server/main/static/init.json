@@ -1,0 +1,41 @@
+{"products" : [
+  {
+    "barcode": 1,
+    "description": "Can drink with taste of hell",
+    "name": "coca cola",
+    "file_name": "cola.jpg",
+    "prize": 1.0
+  },
+  {
+    "barcode": 2,
+    "description": "Cyc like it",
+    "name": "beer",
+    "file_name": "beer.jpg",
+    "prize": 2.0
+  },
+    {
+    "barcode": 3,
+    "description": "Chocolate bar  with taste of heaven",
+    "name": "bounty",
+    "file_name": "bounty.jpg",
+    "prize": 1.0
+  },
+  {
+    "barcode": 4,
+    "description": "chocolate bar",
+    "name": "mars",
+    "file_name": "mars.jpg",
+    "prize": 2.0
+  }
+],
+  "categories" : [
+    {"name" : "drinks", "description" : "", "productsList" : [1, 2]},
+    {"name" : "sweets", "description" : "", "productsList" : [1, 3, 4]}
+  ],
+  "countries" : [
+    {"country_name" : "Poland", "productsList" : [1,2]},
+    {"country_name" : "Germany", "productsList" : [3,4]}
+  ]
+
+
+}

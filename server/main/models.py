@@ -8,7 +8,6 @@ from main import app, db, login
 from flask import url_for
 
 
-
 product_category_association_table = db.Table('product_category',
                                               db.Column("product_id", db.Integer, db.ForeignKey('Product.barcode')),
                                               db.Column("category_id", db.Integer, db.ForeignKey('Category.id')))
@@ -38,7 +37,7 @@ class Product(db.Model):
                 "description": self.description}
 
     def from_dict(self, data):
-        for field in ['barcode', 'name', 'prize' , 'file_name', 'description']:
+        for field in ['barcode', 'name', 'prize', 'file_name', 'description']:
             if field in data:
                 setattr(self, field, data[field])
 
