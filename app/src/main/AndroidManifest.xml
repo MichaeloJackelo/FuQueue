@@ -30,9 +30,6 @@
         <activity android:name=".BarcodeScanner" />
         <activity android:name=".StoreMap" />
         <activity android:name=".LoginUser" />
-        <activity android:name=".DiscountMagazine" />
-        <activity android:name=".DiscountMagazineAdapter"></activity>
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.TypefaceProvider;
 import com.squareup.picasso.Picasso;
 
@@ -31,6 +32,7 @@ public class CategoryShoppingListAdapter extends RecyclerView.Adapter{
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View row = inflater.inflate(R.layout.activity_offline_row_product, parent, false);
+        TypefaceProvider.registerDefaultIconSets();
         return new ItemHolder(row);
 
     }
@@ -67,7 +69,7 @@ public class CategoryShoppingListAdapter extends RecyclerView.Adapter{
     }
     private class ItemHolder extends RecyclerView.ViewHolder{
         TextView product_name, product_price, product_description,product_quantity;
-        android.widget.Button button_add;
+        BootstrapButton button_add;
         ImageView imageViewThumbnail;
         public ItemHolder(View itemView){
             super(itemView);

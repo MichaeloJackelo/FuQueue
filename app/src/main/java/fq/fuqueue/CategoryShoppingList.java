@@ -15,6 +15,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.beardedhen.androidbootstrap.TypefaceProvider;
 
 import org.json.JSONException;
 import org.json.JSONArray;
@@ -97,6 +98,7 @@ public class CategoryShoppingList extends AppCompatActivity {
 
             }
         });
+        TypefaceProvider.registerDefaultIconSets();
     }
 
     public void downloadProductList(final String download_type, final String category_number)

@@ -49,7 +49,7 @@ public class LoginUser extends BaseActivity {
 
     public void ClickLogin(View v)
     {
-        if(nameLogin.getText().toString().equals("Basia") && passwordLogin.getText().toString().equals("qwerty"))
+        if(nameLogin.getText().toString().equals("") && passwordLogin.getText().toString().equals(""))
         {
             Intent intent = new Intent(this, Chosen.class);
             startActivity(intent);

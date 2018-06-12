@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.TypefaceProvider;
 import com.squareup.picasso.Picasso;
 
@@ -57,6 +58,7 @@ public class ActiveProductAdapter extends RecyclerView.Adapter{
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
+        TypefaceProvider.registerDefaultIconSets();
         String name = (String) items.get(position).name;
         String price = (String) "" + (items.get(position).price);
         String description = items.get(position).description;
@@ -112,7 +114,8 @@ public class ActiveProductAdapter extends RecyclerView.Adapter{
 
     private class ItemHolder extends RecyclerView.ViewHolder{
         TextView product_name, product_price, product_description,product_quantity;
-        android.widget.Button button_plus, button_minus, button_delete;
+        BootstrapButton  button_plus, button_minus, button_delete;
+
         ImageView imageViewThumbnail;
         public ItemHolder(View itemView){
             super(itemView);

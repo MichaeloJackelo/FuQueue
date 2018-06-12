@@ -10,18 +10,18 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-<<<<<<< HEAD:app/src/main/java/fq/fuqueue/AllShoppingList.java
+
 import com.beardedhen.androidbootstrap.TypefaceProvider;
 
 import org.json.JSONException;
-=======
+
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
->>>>>>> origin/Upgrade_category_filter:app/src/main/java/fq/fuqueue/DiscountMagazine.java
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
