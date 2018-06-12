@@ -72,6 +72,20 @@ class Country_Of_Origin(db.Model):
                 setattr(self, field, data[field])
 
 
+class ListItem(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    quantity = db.Column(db.Integer)
+
+    def to_dict(self):
+        product = Product.query.filter_by(barcode=self.id).first()
+        return {"quantity": self.quantity, "product": product.to_dict()}
+
+    def from_dict(self, data):
+        for field in ['barcode', 'quantity']:
+            if field in data:
+                setattr(self, field, data[field])
+
+
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)

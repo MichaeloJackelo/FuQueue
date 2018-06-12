@@ -347,7 +347,6 @@ def before_request():
 @app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
-    loadInitData()
     return render_template('index.html', title='Home')
 
 
@@ -478,3 +477,38 @@ def edit_profile():
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
+
+
+@app.route('/list/1', methods=['GET', 'POST'])
+def add_basket():
+    data = request.get_json() or {}
+    print('kaka', data)
+    if "barcode" not in data or "quantity" not in data:
+        return bad_request("missing field")
+    print('afafaf')
+    i = models.ListItem()
+    i.from_dict(data)
+    db.session.add(i)
+    db.session.commit()
+    return redirect(url_for('get_basket'))
+
+
+@app.route('/basket', methods=['GET'])
+def get_basket():
+    items = models.ListItem.query.all()
+    dict_items = [i.to_dict() for i in items]
+    return jsonify(dict_items)
+
+
+@app.route('/basket/submit', methods=['GET'])
+def submit_basket():
+    items = models.ListItem.query.all()
+    for i in items:
+        db.session.delete(i)
+    db.session.commit()
+    response = jsonify()
+    response.status_code = 201
+    response.headers['Location'] = url_for('get_basket')
+    return response
+
+
