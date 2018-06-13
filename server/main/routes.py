@@ -361,6 +361,9 @@ def explore():
     links.append(url_for('get_category_products', id=1))
     links.append(url_for('get_countries_of_origin'))
     links.append(url_for('get_country_of_origin_products', id=1))
+    links.append(url_for('get_basket'))
+    links.append(url_for('submit_basket'))
+    links.append(url_for('add_basket'))
     return jsonify(links)
 
 
