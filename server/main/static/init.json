@@ -26,15 +26,46 @@
     "name": "mars",
     "file_name": "mars.jpg",
     "prize": 2.0
+  },
+  {
+    "barcode": 5900915018655,
+    "description": "chocolate bar",
+    "name": "Chocolate 70%",
+    "file_name": "czekolada.jpg",
+    "prize": 3.0
+  },
+  {
+    "barcode": 4744131012193,
+    "description": "Water filter",
+    "name": "Water filter",
+    "file_name": "filtr.jpg",
+    "prize": 4.3
+  },
+  {
+    "barcode": 8292601111619,
+    "description": "Tasty gels like cables",
+    "name": "Gels",
+    "file_name": "gels.jpg",
+    "prize": 1.3
+  },
+  {
+    "barcode": 5901135000611,
+    "description": "Perfect for dishes",
+    "name": "Relish",
+    "file_name": "przyprawa.jpg",
+    "prize": 1.3
   }
+  
 ],
   "categories" : [
-    {"name" : "drinks", "description" : "", "productsList" : [1, 2]},
-    {"name" : "sweets", "description" : "", "productsList" : [1, 3, 4]}
+    {"name" : "Drinks", "description" : "", "productsList" : [1, 2]},
+    {"name" : "Sweets", "description" : "", "productsList" : [1, 3, 4,5900915018655,8292601111619]},
+    {"name" : "Other", "description" : "", "productsList" : [4744131012193,5901135000611]}
   ],
   "countries" : [
-    {"country_name" : "Poland", "productsList" : [1,2]},
-    {"country_name" : "Germany", "productsList" : [3,4]}
+    {"country_name" : "Poland", "productsList" : [1,2,5900915018655,5901135000611]},
+    {"country_name" : "Germany", "productsList" : [3,4,8292601111619]},
+    {"country_name" : "Japan", "productsList" : [4744131012193]}
   ]
 
 
