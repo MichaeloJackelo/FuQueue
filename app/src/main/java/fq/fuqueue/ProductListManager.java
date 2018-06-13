@@ -69,4 +69,26 @@ public class ProductListManager {
         }
         return product_list;
     }
+    static void store_recent_History(ArrayList<Product> inArrayList, Context app_context)
+    {
+        android.content.SharedPreferences sharedPreferences = app_context.getSharedPreferences("shared preferences", app_context.MODE_PRIVATE);
+        android.content.SharedPreferences.Editor editor = sharedPreferences.edit();
+        com.google.gson.Gson gson = new com.google.gson.Gson();
+        String json = gson.toJson(inArrayList);
+        editor.putString("recent history list", json);
+        editor.apply();
+    }
+    static ArrayList<Product> get_recent_History(Context app_context)
+    {
+        SharedPreferences sharedPreferences = app_context.getSharedPreferences("shared preferences", app_context.MODE_PRIVATE);
+        com.google.gson.Gson gson = new com.google.gson.Gson();
+        String json = sharedPreferences.getString("recent history list" , null);
+        java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<ArrayList<Product>>(){}.getType();
+        ArrayList<Product> product_list = gson.fromJson(json,type);
+        if( product_list == null)
+        {
+            product_list = new ArrayList<Product>();
+        }
+        return product_list;
+    }
 }

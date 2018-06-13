@@ -76,7 +76,19 @@
                 app:roundedCorners="true"
                 app:bootstrapSize="lg"
                 />
-
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/button_history"
+                android:onClick="ClickHistory"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                style="@style/wrapping_fa_text"
+                app:bootstrapText="History of shopping"
+                app:bootstrapBrand="danger"
+                app:buttonMode="regular"
+                app:showOutline="false"
+                app:roundedCorners="true"
+                app:bootstrapSize="lg"
+                />
 
 
 

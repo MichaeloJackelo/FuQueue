@@ -50,5 +50,9 @@ public class Chosen extends AppCompatActivity {
         Intent intent = new Intent(this, DiscountMagazine.class);
         startActivity(intent);
     }
-    
+    public void ClickHistory(View v)
+    {
+        Intent intent = new Intent(this, History.class);
+        startActivity(intent);
+    }
 }

@@ -5,16 +5,46 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="fq.fuqueue.History"
-    android:background="@drawable/procenty">
+    android:background="@drawable/history_background">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textColor="#ffffff"
+            android:text="10 june"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/history_recent_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        </android.support.v7.widget.RecyclerView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textColor="#ffffff"
+            android:text="11 june"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/history_recyclerView10june"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="4"
+            android:layout_weight="2"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
