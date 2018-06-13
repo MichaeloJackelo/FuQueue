@@ -50,5 +50,5 @@ public class Chosen extends AppCompatActivity {
         Intent intent = new Intent(this, DiscountMagazine.class);
         startActivity(intent);
     }
-
+    
 }
