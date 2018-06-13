@@ -63,6 +63,7 @@ public class ActiveProductAdapter extends RecyclerView.Adapter{
         String price = (String) "" + (items.get(position).price);
         String description = items.get(position).description;
         String quantity = (String) "" + (items.get(position).quantity);
+        String obrazek = items.get(position).url ;
         ((ItemHolder)holder).product_name.setText(name);
         ((ItemHolder)holder).product_price.setText(price);
         ((ItemHolder)holder).product_description.setText(description);
@@ -97,7 +98,8 @@ public class ActiveProductAdapter extends RecyclerView.Adapter{
 
             }
         });
-        Picasso.with(context).load(R.drawable.a).resize(88,88).into(((ItemHolder) holder).imageViewThumbnail);
+
+        Picasso.with(context).load(obrazek).resize(88,88).into(((ItemHolder) holder).imageViewThumbnail);
 
     }
 

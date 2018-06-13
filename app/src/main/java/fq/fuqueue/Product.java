@@ -4,14 +4,19 @@ class Product {
     String name;
     double price;
     String description;
+    String url;
     int quantity;
     int barcode;
-    public Product(String name, double price, String description,int quantity,int barcode){
+    public Product(String name, double price, String description,int quantity,int barcode, String url){
         this.name = name;
         this.price = price;
         this.description = description;
         this.quantity = 1;
         this.barcode = barcode;
+
+//        String[] xxx = url.split("/");
+//        String[] d = xxx[3].split(".");
+        this.url = "http://flask-fuque-for-demo.herokuapp.com" + url ;
     }
     public Product(Product new_product){
         this.name = new_product.name;

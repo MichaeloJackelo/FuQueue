@@ -141,6 +141,7 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
         double productPrize = 0;
         String productDescription = null;
         int productbarcode = 0;
+        String productURL = null;
         try {
             //Getting json object
             //JSONObject json = j.getJSONObject(0);
@@ -148,11 +149,12 @@ public class BarcodeScanner extends AppCompatActivity implements ZXingScannerVie
             productPrize =  json.getDouble("prize");
             productDescription = json.getString("description");
             productbarcode = json.getInt("barcode");
+            productURL = json.getString("picture_url");
         } catch (JSONException e) {
             e.printStackTrace();
         }
         ArrayList<Product> productList= ProductListManager.getActiveListProducts(this);
-        ProductListManager.addProductToBasket(productList,new Product(productName, productPrize,productDescription,1, productbarcode));
+        ProductListManager.addProductToBasket(productList,new Product(productName, productPrize,productDescription,1, productbarcode, productURL));
         ProductListManager.storeActiveListProducts(productList,this);
         //goToShoppingListActivity();
 

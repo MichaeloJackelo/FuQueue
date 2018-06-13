@@ -70,12 +70,14 @@ public class DiscountMagazine extends AppCompatActivity {
                         double productPrize = 0;
                         String productDescription = null;
                         int productbarcode = 0;
+                        String productURL = null;
                         try {
                             productName = json[0].getJSONObject(i).getString("name");
                             productPrize = json[0].getJSONObject(i).getDouble("prize");
                             productDescription = json[0].getJSONObject(i).getString("description");
                             productbarcode = json[0].getJSONObject(i).getInt("barcode");
-                            filteredProductList.add(new Product(productName, productPrize, productDescription, 1234, productbarcode));
+                            productURL =json[0].getJSONObject(i).getString("picture_url");
+                            filteredProductList.add(new Product(productName, productPrize, productDescription, 1234, productbarcode, productURL));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

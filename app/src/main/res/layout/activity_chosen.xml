@@ -12,43 +12,75 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background">
-        <Button
-            android:id="@+id/button_ActiveShoppingList"
-            android:onClick="ClickActivShoppingList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/button_ActiveShoppingList" />
-        <Button
-            android:id="@+id/button_StartPayment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="ClickStartPayment"
-            android:text="Start Payment" />
-        <Button
-            android:id="@+id/button_change_scanner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:onClick="scanner_page"
-            android:text="@string/button_scanner_text" />
-        <Button
-            android:id="@+id/button_list_offline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:onClick="offline_shopping_list_page"
-            android:text="@string/button_list_offline" />
-        <Button
-            android:id="@+id/button_store_map"
-            android:onClick="ClickStoreMap"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Store Map" />
-        <Button
-            android:id="@+id/button_discount_magazine"
-            android:onClick="ClickDiscountMagazine"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Discount Magazine" />
+        android:padding="5dp"
+        <com.beardedhen.androidbootstrap.AwesomeTextView
+            android:id="@+id/example_fa_text_multi_change"
+            style="@style/wrapping_fa_text"
+            app:bootstrapBrand="primary"
+            app:fontAwesomeIcon="fa_cart_plus"
+            app:bootstrapText="{fa_cart_plus} Walcome in Fuqueue {fa_cart_plus}"
+            />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/button_ActiveShoppingList"
+                android:onClick="ClickActivShoppingList"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                style="@style/wrapping_fa_text"
+                app:bootstrapText="{fa_shopping_basket} Start shopping {fa_shopping_basket} "
+                app:bootstrapBrand="success"
+                app:buttonMode="regular"
+                app:showOutline="false"
+                app:roundedCorners="true"
+                app:bootstrapSize="xl"
+                />
+
+
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/button_list_offline"
+                android:onClick="offline_shopping_list_page"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                style="@style/wrapping_fa_text"
+                app:bootstrapText="{fa_list}Shopping list Ofline{fa_list}"
+                app:bootstrapBrand="regular"
+                app:buttonMode="regular"
+                app:showOutline="false"
+                app:roundedCorners="true"
+                app:bootstrapSize="lg"
+                />
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/button_store_map"
+                android:onClick="ClickStoreMap"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                style="@style/wrapping_fa_text"
+                app:bootstrapText="{fa_map} Store Map {fa_map}"
+                app:bootstrapBrand="info"
+                app:buttonMode="regular"
+                app:showOutline="false"
+                app:roundedCorners="true"
+                app:bootstrapSize="lg"
+                />
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/button_discount_magazine"
+                android:onClick="ClickDiscountMagazine"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                style="@style/wrapping_fa_text"
+                app:bootstrapText="Discount Magazine"
+                app:bootstrapBrand="danger"
+                app:buttonMode="regular"
+                app:showOutline="false"
+                app:roundedCorners="true"
+                app:bootstrapSize="lg"
+                />
+
+
+
+
+
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
