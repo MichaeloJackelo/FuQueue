@@ -91,7 +91,7 @@ public class ActiveShoppingList extends AppCompatActivity{
         sendListToServer();
         Intent intent = new Intent(this, PaypalPayment.class);
         String[] summary_label = ((String) summary_price.getText()).split(" "); //descriptive string (Summary price xx zł)- we must extract price - xx!
-        intent.putExtra("SUM_PRICE",summary_label[2]);
+        intent.putExtra("SUM_PRICE",summary_label[0]);
         startActivity(intent);
     }
 

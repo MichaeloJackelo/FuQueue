@@ -16,7 +16,7 @@ import com.beardedhen.androidbootstrap.TypefaceProvider;
 import butterknife.ButterKnife;
 
 public class StoreMap extends AppCompatActivity {
-    String[] elementy = {"Opcja 1", "Opcja 2", "Opcja 3", "Opcja 4", "Opcja 5"}; // Tu trzeba wszstkie dostępne kategorie w sklepie
+    String[] elementy = {"Drink", "Fruit", "Sweets", "Bread", "Chemistry"}; // Tu trzeba wszstkie dostępne kategorie w sklepie
 
 
 
@@ -39,24 +39,24 @@ public class StoreMap extends AppCompatActivity {
                     case 0:
 
                         //float pixels = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, getResources().getDisplayMetrics());
-                        img_arrow.setX(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, getResources().getDisplayMetrics()));
-                        img_arrow.setY(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, getResources().getDisplayMetrics()));
+                        img_arrow.setX(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 303, getResources().getDisplayMetrics()));
+                        img_arrow.setY(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 358, getResources().getDisplayMetrics()));
                         break;
                     case 1:
-                        img_arrow.setX(47);
-                        img_arrow.setY(104);
+                        img_arrow.setX(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 293, getResources().getDisplayMetrics()));
+                        img_arrow.setY(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 36, getResources().getDisplayMetrics()));
                         break;
                     case 2:
-                        img_arrow.setX(80);
-                        img_arrow.setY(204);
+                        img_arrow.setX(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 46, getResources().getDisplayMetrics()));
+                        img_arrow.setY(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100, getResources().getDisplayMetrics()));
                         break;
                     case 3:
-                        img_arrow.setX(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, getResources().getDisplayMetrics()));
-                        img_arrow.setY(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, getResources().getDisplayMetrics()));
+                        img_arrow.setX(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 146, getResources().getDisplayMetrics()));
+                        img_arrow.setY(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 414, getResources().getDisplayMetrics()));
                         break;
                     case 4:
-                        img_arrow.setX(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, getResources().getDisplayMetrics()));
-                        img_arrow.setY(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, getResources().getDisplayMetrics()));
+                        img_arrow.setX(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 213, getResources().getDisplayMetrics()));
+                        img_arrow.setY(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 223, getResources().getDisplayMetrics()));
                         break;
                 }
             }

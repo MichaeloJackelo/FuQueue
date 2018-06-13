@@ -43,7 +43,7 @@ public class ActiveProductAdapter extends RecyclerView.Adapter{
     }
     public void refresh_text_view_summary_price()
     {
-        text_view_summary_price.setText("Summary price: " + new Double(summaryPrice()).toString()+" USD");
+        text_view_summary_price.setText(new Double(summaryPrice()).toString()+" $");
     }
     @NonNull
     @Override

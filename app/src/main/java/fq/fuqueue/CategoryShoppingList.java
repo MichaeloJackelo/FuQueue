@@ -40,7 +40,9 @@ public class CategoryShoppingList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_explore_shopping_list);
+        TypefaceProvider.registerDefaultIconSets();
 
         basketProductsList = ProductListManager.getOfflineBasketProducts(this);
         basket_Products_recyclerView = (RecyclerView) findViewById(R.id.offline_list_recyclerView);
