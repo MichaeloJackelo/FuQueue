@@ -1,0 +1,23 @@
+#Internal package file, do not edit.
+#Wed Jun 13 19:22:37 CEST 2018
+2.base=E\:\\ITapp\\FuQueue\\app\\build\\intermediates\\assets\\debug
+0.path=FontAwesome.otf
+2.baseType=DIRECTORY
+3.base=E\:\\ITapp\\FuQueue\\app\\build\\intermediates\\assets\\debug
+2.set=ASSET
+1.path=fontawesome-webfont-v470.ttf
+4.base=E\:\\ITapp\\FuQueue\\app\\build\\intermediates\\assets\\debug
+count=5
+2.path=typicons-v207.ttf
+4.set=ASSET
+3.path=fontawesome-webfont.ttf
+3.baseType=DIRECTORY
+1.set=ASSET
+4.path=MaterialIcons-Regular.ttf
+1.baseType=DIRECTORY
+0.base=E\:\\ITapp\\FuQueue\\app\\build\\intermediates\\assets\\debug
+0.baseType=DIRECTORY
+3.set=ASSET
+1.base=E\:\\ITapp\\FuQueue\\app\\build\\intermediates\\assets\\debug
+4.baseType=DIRECTORY
+0.set=ASSET
