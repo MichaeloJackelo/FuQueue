@@ -32,7 +32,7 @@ public class DiscountMagazineAdapter extends RecyclerView.Adapter{
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         String name = (String) items.get(position).name;
         String price = (String) "" + (items.get(position).price);
-        String obrazek = "R.drawable." + items.get(position).url ;
+        String obrazek =items.get(position).url ;
         ((ItemHolder)holder).product_name.setText(name);
         ((ItemHolder)holder).product_price.setText(price);
         Picasso.with(context).load(obrazek).resize(88,88).into(((ItemHolder) holder).imageViewThumbnail);
