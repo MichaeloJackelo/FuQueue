@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class History extends AppCompatActivity {
     RecyclerView filtered_products_recyclerView10june;
     RecyclerView filtered_products_recent_recyclerView;
-    Product Product1a = new Product("ananas",2,"ananas with leafs",10, 12987,"/static/products/cola.jpg");
+    Product Product1a = new Product("Cola",2,"ananas with leafs",10, 12987,"/static/products/cola.jpg");
     Product Product1b = new Product("bananas",1,"yellow banana",4, 1298712,"/static/products/cola.jpg");
     Product Product1c = new Product("cucumber",0.4,"green",11, 1298721,"/static/products/cola.jpg");
     Product Product1d = new Product("dill",1,"dill green",14, 1298731,"/static/products/cola.jpg");
@@ -44,6 +44,7 @@ public class History extends AppCompatActivity {
         products10june.add(Product2b);
         products10june.add(Product2c);
         products10june.add(Product2d);
+        productsrecent = ProductListManager.get_recent_History(this);
         filtered_products_recyclerView10june = (RecyclerView) findViewById(R.id.history_recyclerView10june);
         filtered_products_recyclerView10june.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
         final HistoryAdapter filtered_product_adapter10june = new HistoryAdapter(products10june, this);

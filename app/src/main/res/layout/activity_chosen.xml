@@ -83,7 +83,7 @@
                 android:layout_height="80dp"
                 style="@style/wrapping_fa_text"
                 app:bootstrapText="History of shopping"
-                app:bootstrapBrand="danger"
+                app:bootstrapBrand="secondary"
                 app:buttonMode="regular"
                 app:showOutline="false"
                 app:roundedCorners="true"
